@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>thuc hanh hien thi dau ra</title>
+</head>
+<body>
+<div>
+    <botton type="button" onclick="showmessange();">click me!</botton>
+    <script>
+        function showmessange(){
+            alert("xin chào");
+        }
+    </script>
+<div id="messageDiv"></div>
+    <button type="button" onclick="showmessage();">click me!</button>
+    <script>
+        function showmessage() {
+            document.getElementById('messageDiv').innerHTML='xin chào'
+
+        }
+    </script>
+    <div>
+        <button type="button" onclick="showMessage();">Click Me!</button>
+        <script>
+            function showMessage(){
+                document.write('Xin chào!');
+            }
+        </script>
+    </div>
+    <button type="button" onclick="showMessage();">Click Me!</button>
+    <script>
+        function showMessage(){
+            document.write('Xin chào!');
+        }
+    </script>
+
+</div>
+</body>
+</html>
