@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if else nâng cao</title>
+</head>
+<body>
+<!--bài1-->
+<h1>Chuyển từ độ C sang độ F</h1>
+<p>Nhập độ C</p>
+<br>
+<input type="number" id="c">
+<button type="button" onclick="kq()">Kết quả</button>
+<script>
+    function kq() {
+        let doC = parseInt(document.getElementById("c").value);
+        let doF = doC*9/5+32
+        alert("Độ F =" +doF+"F");
+    }
+</script>
+<!--bài2-->
+<h1>Chuyển từ m sang feed</h1>
+<p>Nhập số m</p>
+<br>
+<input type="number" id="m">
+<button type="button" onclick="kq()">Kết quả</button>
+<script>
+    function kq() {
+        let met = parseInt(document.getElementById("m").value);
+        let feed = met * 3.2808;
+        alert(+met+"m ="+feed+"feed");
+    }
+</script>
+<!--bai3-->
+<h2>Tính diện tích hình vuông</h2>
+<p>Cạnh bằng(m)</p>
+<br>
+<input type="number" id="cm">
+<button type="button" onclick="kq()">Kết quả</button>
+<script>
+    function kq() {
+        let cmet = parseInt(document.getElementById("cm").value);
+        let S = cmet**2;
+        alert("hình vuông có diện tích =" + S + "m^2");
+    }
+    </script>
+<!--bài4-->
+<h2>Tính diện tích hình chữ nhật</h2>
+<p>chiều rộng là (m)</p>
+<input type="number" id="rong">
+<br>
+<p>chiều dài là (m)</p>
+<input type="number" id="dai">
+<br>
+<br>
+<button type="button" onclick="kq()">Kết quả</button>
+<script>
+    function kq() {
+        let cr = parseInt(document.getElementById("rong").value);
+        let cd = parseInt(document.getElementById("dai").value);
+        let s = cr*cd;
+        alert("hình chữ nhật có diện tích =" + s + "m^2");
+    }
+</script>
+<!--bài5-->
+<h2> Tính diện tích tam giác vuông</h2>
+<p>cạnh bên a (m)</p>
+<input type="number" id="canha">
+<br>
+<p>cạnh bên b (m)</p>
+<input type="number" id="canhb">
+<br>
+<br>
+<button type="button" onclick="kq()">Kết quả</button>
+<script>
+    function kq() {
+        let a = parseInt(document.getElementById("canha").value);
+        let b = parseInt(document.getElementById("canhb").value);
+        let dt = a*b/2;
+        alert("tam giác vuông có diện tích =" + dt + "m^2");
+    }
+</script>
+<!--bài6-->
+<h2>Phương trình bật một</h2>
+<p>ax+b=0</p>
+<br>
+<p>Nhập a</p>
+<input type="number" id="num5">
+<br>
+<p>Nhập b</p>
+<input type="number" id="num6">
+<br>
+<br>
+<button type="button" onclick="kq()">Kết quả</button>
+<script>
+    function kq() {
+        let a=parseInt(document.getElementById("num5").value);
+        let b=parseInt(document.getElementById("num6").value);
+        let x=a/b;
+        if
+
+    }
+</script>
+
+
+</body>
+</html>
