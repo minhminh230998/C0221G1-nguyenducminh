@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+
+
+    function giaiThua(number) {
+        let gt =1;
+        for (let i = 1; i <= number; i++) {
+
+            gt = gt*i;
+        }
+        return gt;
+    }
+    let number = parseInt(prompt("Nhập vào:"))
+    alert(giaiThua(number));
+
+
+</script>
 </body>
 </html>
