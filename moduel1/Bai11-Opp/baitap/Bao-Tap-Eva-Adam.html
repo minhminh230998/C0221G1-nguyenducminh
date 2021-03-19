@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class ConNguoi {
+        constructor(ten ,gioiTinh, canNang) {
+            this.ten=ten;
+            this.goiTinh = gioiTinh;
+            this.canNang = canNang;
+        }
+        getten(ten){
+            return this.ten=ten;
+        }
+        getgioiTinh(gioiTinh){
+            return this.goiTinh = gioiTinh;
+        }
+        getcanNang(canNang){
+            return  this.canNang = canNang;
+        }
+
+
+        an(tao) {
+            if(tao.canNang>0){
+              this.canNang++;
+              tao.canNang--;
+
+            }
+        }
+    }
+   class Tao{
+        constructor(canNang) {
+            this.canNang=canNang;
+        }
+        getcanNang(canNang){
+            this.canNang=canNang;
+        }
+   }
+   let Adam=new ConNguoi("Adam","nam",75);
+   let Eval=new ConNguoi("Eval","nữ",75);
+   let tao=new Tao(10);
+   Adam.an(tao);
+   alert(Adam.canNang);
+   alert(tao.canNang)
+</script>
+</body>
+</html>
