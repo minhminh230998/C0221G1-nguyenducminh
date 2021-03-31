@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bai1-introduction_java/bai1-introduction_java.iml" filepath="$PROJECT_DIR$/bai1-introduction_java/bai1-introduction_java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bai1-java-introduction/bai1-java-introduction.iml" filepath="$PROJECT_DIR$/bai1-java-introduction/bai1-java-introduction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module2-Minh.iml" filepath="$PROJECT_DIR$/module2-Minh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bai1-introduction_java/thuchanh.iml" filepath="$PROJECT_DIR$/bai1-introduction_java/thuchanh.iml" />
+    </modules>
+  </component>
+</project>
