@@ -27,7 +27,7 @@ public class ThemPhanTuVaoMang {
             } else if (i == index-1) {
                 arr1[i] = n;
             } else {
-                arr1[i] = arr[i - 1];
+                arr1[i] = arr[i-1];
             }
         }
         return arr1;
