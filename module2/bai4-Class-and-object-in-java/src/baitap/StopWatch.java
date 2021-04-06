@@ -1,22 +1,18 @@
 package baitap;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class StopWatch {
     long startTime;
     long ends;
-    public StopWatch(long startTime,long ends){
-        this.startTime=startTime;
-        this.ends=ends;
-    }
 
-    public long getStartTime() {
-        return startTime;
-    }
 
     public long getEnds() {
         return ends;
     }
+
 
     public void setStartTime(long startTime) {
         this.startTime = startTime;
@@ -26,25 +22,27 @@ public class StopWatch {
         this.ends = ends;
     }
 
-    public static StopWatch start() {
-        return new StopWatch();
-    }
-
-    private StopWatch() {
-        reset();
-    }
-
-    public StopWatch reset() {
+    public void start() {
         startTime = System.currentTimeMillis();
-        return this;
+    }
+
+    public void stop() {
+        ends = System.currentTimeMillis();
     }
 
     public long time() {
-         ends = System.currentTimeMillis();
         return ends - startTime;
     }
+
     public static void main(String[] args) {
-        StopWatch stopWatch=new StopWatch();
-        System.out.println(stopWatch.time());
+        StopWatch stopWatch = new StopWatch();
+        int[] arr=new int[10000000];
+        stopWatch.start();
+        for (int i = 0; i <arr.length ; i++) {
+            arr[i]=(int) (Math.random()*10000000);
+        }
+        Arrays.sort(arr);
+        stopWatch.stop();
+        System.out.println(stopWatch.time()+"mls");
     }
 }
