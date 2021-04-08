@@ -1,18 +1,20 @@
-package thuchanh;
+package baitap.iinterface_Colorable;
 
-public class Rectangle extends Shape {
-    public int width=10;
-    public int length=15;
+import baitap.interface_Resizeable.Shape;
 
-    public Rectangle() {
+public class Rectangle1 extends Shape1  {
+    private int width=10;
+    private int length=15;
+
+    public Rectangle1() {
 
     }
 
-    public Rectangle(String color, boolean filled) {
+    public Rectangle1(String color, boolean filled) {
         super(color, filled);
     }
 
-    public Rectangle(String color, boolean filled, int width, int length) {
+    public Rectangle1(String color, boolean filled, int width, int length) {
         super(color, filled);
         this.width = width;
         this.length = length;
@@ -35,8 +37,8 @@ public class Rectangle extends Shape {
     }
 
     public int dienTich(){
-        return length*width;
-
+        int s=length*width;
+        return s;
     }
     public int chuVi(){
         int s=(length+width)*2;
@@ -45,7 +47,7 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        return "Rectangle" +
+        return "Rectangle1" +
                 " width=" + width +
                 ", length=" + length +", "+
                 super.toString() +
@@ -53,6 +55,7 @@ public class Rectangle extends Shape {
                 +
                 ", chu vi="+chuVi();
     }
+
 
 
 }

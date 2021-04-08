@@ -1,8 +1,8 @@
-package thuchanh;
+package baitap.interface_Resizeable;
 
 public class Rectangle extends Shape {
-    public int width=10;
-    public int length=15;
+    private int width=10;
+    private int length=15;
 
     public Rectangle() {
 
@@ -35,8 +35,8 @@ public class Rectangle extends Shape {
     }
 
     public int dienTich(){
-        return length*width;
-
+        int s=length*width;
+        return s;
     }
     public int chuVi(){
         int s=(length+width)*2;
@@ -45,7 +45,7 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        return "Rectangle" +
+        return "Rectangle1" +
                 " width=" + width +
                 ", length=" + length +", "+
                 super.toString() +
@@ -54,5 +54,8 @@ public class Rectangle extends Shape {
                 ", chu vi="+chuVi();
     }
 
-
+    public static void main(String[] args) {
+        Shape rectangle1=new Rectangle("blue",false,5,5);
+        System.out.println(rectangle1);
+    }
 }
