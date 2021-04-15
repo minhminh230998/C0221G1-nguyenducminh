@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/bai1-java-introduction/bai1-java-introduction.iml" filepath="$PROJECT_DIR$/bai1-java-introduction/bai1-java-introduction.iml" />
       <module fileurl="file://$PROJECT_DIR$/bai10_dsa_danhsach/bai10_dsa_danhsach.iml" filepath="$PROJECT_DIR$/bai10_dsa_danhsach/bai10_dsa_danhsach.iml" />
       <module fileurl="file://$PROJECT_DIR$/bai11_generic_stack_queue/bai11_generic_stack_queue.iml" filepath="$PROJECT_DIR$/bai11_generic_stack_queue/bai11_generic_stack_queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bai12_collection_framework/bai12_collection_framework.iml" filepath="$PROJECT_DIR$/bai12_collection_framework/bai12_collection_framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/bai2-CauLenhDieuKien/bai2-CauLenhDieuKien.iml" filepath="$PROJECT_DIR$/bai2-CauLenhDieuKien/bai2-CauLenhDieuKien.iml" />
       <module fileurl="file://$PROJECT_DIR$/bai3-arrayandmethod/bai3-arrayandmethod.iml" filepath="$PROJECT_DIR$/bai3-arrayandmethod/bai3-arrayandmethod.iml" />
       <module fileurl="file://$PROJECT_DIR$/bai4-Class-and-object-in-java/bai4-Class-and-object-in-java.iml" filepath="$PROJECT_DIR$/bai4-Class-and-object-in-java/bai4-Class-and-object-in-java.iml" />
