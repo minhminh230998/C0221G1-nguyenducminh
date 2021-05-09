@@ -164,7 +164,7 @@ public class QuanLyChucNang {
                             DocGhiFile.ghiFilePhuongTien(phuongTienGiaoThongList, false);
                             System.out.println("da xoa thanh cong");
                             kiemTra = true;
-                            break;
+
                         case "2":
                             return;
                         default:
