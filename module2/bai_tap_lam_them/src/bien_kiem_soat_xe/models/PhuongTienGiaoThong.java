@@ -66,5 +66,7 @@ public abstract class PhuongTienGiaoThong {
                 "," + namSanXuat +
                 "," + chuSoHuu;
     }
+    
+
     public  abstract String showInfor();
 }

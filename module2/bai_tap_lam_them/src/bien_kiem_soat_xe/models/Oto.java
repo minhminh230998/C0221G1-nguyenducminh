@@ -31,7 +31,7 @@ public class Oto extends PhuongTienGiaoThong {
 
     @Override
     public String toString() {
-        return super.toString()+"," +
+        return super.toString() + "," +
                 soChoNgoi +
                 ",'" + kieuXe;
     }
@@ -46,5 +46,6 @@ public class Oto extends PhuongTienGiaoThong {
                 ", soChoNgoi='" + soChoNgoi + '\'' +
                 ", kieuXe='" + kieuXe + '\'' +
                 '}';
-}
+    }
+
 }
