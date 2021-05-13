@@ -1,5 +1,5 @@
-
-
+create database  `student-managemen`;
+use `student-managemen`;
 create table `student-managemen`.`teacher`
 (
 `id` int(10)not null primary key auto_increment,
