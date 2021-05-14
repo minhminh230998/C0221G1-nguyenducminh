@@ -56,6 +56,12 @@ create table dich_vu_di_kem
 id_dich_vu_di_kem int primary key auto_increment,
 ten_dich_vu_di_kem varchar(50)
 );
+alter table dich_vu_di_kem
+add gia double;
+alter table dich_vu_di_kem
+add don_vi int;
+alter table dich_vu_di_kem
+add trang_thai varchar(50);
 create table loai_dich_vu
 (
 id_loai_dich_vu int primary key auto_increment,
@@ -107,8 +113,8 @@ foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
 foreign key (id_hop_dong) references hop_dong(id_hop_dong)
 );
 insert into trinh_do_nhan_vien (trinh_do)
-values('12/12'),
-('11/12');
+values('10/12'),
+('9/12');
 insert into bo_phan_nhan_vien (bo_phan)
 values('sale'),
 ('maketting');
@@ -125,7 +131,7 @@ insert into loai_khach(ten_loai_khach_hang)
 values('vip'),('nomal');
 insert into khach_hang(id_loai_khach,ten_khach_hang,ngay_sinh,so_CMND,so_DT,email,dia_chi)
 values(1,'Nguyen Thi H','2007/12/12',1234234,12345321,'abc@gmail.com','Quang Nam'),
-(2,'Nguyen Thi C','1988/11/11',1234223,12345521,'abc@gmail.com','Da Nang');
+(2,'Nguyen Thi F','1988/11/11',1234223,12345521,'abc@gmail.com','Da Nang');
 insert into loai_dich_vu(loai_dich_vu)
 values('vip'),('nomal');
 
@@ -136,13 +142,17 @@ values(1,2,'villa',50.0,1000000,10),
 (2,1,'Room',45.5,2000000,15);
 
 insert into hop_dong(id_khach_hang,id_nhan_vien,id_dich_vu,so_hop_dong,ngay_bat_dau,ngay_ket_thuc,so_tien_coc_truoc)
-values(1,2,1,1234,'2020/12/12','2021/1/23',1000000),
-(1,2,1,2345,'2020/11/12','2021/1/23',2000000);
+values(9,2,1,1234,'2020/5/5','2021/1/23',500000),
+(10,2,1,2345,'2020/3/3','2021/1/23',2000000);
 
 SET SQL_SAFE_UPDATES = 0;
 
 SELECT * FROM case_study.hop_dong;
-insert into dich_vu_di_kem(ten_dich_vu_di_kem)
-values ('karaoke'),('car');
+insert into dich_vu_di_kem(ten_dich_vu_di_kem,gia,trang_thai,don_vi)
+values ('karaoke',50,'1',2),('car',30,'2',3);
+delete from dich_vu_di_kem
+where id_dich_vu_di_kem=10;
+delete from hop_dong_chi_tiet
+where id_hop_dong_chi_tiet=6;
 insert into hop_dong_chi_tiet(id_dich_vu_di_kem,id_hop_dong,so_luong)
-values (1,25,10),(2,26,15);
+values (7,31,10),(8,32,15);
