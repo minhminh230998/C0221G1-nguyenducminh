@@ -115,14 +115,17 @@ values('sale'),
 insert into vi_tri_lam_viec (vi_tri)
 values('phong sale'),
 ('phong maketting');
+update nhan_vien
+set ten_nha_vien='Kha Thi Kim Anh Ha'
+where id_nhan_vien=8;
 insert into nhan_vien(id_trinh_do_nhan_vien,id_vi_tri_lam_viec,id_bo_phan_nhan_vien,ten_nha_vien,ngay_sinh,so_CMND,so_DT,email)
-values(2,1,1,'Nguyễn Văn A','1999/11/11',123456789,01213141,'123@gmail.com'),
-(1,2,2,'Nguyễn Văn B','1988/10/11',234561234,23412342,'456@gmail.com');
+values(2,1,1,'Nguyen Thi H','1999/11/11',123456789,01213141,'123@gmail.com'),
+(1,2,2,'Dang Van T','1988/10/11',234561234,23412342,'456@gmail.com');
 insert into loai_khach(ten_loai_khach_hang)
 values('vip'),('nomal');
 insert into khach_hang(id_loai_khach,ten_khach_hang,ngay_sinh,so_CMND,so_DT,email,dia_chi)
-values(1,'Nguyễn Thị B','2000/12/12',1234234,12345321,'abc@gmail.com','Quang Nam'),
-(2,'Nguyễn Thị C','1998/11/11',1234223,12345521,'abc@gmail.com','Da Nang');
+values(1,'Nguyen Thi H','2007/12/12',1234234,12345321,'abc@gmail.com','Quang Nam'),
+(2,'Nguyen Thi C','1988/11/11',1234223,12345521,'abc@gmail.com','Da Nang');
 insert into loai_dich_vu(loai_dich_vu)
 values('vip'),('nomal');
 
@@ -132,10 +135,14 @@ insert into dich_vu(id_loai_dich_vu,id_kieu_thue,ten_dich_vu,dien_tich_su_dung,c
 values(1,2,'villa',50.0,1000000,10),
 (2,1,'Room',45.5,2000000,15);
 
-insert into hop_dong(id_khach_hang,id_nhan_vien,id_dich_vu,so_hop_dong,ngay_bat_dau,ngay_ket_thuc,so_tien_coc_truoc,tong_tien_thanh_toan)
-values(1,2,1,1234,'2020/12/12','2021/1/23',1000000,2000000),
-(1,2,1,2345,'2020/11/12','2021/1/23',2000000,4000000);
+insert into hop_dong(id_khach_hang,id_nhan_vien,id_dich_vu,so_hop_dong,ngay_bat_dau,ngay_ket_thuc,so_tien_coc_truoc)
+values(1,2,1,1234,'2020/12/12','2021/1/23',1000000),
+(1,2,1,2345,'2020/11/12','2021/1/23',2000000);
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT * FROM case_study.hop_dong;
 insert into dich_vu_di_kem(ten_dich_vu_di_kem)
 values ('karaoke'),('car');
 insert into hop_dong_chi_tiet(id_dich_vu_di_kem,id_hop_dong,so_luong)
-values (1,2,10),(2,1,15);
+values (1,25,10),(2,26,15);

@@ -1,15 +1,15 @@
 create database chuyen_doi_mo_hinh;
 use chuyen_doi_mo_hinh;
 create table so_dien_thoai(
-so_dien_thoai varchar(20) primary key
+ma_nha_cung_cap int,
+so_dien_thoai varchar(20) primary key,
+foreign key(ma_nha_cung_cap) references nha_cung_cap(ma_nha_cung_cap)
 );
 create table nha_cung_cap
 (
 ma_nha_cung_cap int primary key,
 ten_nha_cung_cap varchar(50),
-dia_chi varchar(50),
-so_dien_thoai varchar(20),
-foreign key (so_dien_thoai) references so_dien_thoai(so_dien_thoai)
+dia_chi varchar(50)
 );
 create table phieu_xuat(
 so_phieu_xuat int primary key,
@@ -19,7 +19,7 @@ create table phieu_nhap(
 so_phieu_nhap int primary key,
 ngay_nhap date
 );
-create table don_dac_hang(
+create table don_dat_hang(
 so_don_hang int primary key,
 ngay_don_hang date,
 ma_nha_cung_cap int,
