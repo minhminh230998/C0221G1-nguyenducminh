@@ -25,3 +25,4 @@ join student
 on student.student_id=mark.student_id
 join subject
 on mark.sub_id=subject.sub_id
+order by mark desc , student.student_name asc
