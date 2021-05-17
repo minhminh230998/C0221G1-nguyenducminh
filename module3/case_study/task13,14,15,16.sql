@@ -29,8 +29,8 @@ group by hop_dong_chi_tiet.id_dich_vu_di_kem
 having count(hop_dong_chi_tiet.id_dich_vu_di_kem)=1;
 -- task 15.	Hiển thi thông tin của tất cả nhân viên bao gồm IDNhanVien, HoTen, TrinhDo,
 -- TenBoPhan, SoDienThoai, DiaChi mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019.
-select nhan_vien.id_nhan_vien,nhan_vien.ten_nha_vien,trinh_do_nhan_vien.trinh_do,bo_phan_nhan_vien.bo_phan,
-nhan_vien.so_DT,nhan_vien.dia_chi,count(hop_dong.id_nhan_vien) so_hop_dong,hop_dong.ngay_bat_dau,hop_dong.id_hop_dong
+select nhan_vien.id_nhan_vien,nhan_vien.ten_nhan_vien,trinh_do_nhan_vien.trinh_do,bo_phan_nhan_vien.bo_phan,
+nhan_vien.so_DT,nhan_vien.dia_chi,count(hop_dong.id_nhan_vien) so_hop_dong,hop_dong.ngay_lam_hop_dong,hop_dong.id_hop_dong
 from nhan_vien
 join trinh_do_nhan_vien
 on nhan_vien.id_trinh_do_nhan_vien=trinh_do_nhan_vien.id_trinh_do_nhan_vien
@@ -41,7 +41,7 @@ on nhan_vien.id_nhan_vien=hop_dong.id_nhan_vien
 where hop_dong.id_hop_dong in(
 select hop_dong.id_hop_dong
 from hop_dong
-where year(hop_dong.ngay_bat_dau) =2018 or year(hop_dong.ngay_bat_dau)=2019)  
+where year(hop_dong.ngay_lam_hop_dong) =2018 or year(hop_dong.ngay_lam_hop_dong)=2019)  
 group by hop_dong.id_nhan_vien
 having count(hop_dong.id_nhan_vien)<=3 ;
 
@@ -50,7 +50,7 @@ having count(hop_dong.id_nhan_vien)<=3 ;
 delete from nhan_vien
 where id_nhan_vien not in (select hop_dong.id_nhan_vien
 from hop_dong
-where year(hop_dong.ngay_bat_dau) between 2017 and 2019
+where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019
 group by hop_dong.id_nhan_vien
 );
 SET FOREIGN_KEY_CHECKS=1;
