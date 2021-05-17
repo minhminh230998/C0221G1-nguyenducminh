@@ -17,6 +17,8 @@ foreign key (id_vi_tri_lam_viec) references vi_tri_lam_viec(id_vi_tri_lam_viec),
 foreign key (id_bo_phan_nhan_vien) references bo_phan_nhan_vien(id_bo_phan_nhan_vien)
 );
 alter table nhan_vien
+add dia_chi varchar(50);
+alter table nhan_vien
 drop trinh_do;
 create table trinh_do_nhan_vien
 (

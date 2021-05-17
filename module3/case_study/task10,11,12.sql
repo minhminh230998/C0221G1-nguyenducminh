@@ -27,36 +27,25 @@ and (khach_hang.dia_chi='vinh' or khach_hang.dia_chi='quảng ngãi');
 -- TenDichVu, SoLuongDichVuDikem (được tính dựa trên tổng Hợp đồng chi tiết), TienDatCoc
 -- của tất cả các dịch vụ đã từng được khách hàng đặt vào 3 tháng cuối năm 2019 nhưng chưa 
 -- từng được khách hàng đặt vào 6 tháng đầu năm 2019.
--- select hop_dong.id_hop_dong,nhan_vien.ten_nha_vien,khach_hang.ten_khach_hang,khach_hang.so_DT,dich_vu.ten_dich_vu,
--- count(hop_dong_chi_tiet.id_hop_dong_chi_tiet) as so_luong_dich_vu_di_kem,hop_dong.so_tien_coc_truoc
--- from hop_dong_chi_tiet
--- join hop_dong
--- on hop_dong_chi_tiet.id_hop_dong=hop_dong.id_hop_dong
--- join khach_hang
--- on hop_dong.id_khach_hang=khach_hang.id_khach_hang
--- join nhan_vien
--- on hop_dong.id_nhan_vien=nhan_vien.id_nhan_vien
--- join dich_vu
--- on hop_dong.id_dich_vu=dich_vu.id_dich_vu
--- where ((month(hop_dong.ngay_bat_dau) in (10,11,12)) and year(hop_dong.ngay_bat_dau)=2019 )
--- 		and hop_dong.id_dich_vu not in (
---         select hop_dong.id_dich_vu 
---         from hop_dong 
---         where (month(hop_dong.ngay_bat_dau) in(1,2,3,4,5,6)) and year(hop_dong.ngay_bat_dau)=2019 )
--- group by hop_dong_chi_tiet.id_hop_dong_chi_tiet;
-
-select hd.id_hop_dong,nv.ten_nha_vien,kh.ten_khach_hang,kh.so_DT,dv.ten_dich_vu,count(hdct.id_hop_dong_chi_tiet) as so_luong_dich_vu_di_kem, hd.so_tien_coc_truoc
-from hop_dong hd
-join nhan_vien nv on nv.id_nhan_vien = hd.id_nhan_vien
-join khach_hang kh on kh.id_khach_hang = hd.id_khach_hang
-join dich_vu dv on dv.id_dich_vu = hd.id_dich_vu
-join hop_dong_chi_tiet hdct on hdct.id_hop_dong = hd.id_hop_dong
-where ((month(hd.ngay_bat_dau) in (10,11,12)) and year(hd.ngay_bat_dau)=2019 )
-		and hd.id_dich_vu not in (
-        select hd.id_dich_vu 
+select hop_dong.id_hop_dong,nhan_vien.ten_nha_vien,khach_hang.ten_khach_hang,khach_hang.so_DT,
+dich_vu.ten_dich_vu,count(hop_dong_chi_tiet.id_hop_dong_chi_tiet) as so_luong_dich_vu_di_kem, hop_dong.so_tien_coc_truoc
+from hop_dong 
+join nhan_vien  
+on nhan_vien.id_nhan_vien = hop_dong.id_nhan_vien
+join khach_hang 
+on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+join dich_vu 
+on dich_vu.id_dich_vu = hop_dong.id_dich_vu
+join hop_dong_chi_tiet 
+on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+where (hop_dong.ngay_bat_dau between '2019/09/01' and '2019/12/31' )
+and hop_dong.id_dich_vu not in (
+        select hop_dong.id_dich_vu
         from hop_dong 
-        where (month(hd.ngay_bat_dau) in(1,2,3,4,5,6)) and year(hd.ngay_bat_dau)=2019 )
-group by hdct.id_hop_dong_chi_tiet
-;
+        where hop_dong.ngay_bat_dau between '2019/01/01' and '2019/06/30' )
+group by hop_dong.id_hop_dong;
+
+
+
 
 

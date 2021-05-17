@@ -51,7 +51,8 @@ from khach_hang;
 
 -- task 9.	Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng
 -- trong năm 2019 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
-select hop_dong.ngay_bat_dau,
-sum(dich_vu.chi_phi_thue+dich_vu_di_kem.gia*hop_dong_chi_tiet.so_luong)
-
-  
+select month(hop_dong.ngay_bat_dau) as so_luong_khach_dat_phong,
+count(hop_dong.id_khach_hang) as so_luong_dat_phong
+from hop_dong
+where year(hop_dong.ngay_bat_dau)=2019
+group by month(hop_dong.ngay_bat_dau);

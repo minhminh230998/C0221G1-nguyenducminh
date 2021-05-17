@@ -18,7 +18,10 @@ group by hop_dong.id_khach_hang
 order by so_lan_thue;
 
 
--- task5. 5.	Hiển thị IDKhachHang, HoTen, TenLoaiKhach, IDHopDong, TenDichVu, NgayLamHopDong, NgayKetThuc, TongTien (Với TongTien được tính theo công thức như sau: ChiPhiThue + SoLuong*Gia, với SoLuong và Giá là từ bảng DichVuDiKem) cho tất cả các Khách hàng đã từng đặt phỏng. (Những Khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
+-- task5. 5.	Hiển thị IDKhachHang, HoTen, TenLoaiKhach, IDHopDong, TenDichVu, NgayLamHopDong,
+-- NgayKetThuc, TongTien (Với TongTien được tính theo công thức như sau: ChiPhiThue + SoLuong*Gia,
+-- với SoLuong và Giá là từ bảng DichVuDiKem) cho tất cả các Khách hàng đã từng đặt phỏng.
+-- (Những Khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 select khach_hang.id_khach_hang,khach_hang.ten_khach_hang,
 hop_dong.id_hop_dong,dich_vu.ten_dich_vu,hop_dong.ngay_bat_dau,
 hop_dong.ngay_ket_thuc,
