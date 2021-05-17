@@ -1,7 +1,7 @@
 -- task2. 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 ký tự.
 SELECT *
 FROM nhan_vien
-WHERE ten_nha_vien LIKE "H%" and length(ten_nha_vien)<=15 or ten_nha_vien LIKE "K%"and length(ten_nha_vien)<=15 or ten_nha_vien LIKE "T%"and length(ten_nha_vien)<=15 ;
+WHERE (ten_nha_vien LIKE "H%"  or ten_nha_vien LIKE "K%"or ten_nha_vien LIKE "T%") and length(ten_nha_vien)<=15 ;
 -- task3. 3.	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
 select *
 from khach_hang
@@ -25,7 +25,7 @@ order by so_lan_thue;
 select khach_hang.id_khach_hang,khach_hang.ten_khach_hang,
 hop_dong.id_hop_dong,dich_vu.ten_dich_vu,hop_dong.ngay_bat_dau,
 hop_dong.ngay_ket_thuc,
-sum(dich_vu.chi_phi_thue+dich_vu_di_kem.gia*hop_dong_chi_tiet.so_luong) as tong_tien
+sum(dich_vu.chi_phi_thue+dich_vu_di_kem.gia*hop_dong_chi_tiet.so_luong) tong_tien
 from khach_hang
 left join hop_dong
 on hop_dong.id_khach_hang=khach_hang.id_khach_hang
@@ -35,5 +35,5 @@ left join hop_dong_chi_tiet
 on hop_dong_chi_tiet.id_hop_dong=hop_dong.id_hop_dong
 left join dich_vu_di_kem
 on dich_vu_di_kem.id_dich_vu_di_kem=hop_dong_chi_tiet.id_dich_vu_di_kem
-group by khach_hang.id_khach_hang
+group by khach_hang.id_khach_hang, hop_dong.id_hop_dong;
 

@@ -1,13 +1,13 @@
 -- task 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các 
 -- Khách hàng đã đặt phòng. 
 -- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
-select count(hop_dong_chi_tiet.id_dich_vu_di_kem) so_lan, dich_vu_di_kem.ten_dich_vu_di_kem
+select sum(hop_dong_chi_tiet.so_luong) so_lan, dich_vu_di_kem.ten_dich_vu_di_kem
 from hop_dong_chi_tiet
 join dich_vu_di_kem
 on hop_dong_chi_tiet.id_dich_vu_di_kem=dich_vu_di_kem.id_dich_vu_di_kem
 group by hop_dong_chi_tiet.id_dich_vu_di_kem
- having count(hop_dong_chi_tiet.id_dich_vu_di_kem)>=
- all(select count(hop_dong_chi_tiet.id_dich_vu_di_kem) 
+ having sum(hop_dong_chi_tiet.so_luong)>=
+ all(select sum(hop_dong_chi_tiet.so_luong)
  from hop_dong_chi_tiet
  group by hop_dong_chi_tiet.id_dich_vu_di_kem)
  ;
@@ -36,7 +36,7 @@ join trinh_do_nhan_vien
 on nhan_vien.id_trinh_do_nhan_vien=trinh_do_nhan_vien.id_trinh_do_nhan_vien
 join bo_phan_nhan_vien
 on nhan_vien.id_bo_phan_nhan_vien=bo_phan_nhan_vien.id_bo_phan_nhan_vien
-join hop_dong
+left join hop_dong
 on nhan_vien.id_nhan_vien=hop_dong.id_nhan_vien
 where hop_dong.id_hop_dong in(
 select hop_dong.id_hop_dong
@@ -47,11 +47,12 @@ having count(hop_dong.id_nhan_vien)<=3 ;
 
 -- task 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.
 
-
 delete from nhan_vien
-where nhan_vien.id_nhan_vien in (select DISTINCT nhan_vien.id_nhan_vien,count(hop_dong.id_nhan_vien)
-from nhan_vien
-join hop_dong
-on nhan_vien.id_nhan_vien=hop_dong.id_nhan_vien
+where id_nhan_vien not in (select hop_dong.id_nhan_vien
+from hop_dong
+where year(hop_dong.ngay_bat_dau) between 2017 and 2019
 group by hop_dong.id_nhan_vien
-having count(hop_dong.id_nhan_vien)=0);
+);
+SET FOREIGN_KEY_CHECKS=1;
+
+
