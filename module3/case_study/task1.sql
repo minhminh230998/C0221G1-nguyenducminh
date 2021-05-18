@@ -1,4 +1,5 @@
 create database case_study;
+use case_study;
 create table trinh_do_nhan_vien
 (
 id_trinh_do_nhan_vien  int primary key auto_increment,
@@ -27,8 +28,8 @@ so_CMND int,
 so_DT varchar(50),
 email varchar(50),
 dia_chi varchar(50),
-foreign key (id_trinh_do_nhan_vien) references trinh_do_nhan_vien(id_trinh_do_nhan_vien),
-foreign key (id_vi_tri_lam_viec) references vi_tri_lam_viec(id_vi_tri_lam_viec),
+foreign key (id_trinh_do_nhan_vien) references trinh_do_nhan_vien(id_trinh_do_nhan_vien) on DELETE CASCADE,
+foreign key (id_vi_tri_lam_viec) references vi_tri_lam_viec(id_vi_tri_lam_viec) on DELETE CASCADE,
 foreign key (id_bo_phan_nhan_vien) references bo_phan_nhan_vien(id_bo_phan_nhan_vien)
 on DELETE CASCADE
 );
@@ -72,7 +73,7 @@ chi_phi_thue float,
 so_nguoi_toi_da int,
 so_tang int,
 trang_thai varchar(50),
-foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu),
+foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu)on DELETE CASCADE,
 foreign key (id_kieu_thue) references kieu_thue(id_kieu_thue)
 on delete CASCADE
 );
@@ -86,8 +87,8 @@ ngay_lam_hop_dong date,
 ngay_ket_thuc date,
 so_tien_coc_truoc double,
 tong_tien_thanh_toan double,
-foreign key (id_khach_hang) references khach_hang(id_khach_hang),
-foreign key (id_nhan_vien) references nhan_vien(id_nhan_vien),
+foreign key (id_khach_hang) references khach_hang(id_khach_hang) on DELETE CASCADE,
+foreign key (id_nhan_vien) references nhan_vien(id_nhan_vien)on DELETE CASCADE,
 foreign key (id_dich_vu) references dich_vu(id_dich_vu)
 on delete CASCADE
 );
@@ -105,7 +106,7 @@ id_hop_dong_chi_tiet int primary key auto_increment,
 id_dich_vu_di_kem int,
 id_hop_dong int,
 so_luong int,
-foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
+foreign key (id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem)on DELETE CASCADE,
 foreign key (id_hop_dong) references hop_dong(id_hop_dong)
 on delete CASCADE
 );

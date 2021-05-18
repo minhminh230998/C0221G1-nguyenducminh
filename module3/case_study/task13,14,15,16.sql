@@ -53,6 +53,5 @@ from hop_dong
 where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019
 group by hop_dong.id_nhan_vien
 );
-SET FOREIGN_KEY_CHECKS=1;
 
 
