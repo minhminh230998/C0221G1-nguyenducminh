@@ -91,5 +91,25 @@ if(select datediff(new.ngay_ket_thuc,old.ngay_lam_hop_dong)<2) then
 end //
 DELIMITER ;
 drop TRIGGER tr_2;
+ 
+-- 27.	Tạo user function thực hiện yêu cầu sau:
+-- a.	Tạo user function func_1: Đếm các dịch vụ đã được sử dụng với Tổng tiền là > 2.000.000 VNĐ.
+DELIMITER //
+create function func_1()
+returns int
+DETERMINISTIC
+begin
+declare count_dich_vu int;
+set count_dich_vu=(select count(x.chi_phi)
+from (select sum(dich_vu.chi_phi_thue) chi_phi
+from dich_vu
+join hop_dong
+on dich_vu.id_dich_vu=hop_dong.id_dich_vu
+group by dich_vu.id_dich_vu
+having sum(dich_vu.chi_phi_thue)>2000000)x);
+return count_dich_vu;
+end //
 
-
+ DELIMITER ;
+ drop function func_1;
+ select func_1();
