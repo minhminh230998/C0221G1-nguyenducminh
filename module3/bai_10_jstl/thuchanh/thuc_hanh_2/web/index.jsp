@@ -12,8 +12,10 @@
     <title>$Title$</title>
   </head>
   <body>
-  <form>
-    <h2>Vietnamese</h2>
+  <form action="dictionary.jsp" method="post">
+    <h2>Vietnamese Dictionary</h2>
+    <input type="text" name="English" value="Nhập văn bản">
+    <input type="submit" name="submit" value="Tìm kiếm">
   </form>
   </body>
 </html>
