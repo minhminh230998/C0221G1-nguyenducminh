@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ServletPrice", urlPatterns = "/prices")
-public class ServletPrice extends HttpServlet {
+@WebServlet(name = "ServletDiscount", urlPatterns = "/prices")
+public class ServletDiscount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String description = request.getParameter("description");
         float prices = Float.parseFloat(request.getParameter("price"));
