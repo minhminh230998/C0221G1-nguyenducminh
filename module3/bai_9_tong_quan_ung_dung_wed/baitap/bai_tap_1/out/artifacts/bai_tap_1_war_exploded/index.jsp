@@ -11,7 +11,7 @@
     <title>$Title$</title>
   </head>
   <body>
-  <form action="/gia" method="post">
+  <form action="/prices" method="post">
     <h3>Product Description</h3>
     <input type="text" name="description" placeholder="Mô tả sản phẩm">
     <h3>List Price</h3>

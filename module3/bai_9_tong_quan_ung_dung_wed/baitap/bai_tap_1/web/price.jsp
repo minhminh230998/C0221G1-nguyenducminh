@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <p> Tổng giá tiền: ${giaTien}</p>
+    <p> Tổng giá tiền: ${intoMoney}</p>
 
 </body>
 </html>
