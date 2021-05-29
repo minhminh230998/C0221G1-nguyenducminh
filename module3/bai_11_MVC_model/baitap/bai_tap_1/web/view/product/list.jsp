@@ -18,7 +18,12 @@
 </head>
 <body>
 <h1 style="color: darkmagenta">Product</h1>
-<div><h3><a class="text-dark" href="/product?action=create">Thêm Sản Phẩm</a></h3></div>
+<div><h3><a class="text-dark" href="/product?action=create">Add Product</a></h3></div>
+<form method="post" action="/product" style="float: right">
+    <input name="action" value="search" hidden>
+    <input type="text" name="search" id="search" placeholder="Search ...">
+    <button>Search</button>
+</form>
 <div class="container">
 <table border="1" width="100%">
    <tr>
@@ -29,6 +34,7 @@
        <td>Hãng sản xuất</td>
        <td>Sửa</td>
        <td>Xóa</td>
+       <td>View</td>
    </tr>
     <c:forEach items="${products}" var="product">
     <tr>
@@ -37,8 +43,10 @@
         <th>${product.price}</th>
         <th>${product.describe}</th>
         <th>${product.producer}</th>
-        <th><a href="/product?action=update&id=${product.id}">Sửa</a></th>
-        <th><a href="/product?action=remove&id=${product.id}">Xóa</a></th>
+        <th><a href="/product?action=update&id=${product.id}">Update</a></th>
+        <th><a href="/product?action=remove&id=${product.id}">Delete</a></th>
+        <th><a href="/product?action=display&id=${product.id}">Display</a></th>
+
     </tr>
     </c:forEach>
 </table>

@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Remove Customer</h1>
+<h1>Remove Product</h1>
 <form method="post">
     <table border="1">
         <tr>

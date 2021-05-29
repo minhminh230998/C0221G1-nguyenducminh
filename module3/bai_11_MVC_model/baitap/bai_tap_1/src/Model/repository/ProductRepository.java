@@ -2,10 +2,7 @@ package Model.repository;
 
 import Model.bean.Product;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductRepository {
     private static Map<Integer, Product> products = new HashMap<>();
@@ -42,9 +39,20 @@ public class ProductRepository {
         return products.get(id);
     }
 
-    public Product search(String name,Product product) {
-        return product;
+    public List<Product> search(String name) {
+        List<Product> search=new ArrayList<>();
+        List<Product> product= new ArrayList<>(products.values());
+        for (int i = 0; i <product.size() ; i++) {
+            if((product.get(i).getName()).contains(name)){
+                search.add(product.get(i));
+
+            }
+        }
+        return search;
     }
+
+
+
 }
 
 

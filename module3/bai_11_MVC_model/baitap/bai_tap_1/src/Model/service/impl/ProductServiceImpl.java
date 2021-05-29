@@ -35,7 +35,7 @@ products.remove(id);
     }
 
     @Override
-    public Product search(String name, Product product) {
-        return product;
+    public List<Product> search(String name) {
+        return products.search(name);
     }
 }
