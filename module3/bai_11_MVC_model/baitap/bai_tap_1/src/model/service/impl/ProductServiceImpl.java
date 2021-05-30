@@ -1,8 +1,8 @@
-package Model.service.impl;
+package model.service.impl;
 
-import Model.bean.Product;
-import Model.repository.ProductRepository;
-import Model.service.ProductService;
+import model.bean.Product;
+import model.repository.ProductRepository;
+import model.service.ProductService;
 
 import java.util.List;
 

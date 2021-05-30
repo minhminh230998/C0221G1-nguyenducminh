@@ -1,6 +1,6 @@
-package Model.repository;
+package model.repository;
 
-import Model.bean.Product;
+import model.bean.Product;
 
 import java.util.*;
 

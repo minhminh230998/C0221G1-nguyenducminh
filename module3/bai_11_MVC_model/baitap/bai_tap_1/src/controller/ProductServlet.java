@@ -1,8 +1,8 @@
-package controller.servlet;
+package controller;
 
-import Model.bean.Product;
-import Model.service.ProductService;
-import Model.service.impl.ProductServiceImpl;
+import model.bean.Product;
+import model.service.ProductService;
+import model.service.impl.ProductServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
