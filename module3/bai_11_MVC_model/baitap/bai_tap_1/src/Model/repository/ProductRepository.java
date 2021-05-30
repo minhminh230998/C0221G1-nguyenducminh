@@ -45,7 +45,6 @@ public class ProductRepository {
         for (int i = 0; i <product.size() ; i++) {
             if((product.get(i).getName()).contains(name)){
                 search.add(product.get(i));
-
             }
         }
         return search;
