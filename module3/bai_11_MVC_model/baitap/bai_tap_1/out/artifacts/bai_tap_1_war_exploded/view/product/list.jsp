@@ -20,7 +20,7 @@
 <h1 style="color: darkmagenta">Product</h1>
 <div><h3><a class="text-dark" href="/product?action=create">Add Product</a></h3></div>
 <form method="post" action="/product" style="float: right">
-<%--    <input name="action" value="search" hidden>--%>
+    <input name="action" value="search" hidden>
     <input type="text" name="search" id="search" placeholder="Search ...">
     <button>Search</button>
 </form>
