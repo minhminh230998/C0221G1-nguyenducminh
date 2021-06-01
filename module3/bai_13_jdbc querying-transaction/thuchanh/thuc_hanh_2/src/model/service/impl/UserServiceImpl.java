@@ -8,25 +8,19 @@ import java.util.List;
 
 public class UserServiceImpl implements IUserService {
     UserRepository userRepository = new UserRepository();
-
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public void insertUser(User user) {
+         userRepository.insertUser(user);
     }
 
     @Override
-    public User findById(int id) {
-        return userRepository.findById(id);
+    public User selectUser(int id) {
+        return userRepository.selectUser(id);
     }
 
     @Override
-    public User getById(int id) {
-        return userRepository.getById(id);
-    }
-
-    @Override
-    public void createUser(User user) {
-        userRepository.createUser(user);
+    public List<User> selectAllUsers() {
+        return userRepository.selectAllUsers();
     }
 
     @Override
@@ -40,7 +34,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void addUserTransaction(User user, int[] permision) {
-        userRepository.addUserTransaction(user,permision);
+    public void addUserTransaction(User user, int[] permission) {
+        userRepository.addUserTransaction( user, permission);
     }
 }
