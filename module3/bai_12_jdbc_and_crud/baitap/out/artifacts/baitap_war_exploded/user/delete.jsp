@@ -15,19 +15,19 @@
 <form method="post">
     <table border="1">
         <tr>
-            <td>Id: </td>
+            <td>Id:</td>
             <td>${users.id}</td>
         </tr>
         <tr>
-            <td>Name: </td>
-            <td >${users.name}</td>
+            <td>Name:</td>
+            <td>${users.name}</td>
         </tr>
         <tr>
-            <td>Email: </td>
-            <td >${users.email}</td>
+            <td>Email:</td>
+            <td>${users.email}</td>
         </tr>
         <tr>
-            <td>country: </td>
+            <td>country:</td>
             <td>${users.country}</td>
         </tr>
 

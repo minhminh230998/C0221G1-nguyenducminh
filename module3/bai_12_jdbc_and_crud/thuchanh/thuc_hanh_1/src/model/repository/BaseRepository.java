@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class BaseRepository {
      Connection connectDataBase() {
 
-        final String URL = "jdbc:mysql://localhost:3306/thuc_hanh_1?useSSL=false";
+        final String URL = "jdbc:mysql://localhost:3306/thuc_hanh_1?allowPublicKeyRetrieval=true&useSSL=false";
 
         final String USER = "root";
 

@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Title</title>
@@ -19,7 +19,7 @@
     <input type="text" name="country" id="search" class="form-control" placeholder="Search ...">
 
     <div class="input-group-append">
-        <button  type="submit" class="btn btn-outline-info" value="Search">
+        <button type="submit" class="btn btn-outline-info" value="Search">
             <i class="fas fa-search"></i>
         </button>
         <input name="action" value="search" hidden>
@@ -31,29 +31,29 @@
 </h2>
 
 <form action="/user">
-<div class="container">
-    <table border="1" width="100%">
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Email</td>
-            <td>Country</td>
-            <td>Sửa</td>
-            <td>Xóa</td>
-
-        </tr>
-        <c:forEach items="${userLists}" var="user">
+    <div class="container">
+        <table border="1" width="100%">
             <tr>
-                <th>${user.id}</th>
-                <th>${user.name}</th>
-                <th>${user.email}</th>
-                <th>${user.country}</th>
-                <th><a href="/user?action=edit&id=${user.id}">Update</a></th>
-                <th><a href="/user?action=delete&id=${user.id}">Delete</a></th>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Country</td>
+                <td>Sửa</td>
+                <td>Xóa</td>
+
             </tr>
-        </c:forEach>
-    </table>
-</div>
+            <c:forEach items="${userLists}" var="user">
+                <tr>
+                    <th>${user.id}</th>
+                    <th>${user.name}</th>
+                    <th>${user.email}</th>
+                    <th>${user.country}</th>
+                    <th><a href="/user?action=edit&id=${user.id}">Update</a></th>
+                    <th><a href="/user?action=delete&id=${user.id}">Delete</a></th>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 </form>
 </body>
 </html>

@@ -25,7 +25,7 @@ public class UserRepository {
     final String CREATE_USER = "insert into user(id,name,email,country)\n" +
             "values(?,?,?,?);";
     final String SEARCH_USER = "select * from user\n" +
-            "where country=?;";
+            "where country like ?;";
     final String SORT = "select * from user\n" +
             "order by name;";
     public static final String DELETE_USERS_SQL = "delete from user where id = ?;";
@@ -136,7 +136,7 @@ public class UserRepository {
         List<User> userList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_USER);
-            preparedStatement.setString(1, country);
+            preparedStatement.setString(1, "%"+country +"%");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
