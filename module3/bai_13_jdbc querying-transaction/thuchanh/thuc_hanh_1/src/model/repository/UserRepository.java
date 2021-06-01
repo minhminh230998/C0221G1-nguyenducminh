@@ -12,13 +12,12 @@ import java.util.List;
 public class UserRepository {
     BaseRepository baseRepository = new BaseRepository();
     final String SELECT_ALL_USER = "select * from user;";
-    final String INSERT_USER = "insert into user(id,name,email,country)\n" +
-            "values(?,?,?,?);";
+    final String INSERT_USER = "call insert_user(?,?,?,?);";
     final String DELETE_USER = "delete from user where id = ?;";
     final String SELECT_USER_ID = "select * from user" +
             "           where id=?;";
     final String UPDATE_USER = "update user set name = ?,email= ?, country =? where id = ?;";
-
+final String GET_BY_ID="call get_user_by_id(?);";
 
     public List<User> findAll() {
         Connection connection = baseRepository.connectDataBase();
@@ -48,6 +47,28 @@ public class UserRepository {
         PreparedStatement statement;
         try {
             statement = connection.prepareStatement(SELECT_USER_ID);
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id1 = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String country = resultSet.getString("country");
+                user = new User(id1, name, email, country);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+    public User getById(int id) {
+        Connection connection = baseRepository.connectDataBase();
+        User user = null;
+        ResultSet resultSet = null;
+        PreparedStatement statement;
+        try {
+            statement = connection.prepareStatement(GET_BY_ID);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {

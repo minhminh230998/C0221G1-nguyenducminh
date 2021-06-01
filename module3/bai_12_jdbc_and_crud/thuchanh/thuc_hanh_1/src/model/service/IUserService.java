@@ -1,16 +1,14 @@
 package model.service;
 
 import model.bean.User;
-import model.repository.UserRepository;
 
-import javax.swing.plaf.multi.MultiSeparatorUI;
 import java.util.List;
 
 public interface IUserService {
-    List<User> findAll();
-    User findById(int id);
-    boolean update( User user);
-     boolean deleteUser(int id);
-     void createUser(User user);
+    public List<User> findAll();
+    public User findById(int id);
+    public void createUser(User user);
+    public boolean deleteUser(int id);
+    public boolean updateUser(User user);
 
 }

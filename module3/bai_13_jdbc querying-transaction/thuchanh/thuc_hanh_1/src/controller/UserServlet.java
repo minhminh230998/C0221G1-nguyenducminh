@@ -127,7 +127,7 @@ public class UserServlet extends HttpServlet {
 
     private void showFormEdit(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        User user = iUserService.findById(id);
+        User user = iUserService.getById(id);
         System.out.println(user);
         request.setAttribute("user", user);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/user/update.jsp");

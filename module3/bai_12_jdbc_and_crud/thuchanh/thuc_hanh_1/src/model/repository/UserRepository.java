@@ -1,9 +1,7 @@
 package model.repository;
 
-
 import model.bean.User;
 
-import javax.jws.soap.SOAPBinding;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,104 +11,78 @@ import java.util.List;
 
 public class UserRepository {
     BaseRepository baseRepository = new BaseRepository();
-    Connection connection = baseRepository.connectDataBase();
     final String SELECT_ALL_USER = "select * from user;";
-    final String FIND_BY_ID = "select * from user\n" +
-            "where id=?;";
-    final String UPDATE_FIND_ID = "update  user\n" +
-            "set name=?,\n" +
-            "email=?,\n" +
-            "country=?\n" +
-            "where id=?;";
-    final String CREATE_USER = "insert into user(id,name,email,country)\n" +
+    final String INSERT_USER = "insert into user(id,name,email,country)\n" +
             "values(?,?,?,?);";
-    public static final String DELETE_USERS_SQL = "delete from user where id = ?;";
+    final String DELETE_USER = "delete from user where id = ?;";
+    final String SELECT_USER_ID = "select * from user" +
+            "           where id=?;";
+    final String UPDATE_USER = "update user set name = ?,email= ?, country =? where id = ?;";
+
 
     public List<User> findAll() {
-
-
-        List<User> userList = new ArrayList<>();
+        Connection connection = baseRepository.connectDataBase();
+        List<User> list = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USER);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_USER);
+            ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                String email = resultSet.getString(3);
-                String country = resultSet.getString(4);
-                userList.add(new User(id, name, email, country));
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String country = resultSet.getString("country");
+                list.add(new User(id, name, email, country));
             }
-            preparedStatement.close();
+            statement.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return userList;
+        return list;
     }
 
     public User findById(int id) {
-
-
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+        Connection connection = baseRepository.connectDataBase();
         User user = null;
+        ResultSet resultSet = null;
+        PreparedStatement statement;
         try {
-            statement = connection.prepareStatement(FIND_BY_ID);
+            statement = connection.prepareStatement(SELECT_USER_ID);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
-
             while (resultSet.next()) {
-                id = resultSet.getInt("id");
+                int id1 = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
                 String country = resultSet.getString("country");
+                user = new User(id1, name, email, country);
 
-                user = new User(id, name, email, country);
             }
-            statement.close();
-            connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return user;
     }
 
-    public boolean update(User user) {
-        boolean updateUser = false;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_FIND_ID)) {
-            preparedStatement.setString(1, user.getName());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getCountry());
-            preparedStatement.setInt(4, user.getId());
-            updateUser = preparedStatement.executeUpdate() > 0;
-            preparedStatement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return updateUser;
-    }
-
     public boolean deleteUser(int id) {
-        boolean rowDeleted = false;
-
-        PreparedStatement statement = null;
+        boolean rowDelete = false;
+        Connection connection = baseRepository.connectDataBase();
         try {
-            statement = connection.prepareStatement(DELETE_USERS_SQL);
+            PreparedStatement statement = connection.prepareStatement(DELETE_USER);
             statement.setInt(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
-            statement.close();
+            rowDelete = statement.executeUpdate() > 0;
             connection.close();
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return rowDeleted;
+        return rowDelete;
     }
 
     public void createUser(User user) {
-        PreparedStatement statement ;
+        Connection connection = baseRepository.connectDataBase();
         try {
-            statement = connection.prepareStatement(CREATE_USER);
+            PreparedStatement statement = connection.prepareStatement(INSERT_USER);
             statement.setInt(1, user.getId());
             statement.setString(2, user.getName());
             statement.setString(3, user.getEmail());
@@ -121,6 +93,24 @@ public class UserRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+    public boolean updateUser(User user){
+        boolean rowUpdate=false;
+        Connection connection=baseRepository.connectDataBase();
+        try {
+            PreparedStatement statement=connection.prepareStatement(UPDATE_USER);
+            statement.setString(1,user.getName());
+            statement.setString(2,user.getEmail());
+            statement.setString(3,user.getCountry());
+            statement.setInt(4,user.getId());
+            rowUpdate=statement.executeUpdate()>0;
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowUpdate;
     }
 
 }

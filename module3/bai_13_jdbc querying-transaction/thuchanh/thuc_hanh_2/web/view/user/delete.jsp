@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: ADMIN
+  User: DmD
   Date: 5/31/2021
-  Time: 2:42 PM
+  Time: 2:46 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,8 +21,8 @@
 </head>
 <body>
 <div class="container">
-    <h1>Edit User</h1>
-    <a href="/user">Back to list</a>
+    <h1>Delete User</h1>
+    <a href="/">Back to list</a>
     <div class="container">
         <c:if test="${message!=null}">
             <p>${message}</p>
@@ -30,28 +30,28 @@
         <form method="post">
             <div class="form-group">
                 <label for="formGroupExampleInput">Id</label>
-                <input readonly type="text" value="${users.id}" name="id" class="form-control"
+                <input readonly type="text" value="${user.id}" name="id" class="form-control"
                        id="formGroupExampleInput"
                        placeholder="Example input placeholder">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Name</label>
-                <input type="text" value="${users.name}" name="name" class="form-control" id="formGroupExampleInput2"
+                <input readonly type="text" value="${user.name}" name="name" class="form-control" id="formGroupExampleInput2"
                        placeholder="Another input placeholder">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Email</label>
-                <input type="text" class="form-control" name="email" value="${users.email}" id="formGroupExampleInput3"
+                <input type="text" class="form-control" name="email" value="${user.email}" id="formGroupExampleInput3"
                        placeholder="Another input placeholder">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Country</label>
-                <input type="text" class="form-control" name="country" value="${users.country}"
+                <input readonly type="text" class="form-control" name="country" value="${user.country}"
                        id="formGroupExampleInput4"
                        placeholder="Another input placeholder">
             </div>
             <div class="d-fex justify-content-center">
-                <input class="btn" type="submit" value="update">
+                <input class="btn" type="submit" value="Delete">
             </div>
         </form>
     </div>

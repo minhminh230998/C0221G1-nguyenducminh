@@ -20,6 +20,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public User getById(int id) {
+        return userRepository.getById(id);
+    }
+
+    @Override
     public void createUser(User user) {
         userRepository.createUser(user);
     }
