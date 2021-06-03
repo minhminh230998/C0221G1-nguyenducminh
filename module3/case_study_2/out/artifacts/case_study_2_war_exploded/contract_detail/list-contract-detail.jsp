@@ -102,12 +102,167 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td scope="col" style="text-align: center"><a href="#"><i class="fa fa-pencil "
-                                                                                  style="font-size: 1.3em ;text-shadow: 2px 2px  #ccc;color: yellow"
-                                                                                  aria-hidden="true"></i></a></td>
-                        <td scope="col" style="text-align: center"><a href="#"><i class="fa fa-trash-o"
-                                                                                  style="font-size: 1.3em ;text-shadow: 2px 2px  #ccc;color: red"
-                                                                                  aria-hidden="true"></i></a></td>
+                        <td scope="col" style="text-align: center">
+                            <button
+                                    class="btn bg-warning center-block"><a href="employee?action=edit&id=${employee.id}"><i
+                                    class="fa fa-pencil "
+                                    style="font-size: 1.3em ;text-shadow: 2px 2px  #ccc;color: yellow"
+                                    aria-hidden="true"></i></a></button>
+                        </td>
+                        <td scope="col" style="text-align: center">
+                            <!-- Button trigger modal -->
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn bg-danger" data-toggle="modal" data-target="#staticBackdrop">
+                                <i  style="font-size: 1.3em ;text-shadow: 2px 2px  #ccc;color: darkred" class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn có chắc muốn xóa nhân viên này
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </td>
+                        <td><!-- Button trigger modal -->
+                            <div class="justify-content-center" style="text-align: center">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    <a href="customer?action=show&id=${employee.id}"><i
+                                            style="font-size: 1.3em ;text-shadow: 2px 2px  #ccc;color: blue; " class="fa fa-eye"
+                                            aria-hidden="true"></i></a>
+                                </button>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table" style="background: #8fd19e ;">
+                                                <tr style="background: #218838">
+                                                    <th colspan="2"><h3 style="text-align: center">View Customer</h3></th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <td>
+
+                                                        <input disabled type="text" name="id" id="id" value="${employee.id}">
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <td>
+                                                        <input disabled type="text" name="name" id="name"
+                                                               value="${employee.name}">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Id Position</th>
+                                                    <td>
+                                                        <input disabled type="text" name="idPosition" id="idPosition"
+                                                               value="${employee.idPosition}">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Id EducationDegree</th>
+                                                    <td>
+                                                        <input disabled type="text" name="idEducationDegree"
+                                                               id="idEducationDegree" value="${employee.idEducationDegree}">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Id Division</th>
+                                                    <td>
+                                                        <input disabled type="text" name="idDivision" id="idDivision"
+                                                               value="${employee.idDivision}">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <th>Birthday</th>
+                                                    <td>
+                                                        <input disabled type="text" name="birthday" id="birthday"
+                                                               value="${employee.dateOfBirth}">
+                                                    </td>
+                                                </tr>
+                                                <th>Gender</th>
+                                                <td>
+                                                    <div style="width: 50% " class="d-flex">
+                                                        <input disabled name="gioitinh" type="text" value="${employee.gender}"/>
+
+                                                    </div>
+                                                </td>
+                                                <tr>
+                                                    <th>Id Card</th>
+                                                    <td>
+                                                        <input disabled type="text" name="idCard" id="idCard"
+                                                               value="${employee.idCard}">
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Phone Number</th>
+                                                    <td>
+                                                        <input disabled type="text" name="phoneNumber" id="phoneNumber"
+                                                               value="${employee.phone}">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email</th>
+                                                    <td>
+                                                        <input disabled type="text" name="email" id="email"
+                                                               value="${employee.email}">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Salary</th>
+                                                    <td>
+                                                        <input disabled type="text" name="salary" id="salary"
+                                                               value="${employee.salary}">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Address</th>
+                                                    <td>
+                                                        <input disabled type="text" name="address" id="address"
+                                                               value="${employee.address}">
+                                                    </td>
+                                                </tr>
+
+
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><a
+                                                    href="/customer">Close</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
                     </tr>
 
                 </table>

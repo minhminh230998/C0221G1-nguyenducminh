@@ -2,54 +2,80 @@ package model.bean.employee;
 
 public class Employee {
     private Integer id;
+    private int idPosition;
+    private int idEducationDegree;
+    private int idDivision;
     private String name;
     private String dateOfBirth;
     private String idCard;
+    private String gender;
     private double salary;
     private String phone;
     private String email;
     private String address;
-    private Position position;
-    private EducationDegree educationDegree;
-    private Division division;
 
+    public Employee() {
+    }
 
-    public Employee(Integer id, String name, String dateOfBirth, String idCard, double salary, String phone,
-                    String email, String address, Position position, EducationDegree educationDegree, Division division) {
+    public Employee(Integer id, int idPosition, int idEducationDegree, int idDivision, String name, String dateOfBirth, String idCard, String gender, double salary, String phone, String email, String address) {
         this.id = id;
+        this.idPosition = idPosition;
+        this.idEducationDegree = idEducationDegree;
+        this.idDivision = idDivision;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.idCard = idCard;
+        this.gender = gender;
         this.salary = salary;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.position = position;
-        this.educationDegree = educationDegree;
-        this.division = division;
-
     }
 
-    public Employee(String name, String dateOfBirth, String idCard, double salary, String phone,
-                    String email, String address, Position position, EducationDegree educationDegree, Division division) {
+    public Employee(int idPosition, int idEducationDegree, int idDivision, String name, String dateOfBirth, String idCard, String gender, double salary, String phone, String email, String address) {
+        this.idPosition = idPosition;
+        this.idEducationDegree = idEducationDegree;
+        this.idDivision = idDivision;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.idCard = idCard;
+        this.gender = gender;
         this.salary = salary;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.position = position;
-        this.educationDegree = educationDegree;
-        this.division = division;
-
     }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public int getIdPosition() {
+        return idPosition;
+    }
+
+    public void setIdPosition(int idPosition) {
+        this.idPosition = idPosition;
+    }
+
+    public int getIdEducationDegree() {
+        return idEducationDegree;
+    }
+
+    public void setIdEducationDegree(int idEducationDegree) {
+        this.idEducationDegree = idEducationDegree;
+    }
+
+    public int getIdDivision() {
+        return idDivision;
+    }
+
+    public void setIdDivision(int idDivision) {
+        this.idDivision = idDivision;
     }
 
     public String getName() {
@@ -74,6 +100,14 @@ public class Employee {
 
     public void setIdCard(String idCard) {
         this.idCard = idCard;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public double getSalary() {
@@ -106,29 +140,5 @@ public class Employee {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public EducationDegree getEducationDegree() {
-        return educationDegree;
-    }
-
-    public void setEducationDegree(EducationDegree educationDegree) {
-        this.educationDegree = educationDegree;
-    }
-
-    public Division getDivision() {
-        return division;
-    }
-
-    public void setDivision(Division division) {
-        this.division = division;
     }
 }

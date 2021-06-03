@@ -2,11 +2,11 @@ package model.bean.customer;
 
 public class Customer {
     private int id;
-    private CustomerType customerType;
+    private int idCustomerType;
     private String name;
     private String birthday;
     private String gender;
-    private String idCard;
+    private int idCard;
     private String phone;
     private String email;
     private String address;
@@ -14,9 +14,20 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, CustomerType customerType, String name, String birthday, String gender, String idCard, String phone, String email, String address) {
+    public Customer(int id, int idCustomerType, String name, String birthday, String gender, int idCard, String phone, String email, String address) {
         this.id = id;
-        this.customerType = customerType;
+        this.idCustomerType = idCustomerType;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
+
+    public Customer(int idCustomerType, String name, String birthday, String gender, int idCard, String phone, String email, String address) {
+        this.idCustomerType = idCustomerType;
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -34,12 +45,12 @@ public class Customer {
         this.id = id;
     }
 
-    public CustomerType getCustomerType() {
-        return customerType;
+    public int getIdCustomerType() {
+        return idCustomerType;
     }
 
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType;
+    public void setIdCustomerType(int idCustomerType) {
+        this.idCustomerType = idCustomerType;
     }
 
     public String getName() {
@@ -66,11 +77,11 @@ public class Customer {
         this.gender = gender;
     }
 
-    public String getIdCard() {
+    public int getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(String idCard) {
+    public void setIdCard(int idCard) {
         this.idCard = idCard;
     }
 

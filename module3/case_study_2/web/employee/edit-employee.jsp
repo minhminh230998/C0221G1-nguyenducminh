@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,12 +46,16 @@
     <div class="container-fluid">
         <div style="text-align: center ;width: 100%">
             <a class="navbar-brand " href="#">
-                <img src="https://lh3.googleusercontent.com/proxy/6KuQyQLwm4W9r4URqU1TaNujqXEWSEweNHDoYQJECRhG8gLF-n8FgBgYo97JLAJTDvV4U69gxOGYXksNfPsp-fSG0Tm20If5lvXNjnwjVVIOJ5hu9Tr6_4UF7V4"
+                <img src="../img/FURAMA.png"
                      alt="" width="350px" height="150px" class="d-inline-block align-text-top ">
             </a>
         </div>
     </div>
 </nav>
+<c:if test="${message!=null}">
+    <div style="width: 700px"><i class="text-success">${message}</i></div>
+</c:if>
+<form method="post">
 <div class="container-fluid">
     <div class="row">
         <div class=" col-lg-12"></div>
@@ -61,18 +66,54 @@
             <tr>
                 <th>Id</th>
                 <td>
+                    <input disabled  type="text" name="id" id="id" value="${employee.id}">
+                </td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>
 
+                    <select id="${employee.idPosition}" class="form-select" aria-label="Default select example"  name="idPosition">
+                        <option value="1">Sale – Marketing</option>
+                        <option value="2">Hanh Chinh</option>
+                        <option value="3">Phuc Vu</option>
+                        <option value="4">Quan Ly</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Education</th>
+                <td>
+                    <select id="${employee.idEducationDegree}" class="form-select" aria-label="Default select example"  name="idEducationDegree">
+                        <option value="1">Le Tan</option>
+                        <option value="2">Phuc Vu</option>
+                        <option value="3">Chuyen Vien</option>
+                        <option value="4">Giam Sat</option>
+                        <option value="5">Giam Đoc</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Division</th>
+                <td>
+                    <select id="${employee.idDivision}" class="form-select" aria-label="Default select example"  name="idDivision">
+                        <option value="1">Trung Cap</option>
+                        <option value="2">Cao Dang</option>
+                        <option value="3">Dai Hoc</option>
+                        <option value="4">Sau Dai Hoc</option>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <th>Name</th>
                 <td>
+                    <input   type="text" name="name" id="name" value="${employee.name}">
                 </td>
             </tr>
             <tr>
                 <th>Birthday</th>
                 <td>
-
+                    <input   type="date" name="birthday" id="birthday" value="${employee.dateOfBirth}">
                 </td>
             </tr>
             <th>Gender</th>
@@ -86,49 +127,32 @@
             <tr>
                 <th>Id Card</th>
                 <td>
-
+                    <input   type="text" name="idCard" id="idCard" value="${employee.idCard}">
                 </td>
             </tr>
             <tr>
                 <th>Salary</th>
                 <td>
-
+                    <input   type="text" name="salary" id="salary" value="${employee.salary}">
                 </td>
             </tr>
             <tr>
                 <th>Phone Number</th>
                 <td>
-
+                    <input   type="text" name="phoneNumber" id="phoneNumber" value="${employee.phone}">
                 </td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>
+                    <input   type="text" name="email" id="email" value="${employee.email}">
                 </td>
             </tr>
 
             <tr>
                 <th>Address</th>
                 <td>
-
-                </td>
-            </tr>
-            <tr>
-                <th>Position</th>
-                <td>
-
-                </td>
-            </tr>
-            <tr>
-                <th>Education</th>
-                <td>
-
-                </td>
-            </tr>
-            <tr>
-                <th>Division</th>
-                <td>
-
+                    <input   type="text" name="address" id="address" value="${employee.address}">
                 </td>
             </tr>
 
@@ -140,15 +164,15 @@
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-8 ">
-            <a href="#">
-                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; ">Back to list
-                    employee
+
+                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; "><a style="text-decoration: none; color: white"  href="/employee">Back to list
+                    employee</a>
                 </button>
-            </a>
+
         </div>
 
         <div class="col-lg-3 ">
-            <input style="background: #34ce57 ;width: 200px;height: 36px;border-radius: 50px;" type="submit"
+            <input style="background: #34ce57 ;width: 200px;height: 36px;border-radius: 50px;color: white" type="submit"
                    value="Edit Employee">
         </div>
     </div>
@@ -162,5 +186,6 @@
         </div>
     </div>
 </div>
+</form>
 </body>
 </html>

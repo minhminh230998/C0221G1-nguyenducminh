@@ -45,7 +45,7 @@
     <div class="container-fluid">
         <div style="text-align: center ;width: 100%">
             <a class="navbar-brand " href="#">
-                <img src="https://lh3.googleusercontent.com/proxy/6KuQyQLwm4W9r4URqU1TaNujqXEWSEweNHDoYQJECRhG8gLF-n8FgBgYo97JLAJTDvV4U69gxOGYXksNfPsp-fSG0Tm20If5lvXNjnwjVVIOJ5hu9Tr6_4UF7V4"
+                <img src="../img/FURAMA.png"
                      alt="" width="350px" height="150px" class="d-inline-block align-text-top ">
             </a>
         </div>

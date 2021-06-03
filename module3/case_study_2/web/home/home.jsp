@@ -39,7 +39,7 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="https://lh3.googleusercontent.com/proxy/6KuQyQLwm4W9r4URqU1TaNujqXEWSEweNHDoYQJECRhG8gLF-n8FgBgYo97JLAJTDvV4U69gxOGYXksNfPsp-fSG0Tm20If5lvXNjnwjVVIOJ5hu9Tr6_4UF7V4"
+            <img src="../img/FURAMA.png"
                  alt="" width="200px" height="50px" class="d-inline-block align-text-top">
             Furama resort
         </a>
@@ -55,16 +55,16 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../customer/list-customer.jsp">Customer</a>
+                        <a class="nav-link" href="../customer">Customer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../employee/list-employee.jsp">Employee</a>
+                        <a class="nav-link" href="../employee">Employee</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../service/list-service.jsp">Service</a>
+                        <a class="nav-link" href="../service">Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../contract/list-contract.jsp">Contract</a>
+                        <a class="nav-link" href="../contract">Contract</a>
                     </li>
 
                 </ul>
