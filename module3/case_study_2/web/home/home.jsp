@@ -61,7 +61,14 @@
                         <a class="nav-link" href="../employee">Employee</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../service">Service</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Service
+                        </a>
+                        <div style="margin-right: 0" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/service/add-villa.jsp">AddVilla</a>
+                            <a class="dropdown-item" href="/service/add-house.jsp">AddHouse</a>
+                            <a class="dropdown-item" href="/service/add-room.jsp">AddRoom</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../contract">Contract</a>

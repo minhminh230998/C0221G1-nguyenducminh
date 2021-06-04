@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,18 +52,16 @@
         </div>
     </div>
 </nav>
+<c:if test="${message!=null}">
+    <p class="text-success">${message}</p>
+</c:if>
+<form action="/service?action=villa" method="post">
 <div class="container-fluid">
     <div class="row">
         <div class=" col-lg-12"></div>
         <table class="table" style="background: #8fd19e ;">
             <tr style="background: #218838">
-                <th colspan="2"><h3 style="text-align: center">Add service</h3></th>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>
-                    <input type="text" name="id" id="id">
-                </td>
+                <th colspan="2"><h3 style="text-align: center">Add Villa</h3></th>
             </tr>
             <tr>
                 <th>Name</th>
@@ -70,6 +69,7 @@
                     <input type="text" name="name" id="name">
                 </td>
             </tr>
+
             <tr>
                 <th>Area</th>
                 <td>
@@ -90,37 +90,42 @@
             <tr>
                 <th>Rent type</th>
                 <td>
-                    <input type="text" name="rentType" id="rentType">
+                    <select class="form-select" aria-label="Default select example"  name="rentType">
+                        <option value="1">Theo Nam</option>
+                        <option value="2">Theo Thang</option>
+                        <option value="3">Theo Ngay</option>
+                        <option value="4">Theo Gio</option>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <th>Service type</th>
                 <td>
-                    <input type="text" name="serviceType" id="serviceType">
+                    <input disabled type="text" name="serviceType" id="serviceType" value="Villa">
                 </td>
             </tr>
             <tr>
                 <th>Standard room</th>
                 <td>
-                    <input type="text" name="Standard room" id="Standard room">
+                    <input type="text" name="standardRoom" id="standardRoom">
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <input type="text" name="Description" id="Description">
+                    <input type="text" name="description" id="description">
                 </td>
             </tr>
             <tr>
                 <th>Pool area</th>
                 <td>
-                    <input type="text" name="Pool area" id="Pool area">
+                    <input type="text" name="poolArea" id="poolArea">
                 </td>
             </tr>
             <tr>
                 <th>Number floors</th>
                 <td>
-                    <input type="text" name="Number floors" id="Number floors">
+                    <input type="text" name="numberFloors" id="numberFloors">
                 </td>
 
             </tr>
@@ -129,13 +134,13 @@
         </table>
     </div>
 </div>
+
 <div class="container-fluid " style="margin-top: 20px">
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-8 ">
-            <a href="#">
-                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; ">Back to list
-                    service
+            <a href="/home">
+                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; ">Back to Home
                 </button>
             </a>
         </div>
@@ -146,6 +151,7 @@
         </div>
     </div>
 </div>
+</form>
 <div class="container-fluid">
 
     <div style="background: black ;width: 100%;height: 70px ;margin-top: 20px">
