@@ -6,6 +6,8 @@ import model.bean.service.Room;
 import model.bean.service.Villa;
 import model.service.IService;
 
+import java.util.List;
+
 public class ServiceServiceimpl implements IService {
     ServiceRepository serviceRepository=new ServiceRepository();
     @Override
@@ -20,5 +22,15 @@ public class ServiceServiceimpl implements IService {
 
     @Override
     public void createRoom(Room room){ serviceRepository.createRoom(room);
+    }
+
+    @Override
+    public Villa findById(int id) {
+        return serviceRepository.findById(id);
+    }
+
+    @Override
+    public List<Villa> findAll() {
+        return serviceRepository.findAll();
     }
 }

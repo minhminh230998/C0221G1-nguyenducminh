@@ -26,6 +26,28 @@ public class Contract {
         this.services = services;
     }
 
+    public Contract() {
+    }
+
+    public Contract(int id, String startDate, String endDate, double deposit, Employee employee, Customer customer, Services services) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.employee = employee;
+        this.customer = customer;
+        this.services = services;
+    }
+
+    public Contract(String startDate, String endDate, double deposit, Employee employee, Customer customer, Services services) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.employee = employee;
+        this.customer = customer;
+        this.services = services;
+    }
+
     public int getId() {
         return id;
     }

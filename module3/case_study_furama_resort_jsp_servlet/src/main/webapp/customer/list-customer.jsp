@@ -12,18 +12,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-            crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../bootstrap413/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
         * {
             border: 0px;
@@ -38,8 +29,6 @@
         table th {
             border: 1px solid black;
         }
-
-
     </style>
 </head>
 <body>
@@ -70,7 +59,8 @@
 
 </div>
 <div class="container-fluid" style="margin-top: 20px">
-    <table class="table " style="background: #8fd19e">
+    <table id="tableCustomer" class="table table-striped table-bordered" style="width:100%">
+        <thead>
 
         <tr style="background: #218838">
 
@@ -88,7 +78,10 @@
             <th>Delete</th>
             <th>Information</th>
         </tr>
+        </thead>
+
         <c:forEach items="${customerLists}" var="customer" varStatus="status">
+            <tbody>
             <tr>
 
                 <td>${customer.id}</td>
@@ -130,8 +123,11 @@
                 </td>
             </tr>
 
+        </tbody>
         </c:forEach>
+
     </table>
+
 
     <!-- Modal -->
     <form action="/customer?action=delete" method="post">
@@ -160,11 +156,7 @@
 
 </div>
 <%--script xóa --%>
-<script>
-    function deleteCustomer(id) {
-        document.getElementById("idCustomer").value = id;
-    }
-</script>
+
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -185,14 +177,14 @@
                     <tr>
                         <th>Id</th>
                         <td>
-                            <input disabled type="text" name="id" id="id" >
+                            <input disabled type="text" name="id" id="id">
                         </td>
                     </tr>
                     <tr>
                         <th>Name</th>
                         <td>
                             <input disabled type="text" name="name" id="name"
-                                   >
+                            >
                         </td>
                     </tr>
 
@@ -206,14 +198,14 @@
                     <th>Gender</th>
                     <td>
                         <div style="width: 50% " class="d-flex">
-                            <input disabled name="gender" id="gender" type="text" />
+                            <input disabled name="gender" id="gender" type="text"/>
                         </div>
                     </td>
                     <tr>
                         <th>Id Card</th>
                         <td>
                             <input disabled type="text" name="idCard" id="idCard"
-                                   >
+                            >
                         </td>
                     </tr>
 
@@ -221,28 +213,28 @@
                         <th>Phone Number</th>
                         <td>
                             <input disabled type="text" name="phone" id="phone"
-                                   >
+                            >
                         </td>
                     </tr>
                     <tr>
                         <th>Email</th>
                         <td>
                             <input disabled type="text" name="email" id="email"
-                                   >
+                            >
                         </td>
                     </tr>
                     <tr>
                         <th>Type Id</th>
                         <td>
                             <input disabled type="text" name="idCustomerType" id="idCustomerType"
-                                   >
+                            >
                         </td>
                     </tr>
                     <tr>
                         <th>Address</th>
                         <td>
                             <input disabled type="text" name="address" id="address"
-                                  >
+                            >
                         </td>
                     </tr>
 
@@ -257,35 +249,36 @@
     </div>
 </div>
 <script>
-    function showCustomer(id, name,birthday,gender,idCard,phone,email,idCustomerType,address) {
+    function showCustomer(id, name, birthday, gender, idCard, phone, email, idCustomerType, address) {
         document.getElementById("id").value = id;
         document.getElementById("name").value = name;
-        if(idCustomerType==1){
-            idCustomerType="Diamond";
+        if (idCustomerType == 1) {
+            idCustomerType = "Diamond";
             document.getElementById("idCustomerType").value = idCustomerType;
-        }else if(idCustomerType==2){
-            idCustomerType="Platinium";
+        } else if (idCustomerType == 2) {
+            idCustomerType = "Platinium";
             document.getElementById("idCustomerType").value = idCustomerType;
-        }else if(idCustomerType==3){
-            idCustomerType="Gold";
+        } else if (idCustomerType == 3) {
+            idCustomerType = "Gold";
             document.getElementById("idCustomerType").value = idCustomerType;
-        }else if(idCustomerType==4){
-            idCustomerType="Silver";
+        } else if (idCustomerType == 4) {
+            idCustomerType = "Silver";
             document.getElementById("idCustomerType").value = idCustomerType;
-        }else if(idCustomerType==5){
-            idCustomerType="Member";
+        } else if (idCustomerType == 5) {
+            idCustomerType = "Member";
             document.getElementById("idCustomerType").value = idCustomerType;
         }
-
         document.getElementById("birthday").value = birthday;
         document.getElementById("gender").value = gender;
         document.getElementById("idCard").value = idCard;
         document.getElementById("phone").value = phone;
         document.getElementById("email").value = email;
         document.getElementById("address").value = address;
-
-
+        function deleteCustomer(id) {
+            document.getElementById("idCustomer").value = id;
+        }
     }
+
 </script>
 
 
@@ -298,6 +291,19 @@
 
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#tableCustomer').dataTable( {
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 3
+        } );
+    } );
+</script>
+<script src="../jquery/jquery-3.5.1.min.js"></script>
+<script src="../bootstrap413/js/bootstrap.bundle.min.js"></script>
+<script src="../datatables/js/jquery.dataTables.min.js"></script>
+<script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
 
 </body>
 </html>

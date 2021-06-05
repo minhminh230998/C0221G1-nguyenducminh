@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +52,7 @@
         </div>
     </div>
 </nav>
+<form action="/contractDetail?action=add" method="post">
 <div class="container-fluid">
     <div class="row">
         <div class=" col-lg-12"></div>
@@ -59,21 +61,26 @@
                 <th colspan="2"><h3 style="text-align: center">Add contract detail</h3></th>
             </tr>
             <tr>
-                <th>Id</th>
-                <td>
-                    <input type="text" name="id" id="id">
-                </td>
-            </tr>
-            <tr>
                 <th>Contract Id</th>
                 <td>
-                    <input type="text" name="contractId" id="contractId">
+
+                    <select class="form-select" aria-label="Default select example" name="contractId">
+                        <c:forEach items="${contracts}" var="contracts">
+                            <option value="${contracts.id}">${contracts.id}</option>
+                        </c:forEach>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <th>Attach service Id</th>
                 <td>
-                    <input type="text" name="attachServiceId" id="attachServiceId">
+
+                    <select class="form-select" aria-label="Default select example" name="attachServiceId">
+                        <c:forEach items="${attachServices}" var="attachService">
+                            <option value="${attachService.id}">${attachService.name}</option>
+                        </c:forEach>
+                    </select>
+
                 </td>
             </tr>
             <th>Quantity</th>
@@ -86,15 +93,17 @@
         </table>
     </div>
 </div>
+    <c:if test="${message!=null}">
+        <p class="text-success">${message}</p>
+    </c:if>
 <div class="container-fluid " style="margin-top: 20px">
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-8 ">
-            <a href="#">
-                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; ">Back to list
-                    contract detail
+
+                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; "> <a style="text-decoration: none ;color: white" href="/home">Back to home</a>
                 </button>
-            </a>
+
         </div>
 
         <div class="col-lg-3 ">
@@ -112,5 +121,6 @@
         </div>
     </div>
 </div>
+</form>
 </body>
 </html>

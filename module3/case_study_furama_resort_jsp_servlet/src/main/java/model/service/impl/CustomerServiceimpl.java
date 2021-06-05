@@ -7,7 +7,7 @@ import model.service.ICustomerService;
 import java.util.List;
 
 public class CustomerServiceimpl implements ICustomerService {
-CustomerRepository customerRepository=new CustomerRepository();
+    CustomerRepository customerRepository=new CustomerRepository();
     @Override
     public List<Customer> findAll() {
         return customerRepository.findAll();

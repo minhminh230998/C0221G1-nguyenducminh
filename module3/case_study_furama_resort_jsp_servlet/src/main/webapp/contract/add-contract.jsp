@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,29 +52,26 @@
         </div>
     </div>
 </nav>
+<form action="/contract?action=add" method="post" >
 <div class="container-fluid">
     <div class="row">
         <div class=" col-lg-12"></div>
+
         <table class="table" style="background: #8fd19e ;">
             <tr style="background: #218838">
                 <th colspan="2"><h3 style="text-align: center">Add contract</h3></th>
             </tr>
             <tr>
-                <th>Id</th>
-                <td>
-                    <input type="text" name="id" id="id">
-                </td>
-            </tr>
-            <tr>
                 <th>Start date</th>
                 <td>
-                    <input type="text" name="startDate" id="startDate">
+                    <input type="date" name="startDate" id="startDate">
                 </td>
             </tr>
             <tr>
+
                 <th>End date</th>
                 <td>
-                    <input type="text" name="endDate" id="endDate">
+                    <input type="date" name="endDate" id="endDate">
                 </td>
             </tr>
             <th>Deposit</th>
@@ -82,41 +80,50 @@
                     <input type="text" name="deposit" id="deposit">
                 </div>
             </td>
-            <tr>
-                <th>Total money</th>
-                <td>
-                    <input type="text" name="totalMoney" id="totalMoney">
-                </td>
-            </tr>
+
 
             <tr>
                 <th>Employee Id</th>
                 <td>
-                    <input type="text" name="employeeId" id="employeeId">
+                    <select class="form-select" aria-label="Default select example" name="employeeId">
+                       <c:forEach items="${employees}" var="employee">
+                           <option value="${employee.id}">${employee.name}</option>
+                       </c:forEach>
+
+                    </select>
                 </td>
             </tr>
             <tr>
                 <th>Customer Id</th>
                 <td>
-                    <input type="text" name="customerId" id="customerId">
+
+                    <select class="form-select" aria-label="Default select example" name="customerId">
+                        <c:forEach items="${customer}" var="customer">
+                            <option value="${customer.id}">${customer.name}</option>
+                        </c:forEach>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <th>Service Id</th>
                 <td>
-                    <input type="text" name="serviceId" id="serviceId">
+                    <select class="form-select" aria-label="Default select example" name="serviceId">
+                        <c:forEach items="${service}" var="service">
+                            <option value="${service.id}">${service.name}</option>
+                        </c:forEach>
+                    </select>
                 </td>
             </tr>
         </table>
+
     </div>
 </div>
 <div class="container-fluid " style="margin-top: 20px">
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-8 ">
-            <a href="#">
-                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; ">Back to list
-                    contract
+            <a href="/">
+                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; ">Back to home
                 </button>
             </a>
         </div>
@@ -127,6 +134,9 @@
         </div>
     </div>
 </div>
+<c:if test="${message!=null}">
+    <p class="text-success">${message}</p>
+</c:if>
 <div class="container-fluid">
 
     <div style="background: black ;width: 100%;height: 70px ;margin-top: 20px">
@@ -136,5 +146,6 @@
         </div>
     </div>
 </div>
+</form>
 </body>
 </html>

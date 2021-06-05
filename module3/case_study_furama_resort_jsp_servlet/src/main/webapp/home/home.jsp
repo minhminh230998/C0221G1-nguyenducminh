@@ -77,7 +77,10 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../contract">Contract</a>
+                        <a class="nav-link" href="/contract?action=add">Contract</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contractDetail?action=add">Contract Detail</a>
                     </li>
 
                 </ul>

@@ -159,7 +159,7 @@ public class CustomerServlet extends HttpServlet {
 
             request.setAttribute("customer", customer);
 
-                requestDispatcher=request.getRequestDispatcher("/customer");
+            requestDispatcher=request.getRequestDispatcher("/customer");
 
         }
         try {

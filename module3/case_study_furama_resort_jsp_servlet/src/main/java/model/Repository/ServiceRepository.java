@@ -2,15 +2,82 @@ package model.Repository;
 
 import model.bean.service.House;
 import model.bean.service.Room;
+import model.bean.service.Services;
 import model.bean.service.Villa;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceRepository {
     BaseRepository baseRepository = new BaseRepository();
     final String CREATE_SERVICE = "insert into dich_vu(id_loai_dich_vu,id_kieu_thue,ten_dich_vu,dien_tich_su_dung,chi_phi_thue,so_nguoi_toi_da,so_tang,tieu_chuan_phong,tien_nghi_khac,dien_tich_ho_boi) values(?,?,?,?,?,?,?,?,?,?);";
+    final String SELECT_BY_ID = "select * from dich_vu where id_dich_vu=?;";
+    final String SELECT_ALL = "select * from dich_vu;";
+
+    public List<Villa> findAll() {
+        List<Villa> villa = new ArrayList<>();
+        Connection connection = baseRepository.connectDataBase();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id_dich_vu");
+                int idRentType = resultSet.getInt("id_kieu_thue");
+                int idServiceType = resultSet.getInt("id_loai_dich_vu");
+                String name = resultSet.getString("ten_dich_vu");
+                String area = resultSet.getString("dien_tich_su_dung");
+                Double cost = resultSet.getDouble("chi_phi_thue");
+                int maxPeople = resultSet.getInt("so_nguoi_toi_da");
+                String standardRoom = resultSet.getString("tieu_chuan_phong");
+                String convenience = resultSet.getString("tien_nghi_khac");
+                float poolArea = resultSet.getFloat("dien_tich_ho_boi");
+                int numberFloors = resultSet.getInt("so_tang");
+                villa.add(new Villa(id,idRentType,idServiceType,name,area,cost,maxPeople,standardRoom,convenience,poolArea,numberFloors));
+//int id, int idRentType, int idServiceType, String name, String area, double cost, int maxPeople, String standardRoom, String convenience, float poolArea, int numberFloors
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return villa;
+    }
+
+    public Villa findById(int id) {
+        Villa villa = null;
+        Services services = null;
+        Connection connection = baseRepository.connectDataBase();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID);
+
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+//id_loai_dich_vu,id_kieu_thue,ten_dich_vu,dien_tich_su_dung,chi_phi_thue,so_nguoi_toi_da,so_tang,tieu_chuan_phong,tien_nghi_khac,dien_tich_ho_boi
+//int id, int idRentType, int idServiceType, String name, String area, double cost, int maxPeople, String standardRoom, String convenience, float poolArea, int numberFloors
+                int id1 = resultSet.getInt("id_dich_vu");
+                int idRentType = resultSet.getInt("id_kieu_thue");
+                int idServiceType = resultSet.getInt("id_loai_dich_vu");
+                String name = resultSet.getString("ten_dich_vu");
+                String area = resultSet.getString("dien_tich_su_dung");
+                Double cost = resultSet.getDouble("chi_phi_thue");
+                int maxPeople = resultSet.getInt("so_nguoi_toi_da");
+                String standardRoom = resultSet.getString("tieu_chuan_phong");
+                String convenience = resultSet.getString("tien_nghi_khac");
+                float poolArea = resultSet.getFloat("dien_tich_ho_boi");
+                int numberFloors = resultSet.getInt("so_tang");
+                villa = new Villa(id1, idRentType, idServiceType, name, area, cost, maxPeople, standardRoom, convenience, poolArea, numberFloors);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return villa;
+    }
+
 
     public void createVilla(Villa villa) {
 
@@ -79,5 +146,11 @@ public class ServiceRepository {
             e.printStackTrace();
         }
 
+    }
+
+    public static void main(String[] args) {
+        ServiceRepository serviceRepository=new ServiceRepository();
+        List<Villa> villas=serviceRepository.findAll();
+        System.out.println(villas.size());
     }
 }

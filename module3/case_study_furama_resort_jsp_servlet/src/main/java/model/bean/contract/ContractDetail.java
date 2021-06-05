@@ -13,6 +13,12 @@ public class ContractDetail {
         this.quantity = quantity;
     }
 
+    public ContractDetail(Contract contract, AttachService attachService, int quantity) {
+        this.contract = contract;
+        this.attachService = attachService;
+        this.quantity = quantity;
+    }
+
     public int getId() {
         return id;
     }
