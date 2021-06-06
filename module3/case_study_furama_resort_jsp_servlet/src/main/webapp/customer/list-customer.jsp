@@ -79,9 +79,9 @@
             <th>Information</th>
         </tr>
         </thead>
-
+        <tbody>
         <c:forEach items="${customerLists}" var="customer" varStatus="status">
-            <tbody>
+
             <tr>
 
                 <td>${customer.id}</td>
@@ -112,7 +112,7 @@
                 <td><!-- Button trigger modal -->
                     <div class="justify-content-center" style="text-align: center">
                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                onclick="showCustomer('${customer.id}','${customer.name}','${customer.birthday}','${customer.gender}','${customer.idCard}','${customer.phone}','${customer.email}','${customer.idCustomerType}','${customer.address}')"
+                                onclick="showCustomer('${customer.id}','${customer.name}','${customer.birthday}','${customer.gender}','${customer.idCard}','${customer.phone}','${customer.email}','${customer.customerType.name}','${customer.address}')"
                                 data-target="#exampleModal">
                             <i style="font-size: 1.3em ;text-shadow: 2px 2px  #ccc;color: blue; " class="fa fa-eye"
                                aria-hidden="true"></i>
@@ -123,8 +123,9 @@
                 </td>
             </tr>
 
-        </tbody>
+
         </c:forEach>
+        </tbody>
 
     </table>
 
@@ -156,7 +157,6 @@
 
 </div>
 <%--script xóa --%>
-
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -252,28 +252,14 @@
     function showCustomer(id, name, birthday, gender, idCard, phone, email, idCustomerType, address) {
         document.getElementById("id").value = id;
         document.getElementById("name").value = name;
-        if (idCustomerType == 1) {
-            idCustomerType = "Diamond";
-            document.getElementById("idCustomerType").value = idCustomerType;
-        } else if (idCustomerType == 2) {
-            idCustomerType = "Platinium";
-            document.getElementById("idCustomerType").value = idCustomerType;
-        } else if (idCustomerType == 3) {
-            idCustomerType = "Gold";
-            document.getElementById("idCustomerType").value = idCustomerType;
-        } else if (idCustomerType == 4) {
-            idCustomerType = "Silver";
-            document.getElementById("idCustomerType").value = idCustomerType;
-        } else if (idCustomerType == 5) {
-            idCustomerType = "Member";
-            document.getElementById("idCustomerType").value = idCustomerType;
-        }
+        document.getElementById("idCustomerType").value = idCustomerType;
         document.getElementById("birthday").value = birthday;
         document.getElementById("gender").value = gender;
         document.getElementById("idCard").value = idCard;
         document.getElementById("phone").value = phone;
         document.getElementById("email").value = email;
         document.getElementById("address").value = address;
+
         function deleteCustomer(id) {
             document.getElementById("idCustomer").value = id;
         }
@@ -291,19 +277,19 @@
 
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        $('#tableCustomer').dataTable( {
-            "dom": 'lrtip',
-            "lengthChange": false,
-            "pageLength": 3
-        } );
-    } );
-</script>
+
 <script src="../jquery/jquery-3.5.1.min.js"></script>
-<script src="../bootstrap413/js/bootstrap.bundle.min.js"></script>
+<script src="../bootstrap413/js/bootstrap.min.js"></script>
 <script src="../datatables/js/jquery.dataTables.min.js"></script>
 <script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
-
+<script>
+    $(document).ready(function () {
+        $('#tableCustomer').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5,
+        });
+    });
+</script>
 </body>
 </html>

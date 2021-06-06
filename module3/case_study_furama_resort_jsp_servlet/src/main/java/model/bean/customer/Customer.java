@@ -2,7 +2,7 @@ package model.bean.customer;
 
 public class Customer {
     private int id;
-    private int idCustomerType;
+    private CustomerType CustomerType;
     private String name;
     private String birthday;
     private String gender;
@@ -14,9 +14,9 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, int idCustomerType, String name, String birthday, String gender, int idCard, String phone, String email, String address) {
+    public Customer(int id, model.bean.customer.CustomerType customerType, String name, String birthday, String gender, int idCard, String phone, String email, String address) {
         this.id = id;
-        this.idCustomerType = idCustomerType;
+        CustomerType = customerType;
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -26,8 +26,8 @@ public class Customer {
         this.address = address;
     }
 
-    public Customer(int idCustomerType, String name, String birthday, String gender, int idCard, String phone, String email, String address) {
-        this.idCustomerType = idCustomerType;
+    public Customer(model.bean.customer.CustomerType customerType, String name, String birthday, String gender, int idCard, String phone, String email, String address) {
+        CustomerType = customerType;
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -45,12 +45,12 @@ public class Customer {
         this.id = id;
     }
 
-    public int getIdCustomerType() {
-        return idCustomerType;
+    public model.bean.customer.CustomerType getCustomerType() {
+        return CustomerType;
     }
 
-    public void setIdCustomerType(int idCustomerType) {
-        this.idCustomerType = idCustomerType;
+    public void setCustomerType(model.bean.customer.CustomerType customerType) {
+        CustomerType = customerType;
     }
 
     public String getName() {

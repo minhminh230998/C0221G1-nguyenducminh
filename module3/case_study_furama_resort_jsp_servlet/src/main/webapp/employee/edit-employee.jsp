@@ -73,34 +73,33 @@
                 <th>Position</th>
                 <td>
 
-                    <select id="${employee.idPosition}" class="form-select" aria-label="Default select example"  name="idPosition">
-                        <option value="1">Sale – Marketing</option>
-                        <option value="2">Hanh Chinh</option>
-                        <option value="3">Phuc Vu</option>
-                        <option value="4">Quan Ly</option>
+                    <select class="form-select" aria-label="Default select example"  name="idPosition">
+                        <option value="${employee.idPosition.id}" selected hidden>${employee.idPosition.name}</option>
+                        <c:forEach items="${positions}" var="position">
+                            <option value="${position.id}">${position.name}</option>
+                        </c:forEach>
                     </select>
                 </td>
             </tr>
             <tr>
                 <th>Education</th>
                 <td>
-                    <select id="${employee.idEducationDegree}" class="form-select" aria-label="Default select example"  name="idEducationDegree">
-                        <option value="1">Le Tan</option>
-                        <option value="2">Phuc Vu</option>
-                        <option value="3">Chuyen Vien</option>
-                        <option value="4">Giam Sat</option>
-                        <option value="5">Giam Đoc</option>
+                    <select  class="form-select" aria-label="Default select example"  name="idEducationDegree">
+                        <option value="${employee.educationDegree.id}" selected hidden>${employee.educationDegree.name}</option>
+                        <c:forEach items="${educationDegrees}" var="educationDegree">
+                            <option value="${educationDegree.id}">${educationDegree.name}</option>
+                        </c:forEach>
                     </select>
                 </td>
             </tr>
             <tr>
                 <th>Division</th>
                 <td>
-                    <select id="${employee.idDivision}" class="form-select" aria-label="Default select example"  name="idDivision">
-                        <option value="1">Trung Cap</option>
-                        <option value="2">Cao Dang</option>
-                        <option value="3">Dai Hoc</option>
-                        <option value="4">Sau Dai Hoc</option>
+                    <select  class="form-select" aria-label="Default select example"  name="idDivision">
+                        <option value="${employee.division.id}" selected hidden>${employee.division.name}</option>
+                        <c:forEach items="${divisions}" var="division">
+                            <option value="${division.id}">${division.name}</option>
+                        </c:forEach>
                     </select>
                 </td>
             </tr>

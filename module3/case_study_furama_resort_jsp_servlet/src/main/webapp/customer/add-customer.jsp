@@ -56,101 +56,101 @@
     <p class="text-success">${message}</p>
 </c:if>
 <form method="post">
-<div class="container-fluid">
-    <div class="row">
-        <div class=" col-lg-12"></div>
-        <table class="table" style="background: #8fd19e ;">
-            <tr style="background: #218838">
-                <th colspan="2"><h3 style="text-align: center">Add Customer</h3></th>
-            </tr>
-            <tr>
-                <th>Name</th>
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col-lg-12"></div>
+            <table class="table" style="background: #8fd19e ;">
+                <tr style="background: #218838">
+                    <th colspan="2"><h3 style="text-align: center">Add Customer</h3></th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>
+                        <input type="text" name="name" id="name">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Birthday</th>
+                    <td>
+                        <input type="date" name="birthday" id="birthday">
+                    </td>
+                </tr>
+                <th>Gender</th>
                 <td>
-                    <input type="text" name="name" id="name">
+                    <div style="width: 50% " class="d-flex">
+                        <input name="gioitinh" type="radio" value="Nam"/>Nam
+                        <input name="gioitinh" type="radio" value="Nu"/>Nữ
+                        <input name="gioitinh" type="radio" value="Khac"/>Khác
+                    </div>
                 </td>
-            </tr>
-            <tr>
-                <th>Birthday</th>
-                <td>
-                    <input type="date" name="birthday" id="birthday">
-                </td>
-            </tr>
-            <th>Gender</th>
-            <td>
-                <div style="width: 50% " class="d-flex">
-                    <input name="gioitinh" type="radio" value="Nam"/>Nam
-                    <input name="gioitinh" type="radio" value="Nu"/>Nữ
-                    <input name="gioitinh" type="radio" value="Khac"/>Khác
-                </div>
-            </td>
-            <tr>
-                <th>Id Card</th>
-                <td>
-                    <input type="text" name="idCard" id="idCard">
-                </td>
-            </tr>
+                <tr>
+                    <th>Id Card</th>
+                    <td>
+                        <input type="text" name="idCard" id="idCard">
+                    </td>
+                </tr>
 
-            <tr>
-                <th>Phone Number</th>
-                <td>
-                    <input type="text" name="phoneNumber" id="phoneNumber">
-                </td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>
-                    <input type="text" name="email" id="email">
-                </td>
-            </tr>
-            <tr>
-                <th>Type Id</th>
-                <td>
-                    <select class="form-select" aria-label="Default select example" name="typeId">
-                        <option value="1">Diamond</option>
-                        <option value="2">Platinium</option>
-                        <option value="3">Gold</option>
-                        <option value="4">Silver</option>
-                        <option value="5">Member</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>
-                    <input type="text" name="address" id="address">
-                </td>
-            </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>
+                        <input type="text" name="phoneNumber" id="phoneNumber">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>
+                        <input type="text" name="email" id="email">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Type Id</th>
+                    <td>
+                        <select class="form-select" aria-label="Default select example" name="typeId">
+                            <c:forEach items="${customerTypeList}" var="customerType">
+                                <option value="${customerType.id}">${customerType.name}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>
+                        <input type="text" name="address" id="address">
+                    </td>
+                </tr>
 
 
-        </table>
+            </table>
+        </div>
     </div>
-</div>
-<div class="container-fluid " style="margin-top: 20px">
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-8 ">
+    <div class="container-fluid " style="margin-top: 20px">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8 ">
 
-                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; "><a style="text-decoration: none; color: white"  href="/customer">Back to list
+                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; "><a
+                        style="text-decoration: none; color: white" href="/customer">Back to list
                     customer</a>
                 </button>
 
 
-        </div>
-        <div class="col-lg-3 ">
-            <input  type="submit"  style="background: #34ce57 ;width: 200px;height: 36px;border-radius: 50px;color: white"
-                   value="Add Customer">
+            </div>
+            <div class="col-lg-3 ">
+                <input type="submit"
+                       style="background: #34ce57 ;width: 200px;height: 36px;border-radius: 50px;color: white"
+                       value="Add Customer">
+            </div>
         </div>
     </div>
-</div>
-<div class="container-fluid">
+    <div class="container-fluid">
 
-    <div style="background: black ;width: 100%;height: 70px ;margin-top: 20px">
-        <div style="height: 50px;line-height: 70px">
-            <p style="color: white ;text-align: center">Furama resort is pleased to serve.
-                FuramaResortDaNang@gmail.com </p>
+        <div style="background: black ;width: 100%;height: 70px ;margin-top: 20px">
+            <div style="height: 50px;line-height: 70px">
+                <p style="color: white ;text-align: center">Furama resort is pleased to serve.
+                    FuramaResortDaNang@gmail.com </p>
+            </div>
         </div>
     </div>
-</div>
 </form>
 </body>
 </html>

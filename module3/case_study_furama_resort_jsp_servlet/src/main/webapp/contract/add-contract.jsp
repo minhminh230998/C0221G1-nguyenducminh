@@ -122,14 +122,14 @@
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-8 ">
-            <a href="/">
-                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; ">Back to home
+
+                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; "><a style="text-decoration: none; color: white" href="/">Back to home</a>
                 </button>
-            </a>
+
         </div>
 
         <div class="col-lg-3 ">
-            <input style="background: #34ce57 ;width: 200px;height: 36px;border-radius: 50px;" type="submit"
+            <input style="background: #34ce57 ;width: 200px;height: 36px;border-radius: 50px; color: white" type="submit"
                    value="Add contract">
         </div>
     </div>

@@ -32,7 +32,7 @@
         }
 
         .navbar-nav li {
-            margin-left: 60px;
+            margin-left: 40px;
         }
     </style>
 </head>
@@ -56,7 +56,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li style="margin-left: 20px " class="nav-item active">
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
@@ -65,22 +65,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../employee">Employee</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Service
+                            Service</a>
+                        <a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/service?action=add">AddService</a>
+                            </div>
                         </a>
-                        <div style="margin-left: 65%" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/service/add-villa.jsp">AddVilla</a>
-                            <a class="dropdown-item" href="/service/add-house.jsp">AddHouse</a>
-                            <a class="dropdown-item" href="/service/add-room.jsp">AddRoom</a>
-                        </div>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contract?action=add">Contract</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contractDetail?action=add">Contract Detail</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cusseratt">CustomerAttach</a>
                     </li>
 
                 </ul>
@@ -101,22 +104,22 @@
     <div class="row">
 
 
-            <div class="card text-white col-lg-2" style="padding: 0">
-                <img src="../img/hinh-nen-thien-nhien-dep-danh-cho-iphone-6-7-8-14.jpg" style="height: 100%;width: 100%" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <div style="top:0">
-                        <ul style="list-style: none;">
-                            <li style="margin-bottom: 20px ;padding-top: 40px"><a class="dropdown-item" href="#">Regular
-                                link</a>
-                            </li>
-                            <li style="margin-bottom: 20px"><a class="dropdown-item" href="#" aria-current="true">Active
-                                link</a>
-                            </li>
-                            <li style="margin-bottom: 20px"><a class="dropdown-item" href="#">Another link</a></li>
-                        </ul>
-                    </div>
+        <div class="card text-white col-lg-2" style="padding: 0">
+            <img src="../img/hinh-nen-thien-nhien-dep-danh-cho-iphone-6-7-8-14.jpg" style="height: 100%;width: 100%"
+                 class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <div style="top:0">
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 20px ;padding-top: 40px"><a class="dropdown-item" href="#">Regular
+                            link</a>
+                        </li>
+                        <li style="margin-bottom: 20px"><a class="dropdown-item" href="#" aria-current="true">Active
+                            link</a>
+                        </li>
+                        <li style="margin-bottom: 20px"><a class="dropdown-item" href="#">Another link</a></li>
+                    </ul>
                 </div>
-
+            </div>
 
 
         </div>

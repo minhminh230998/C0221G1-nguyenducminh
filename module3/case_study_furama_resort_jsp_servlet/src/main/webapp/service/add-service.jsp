@@ -55,13 +55,13 @@
 <c:if test="${message!=null}">
     <p class="text-success">${message}</p>
 </c:if>
-<form action="/service?action=room" method="post">
+<form action="/service?action=add" method="post">
     <div class="container-fluid">
         <div class="row">
             <div class=" col-lg-12"></div>
             <table class="table" style="background: #8fd19e ;">
                 <tr style="background: #218838">
-                    <th colspan="2"><h3 style="text-align: center">Add Room</h3></th>
+                    <th colspan="2"><h3 style="text-align: center">Add Villa</h3></th>
                 </tr>
                 <tr>
                     <th>Name</th>
@@ -90,19 +90,48 @@
                 <tr>
                     <th>Rent type</th>
                     <td>
-                        <select class="form-select" aria-label="Default select example"  name="rentType">
-                            <option value="1">Theo Nam</option>
-                            <option value="2">Theo Thang</option>
-                            <option value="3">Theo Ngay</option>
-                            <option value="4">Theo Gio</option>
+                        <select class="form-select" aria-label="Default select example" name="rentType">
+                            <c:forEach items="${rentTypeList}" var="rentType">
+                                <option value="${rentType.id}">${rentType.name}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <th>Service type</th>
                     <td>
-                        <input disabled type="text" name="serviceType" id="serviceType" value="Room">
+                        <select class="form-select" aria-label="Default select example" name="serviceType"
+                                onchange="onchangeCreate(this.value)">
+                            <c:forEach items="${serviceTypeList}" var="serviceType">
+                                <option value="${serviceType.id}">${serviceType.name}</option>
+                            </c:forEach>
+                        </select>
                     </td>
+                </tr>
+                <tr>
+                        <th>Standard room</th>
+                        <td>
+                            <input type="text" name="standardRoom" id="divStandardRoom">
+                        </td>
+                </tr>
+                <tr>
+                        <th>Description</th>
+                        <td>
+                            <input type="text" name="description" id="divDescription">
+                        </td>
+                </tr>
+                <tr>
+                        <th>Pool area</th>
+                        <td>
+                            <input value="0" type="text" name="poolArea" id="divNumberFloor">
+                        </td>
+                </tr>
+                    <tr>
+                        <th>Number floors</th>
+                        <td>
+                            <input value="0" type="text" name="numberFloors" id="divPoolArea">
+                        </td>
+                    </tr>
             </table>
         </div>
     </div>
@@ -112,8 +141,9 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-8 ">
 
-                    <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; "><a style="text-decoration: none;color: white" href="/home">Back to home</a>
-                    </button>
+                <button style="border-radius: 50px;background: #34ce57;width: 200px;height: 36px; "><a
+                        style="text-decoration: none;color: white" href="/home">Back to Home</a>
+                </button>
 
             </div>
 
@@ -132,7 +162,26 @@
                 FuramaResortDaNang@gmail.com </p>
         </div>
     </div>
+
+    <script src="../jquery/jquery-3.5.1.min.js"></script>
+    <script src="../bootstrap413/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function onchangeCreate(value) {
+            document.getElementById("divStandardRoom").style.display = "block";
+            document.getElementById("divDescription").style.display = "block";
+            document.getElementById("divNumberFloor").style.display = "block";
+            document.getElementById("divPoolArea").style.display = "block";
+            if (value == 2) {
+                document.getElementById("divPoolArea").style.display = "none";
+            }
+            if (value == 3) {
+                document.getElementById("divStandardRoom").style.display = "none";
+                document.getElementById("divDescription").style.display = "none";
+                document.getElementById("divNumberFloor").style.display = "none";
+                document.getElementById("divPoolArea").style.display = "none";
+            }
+        }
+    </script>
 </div>
 </body>
 </html>
-

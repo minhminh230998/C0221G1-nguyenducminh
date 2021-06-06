@@ -1,9 +1,8 @@
 package model.Repository;
 
-import model.bean.service.House;
-import model.bean.service.Room;
+import model.bean.service.RentType;
 import model.bean.service.Services;
-import model.bean.service.Villa;
+import model.bean.service.ServiceType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,12 +13,14 @@ import java.util.List;
 
 public class ServiceRepository {
     BaseRepository baseRepository = new BaseRepository();
+    RentTypeRepository rentTypeRepository=new RentTypeRepository();
+    ServiceTypeRepository serviceTypeRepository=new ServiceTypeRepository();
     final String CREATE_SERVICE = "insert into dich_vu(id_loai_dich_vu,id_kieu_thue,ten_dich_vu,dien_tich_su_dung,chi_phi_thue,so_nguoi_toi_da,so_tang,tieu_chuan_phong,tien_nghi_khac,dien_tich_ho_boi) values(?,?,?,?,?,?,?,?,?,?);";
     final String SELECT_BY_ID = "select * from dich_vu where id_dich_vu=?;";
     final String SELECT_ALL = "select * from dich_vu;";
 
-    public List<Villa> findAll() {
-        List<Villa> villa = new ArrayList<>();
+    public List<Services> findAll() {
+        List<Services> service = new ArrayList<>();
         Connection connection = baseRepository.connectDataBase();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
@@ -37,18 +38,20 @@ public class ServiceRepository {
                 String convenience = resultSet.getString("tien_nghi_khac");
                 float poolArea = resultSet.getFloat("dien_tich_ho_boi");
                 int numberFloors = resultSet.getInt("so_tang");
-                villa.add(new Villa(id,idRentType,idServiceType,name,area,cost,maxPeople,standardRoom,convenience,poolArea,numberFloors));
+                RentType rentType=rentTypeRepository.findRentTypeById(idRentType);
+                ServiceType serviceType=serviceTypeRepository.findServiceTypeById(idServiceType);
+                service.add(new Services(id,rentType,serviceType,name,area,cost,maxPeople,standardRoom,convenience,poolArea,numberFloors));
 //int id, int idRentType, int idServiceType, String name, String area, double cost, int maxPeople, String standardRoom, String convenience, float poolArea, int numberFloors
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return villa;
+        return service;
     }
 
-    public Villa findById(int id) {
-        Villa villa = null;
-        Services services = null;
+    public Services findById(int id) {
+
+        Services service = null;
         Connection connection = baseRepository.connectDataBase();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID);
@@ -69,23 +72,25 @@ public class ServiceRepository {
                 String convenience = resultSet.getString("tien_nghi_khac");
                 float poolArea = resultSet.getFloat("dien_tich_ho_boi");
                 int numberFloors = resultSet.getInt("so_tang");
-                villa = new Villa(id1, idRentType, idServiceType, name, area, cost, maxPeople, standardRoom, convenience, poolArea, numberFloors);
+                RentType rentType=rentTypeRepository.findRentTypeById(idRentType);
+                ServiceType serviceType=serviceTypeRepository.findServiceTypeById(idServiceType);
+                service = new Services(id1, rentType, serviceType, name, area, cost, maxPeople, standardRoom, convenience, poolArea, numberFloors);
 
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return villa;
+        return service;
     }
 
 
-    public void createVilla(Villa villa) {
+    public void createService(Services villa) {
 
         Connection connection = baseRepository.connectDataBase();
         try {
             PreparedStatement statement = connection.prepareStatement(CREATE_SERVICE);
-            statement.setInt(1, villa.getIdServiceType());
-            statement.setInt(2, villa.getIdRentType());
+            statement.setInt(1, villa.getServiceType().getId());
+            statement.setInt(2, villa.getRentType().getId());
             statement.setString(3, villa.getName());
             statement.setString(4, villa.getArea());
             statement.setDouble(5, villa.getCost());
@@ -100,57 +105,5 @@ public class ServiceRepository {
             e.printStackTrace();
         }
 
-    }
-
-    public void createHouse(House house) {
-
-        Connection connection = baseRepository.connectDataBase();
-        try {
-            PreparedStatement statement = connection.prepareStatement(CREATE_SERVICE);
-            statement.setInt(1, 2);
-            statement.setInt(2, house.getIdRentType());
-            statement.setString(3, house.getName());
-            statement.setString(4, house.getArea());
-            statement.setDouble(5, house.getCost());
-            statement.setInt(6, house.getMaxPeople());
-            statement.setInt(7, house.getNumberFloors());
-            statement.setString(8, house.getStandardRoom());
-            statement.setString(9, house.getConvenience());
-            statement.setString(10, null);
-            statement.executeUpdate();
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void createRoom(Room room) {
-
-        Connection connection = baseRepository.connectDataBase();
-        try {
-            PreparedStatement statement = connection.prepareStatement(CREATE_SERVICE);
-            statement.setInt(1, room.getIdServiceType());
-            statement.setInt(2, room.getIdRentType());
-            statement.setString(3, room.getName());
-            statement.setString(4, room.getArea());
-            statement.setDouble(5, room.getCost());
-            statement.setInt(6, room.getMaxPeople());
-            statement.setString(7, null);
-            statement.setString(8, null);
-            statement.setString(9, null);
-            statement.setString(10, null);
-            statement.executeUpdate();
-            statement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void main(String[] args) {
-        ServiceRepository serviceRepository=new ServiceRepository();
-        List<Villa> villas=serviceRepository.findAll();
-        System.out.println(villas.size());
     }
 }

@@ -1,8 +1,11 @@
 package controller;
 
 import model.bean.customer.Customer;
+import model.bean.customer.CustomerType;
 import model.service.ICustomerService;
+import model.service.ICustomerType;
 import model.service.impl.CustomerServiceimpl;
+import model.service.impl.CustomerTypeImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +18,7 @@ import java.util.List;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = {"/customer"})
 public class CustomerServlet extends HttpServlet {
+    ICustomerType iCustomerType=new CustomerTypeImpl();
     ICustomerService iCustomerService = new CustomerServiceimpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,8 +75,9 @@ public class CustomerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         String phoneNumber = request.getParameter("phoneNumber");
+        CustomerType customerType=iCustomerType.findById(idType);
 
-        Customer customer = new Customer(id, idType, name, birthday, gender, idCard, phoneNumber, email, address);
+        Customer customer = new Customer(id, customerType, name, birthday, gender, idCard, phoneNumber, email, address);
         boolean check = iCustomerService.editCustomer(customer);
         if (check) {
             request.setAttribute("message", "Update thành công");
@@ -111,7 +116,8 @@ public class CustomerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         String phoneNumber = request.getParameter("phoneNumber");
-        Customer customer = new Customer(idType, name, birthday, gender, idCard, phoneNumber, email, address);
+        CustomerType customerType=iCustomerType.findById(idType);
+        Customer customer = new Customer(customerType, name, birthday, gender, idCard, phoneNumber, email, address);
         iCustomerService.createCustomer(customer);
         request.setAttribute("message", "update thành công");
         request.setAttribute("customer", customer);
@@ -175,6 +181,9 @@ public class CustomerServlet extends HttpServlet {
     private void showFormEdit(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = iCustomerService.findById(id);
+        List<CustomerType> customerTypeList=iCustomerType.findAll();
+        request.setAttribute("customerTypeList",customerTypeList);
+
         RequestDispatcher requestDispatcher = null;
         if (customer == null) {
             requestDispatcher = request.getRequestDispatcher("/error.jsp");
@@ -197,6 +206,8 @@ public class CustomerServlet extends HttpServlet {
 
 
     private void showFormCreate(HttpServletRequest request, HttpServletResponse response) {
+        List<CustomerType> customerTypeList=iCustomerType.findAll();
+        request.setAttribute("customerTypeList", customerTypeList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/customer/add-customer.jsp");
         try {
             requestDispatcher.forward(request, response);

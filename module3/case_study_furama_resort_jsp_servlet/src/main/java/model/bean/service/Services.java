@@ -2,33 +2,45 @@ package model.bean.service;
 
 public class Services {
     private int id;
-    private int idRentType;
-    private int idServiceType;
+    private RentType rentType;
+    private ServiceType serviceType;
     private String name;
     private String area;
     private double cost;
     private int MaxPeople;
+    private String standardRoom;
+    private String convenience;
+    private float poolArea;
+    private int numberFloors;
 
     public Services() {
     }
 
-    public Services(int id, int idRentType, int idServiceType, String name, String area, double cost, int maxPeople) {
+    public Services(int id, RentType rentType, ServiceType serviceType, String name, String area, double cost, int maxPeople, String standardRoom, String convenience, float poolArea, int numberFloors) {
         this.id = id;
-        this.idRentType = idRentType;
-        this.idServiceType = idServiceType;
+        this.rentType = rentType;
+        this.serviceType = serviceType;
         this.name = name;
         this.area = area;
         this.cost = cost;
         MaxPeople = maxPeople;
+        this.standardRoom = standardRoom;
+        this.convenience = convenience;
+        this.poolArea = poolArea;
+        this.numberFloors = numberFloors;
     }
 
-    public Services(int idRentType, int idServiceType, String name, String area, double cost, int maxPeople) {
-        this.idRentType = idRentType;
-        this.idServiceType = idServiceType;
+    public Services(RentType rentType, ServiceType serviceType, String name, String area, double cost, int maxPeople, String standardRoom, String convenience, float poolArea, int numberFloors) {
+        this.rentType = rentType;
+        this.serviceType = serviceType;
         this.name = name;
         this.area = area;
         this.cost = cost;
         MaxPeople = maxPeople;
+        this.standardRoom = standardRoom;
+        this.convenience = convenience;
+        this.poolArea = poolArea;
+        this.numberFloors = numberFloors;
     }
 
     public int getId() {
@@ -39,20 +51,20 @@ public class Services {
         this.id = id;
     }
 
-    public int getIdRentType() {
-        return idRentType;
+    public RentType getRentType() {
+        return rentType;
     }
 
-    public void setIdRentType(int idRentType) {
-        this.idRentType = idRentType;
+    public void setRentType(RentType rentType) {
+        this.rentType = rentType;
     }
 
-    public int getIdServiceType() {
-        return idServiceType;
+    public ServiceType getServiceType() {
+        return serviceType;
     }
 
-    public void setIdServiceType(int idServiceType) {
-        this.idServiceType = idServiceType;
+    public void setServiceType(ServiceType serviceType) {
+        this.serviceType = serviceType;
     }
 
     public String getName() {
@@ -85,5 +97,37 @@ public class Services {
 
     public void setMaxPeople(int maxPeople) {
         MaxPeople = maxPeople;
+    }
+
+    public String getStandardRoom() {
+        return standardRoom;
+    }
+
+    public void setStandardRoom(String standardRoom) {
+        this.standardRoom = standardRoom;
+    }
+
+    public String getConvenience() {
+        return convenience;
+    }
+
+    public void setConvenience(String convenience) {
+        this.convenience = convenience;
+    }
+
+    public float getPoolArea() {
+        return poolArea;
+    }
+
+    public void setPoolArea(float poolArea) {
+        this.poolArea = poolArea;
+    }
+
+    public int getNumberFloors() {
+        return numberFloors;
+    }
+
+    public void setNumberFloors(int numberFloors) {
+        this.numberFloors = numberFloors;
     }
 }

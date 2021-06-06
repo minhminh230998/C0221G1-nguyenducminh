@@ -1,18 +1,11 @@
 package model.service;
 
-import model.bean.service.House;
-import model.bean.service.Room;
-import model.bean.service.Villa;
+import model.bean.service.Services;
 
 import java.util.List;
 
 public interface IService {
-    public void createVilla(Villa villa);
-
-    public void createHouse(House house);
-
-    public void createRoom(Room room);
-
-    public Villa findById(int id);
-    public List<Villa> findAll();
+    public void createVilla(Services services);
+    public Services findById(int id);
+    public List<Services> findAll();
 }

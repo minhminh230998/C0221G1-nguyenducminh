@@ -118,10 +118,9 @@
                 <th>Position</th>
                 <td>
                     <select  class="form-select" aria-label="Default select example"  name="position">
-                        <option value="1">Sale – Marketing</option>
-                        <option value="2">Hanh Chinh</option>
-                        <option value="3">Phuc Vu</option>
-                        <option value="4">Quan Ly</option>
+                        <c:forEach items="${positions}" var="position">
+                            <option value="${position.id}">${position.name}</option>
+                        </c:forEach>
                     </select>
                 </td>
             </tr>
@@ -129,11 +128,9 @@
                 <th>Education</th>
                 <td>
                     <select  class="form-select" aria-label="Default select example"  name="education">
-                        <option value="1">Le Tan</option>
-                        <option value="2">Phuc Vu</option>
-                        <option value="3">Chuyen Vien</option>
-                        <option value="4">Giam Sat</option>
-                        <option value="5">Giam Đoc</option>
+                        <c:forEach items="${educationDegrees}" var="educationDegree">
+                            <option value="${educationDegree.id}">${educationDegree.name}</option>
+                        </c:forEach>
                     </select>
                 </td>
             </tr>

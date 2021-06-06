@@ -1,6 +1,7 @@
 package model.Repository;
 
 import model.bean.customer.Customer;
+import model.bean.customer.CustomerType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepository {
+    CustomerTypeRepository customerTypeRepository=new CustomerTypeRepository();
     BaseRepository baseRepository = new BaseRepository();
     final String SELECT_CUSTOMER = "select * from khach_hang;";
     final String CREATE_CUSTOMER = "insert into khach_hang(id_loai_khach,ten_khach_hang,ngay_sinh,gioi_tinh,so_CMND,so_DT,email,dia_chi) values(?,?,?,?,?,?,?,?);";
@@ -34,8 +36,8 @@ public class CustomerRepository {
                 String phone = resultSet.getString("so_DT");
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("dia_chi");
-                list.add(new Customer(id, id_customerType, name, birthday, gender, idCard, phone, email, address));
-
+                CustomerType customerType=customerTypeRepository.findById(id_customerType);
+                list.add(new Customer(id, customerType, name, birthday, gender, idCard, phone, email, address));
             }
             statement.close();
             connection.close();
@@ -62,7 +64,8 @@ public class CustomerRepository {
                 String phone = resultSet.getString("so_DT");
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("dia_chi");
-                customer = new Customer(id1, id_customerType, name, birthday, gender, idCard, phone, email, address);
+                CustomerType customerType=customerTypeRepository.findById(id_customerType);
+                customer = new Customer(id1, customerType, name, birthday, gender, idCard, phone, email, address);
 
             }
             connection.close();
@@ -94,7 +97,7 @@ public class CustomerRepository {
         try {
             PreparedStatement statement = connection.prepareStatement(CREATE_CUSTOMER);
 
-            statement.setInt(1, customer.getIdCustomerType());
+            statement.setInt(1, customer.getCustomerType().getId());
             statement.setString(2, customer.getName());
             statement.setString(3, customer.getBirthday());
             statement.setString(4, customer.getGender());
@@ -116,7 +119,7 @@ public class CustomerRepository {
         try {
 
             PreparedStatement statement = connection.prepareStatement(EDIT_CUSTOMER);
-            statement.setInt(1, customer.getIdCustomerType());
+            statement.setInt(1, customer.getCustomerType().getId());
             statement.setString(2, customer.getName());
             statement.setString(3, customer.getBirthday());
             statement.setString(4, customer.getGender());
@@ -150,7 +153,8 @@ public class CustomerRepository {
                 String phone = resultSet.getString("so_DT");
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("dia_chi");
-                customer.add(new Customer(id, id_customerType, name1, birthday, gender, idCard, phone, email, address));
+                CustomerType customerType=customerTypeRepository.findById(id_customerType);
+                customer.add(new Customer(id, customerType, name1, birthday, gender, idCard, phone, email, address));
 
             }
             connection.close();

@@ -4,7 +4,6 @@ import model.bean.contract.Contract;
 import model.bean.customer.Customer;
 import model.bean.employee.Employee;
 import model.bean.service.Services;
-import model.bean.service.Villa;
 import model.service.IContract;
 import model.service.ICustomerService;
 import model.service.IEmployeeService;
@@ -13,7 +12,6 @@ import model.service.impl.ContractImpl;
 import model.service.impl.CustomerServiceimpl;
 import model.service.impl.EmployeeService;
 import model.service.impl.ServiceServiceimpl;
-import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 
 @WebServlet(name = "ContractServlet", urlPatterns = "/contract")
@@ -52,7 +49,7 @@ public class ContractServlet extends HttpServlet {
         int serviceId = Integer.parseInt(request.getParameter("serviceId"));
         Employee employee = iEmployeeService.findById(employeeId);
         Customer customer = iCustomerService.findById(customerId);
-        Villa villa = iService.findById(serviceId);
+        Services villa = iService.findById(serviceId);
         // String startDate, String endDate, double deposit, Employee employee, Customer customer, Services
         //services
         Contract contract = new Contract(startDate, endDate, deposit, employee, customer, villa);
@@ -82,8 +79,7 @@ public class ContractServlet extends HttpServlet {
     private void showFormContract(HttpServletRequest request, HttpServletResponse response) {
         List<Customer> customer = iCustomerService.findAll();
         List<Employee> employees = iEmployeeService.findAll();
-        List<Villa> service = iService.findAll();
-        System.out.println(employees.size());
+        List<Services> service = iService.findAll();
         request.setAttribute("customer", customer);
         request.setAttribute("employees", employees);
         request.setAttribute("service", service);

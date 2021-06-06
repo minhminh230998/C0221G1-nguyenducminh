@@ -109,29 +109,12 @@
             <tr>
                 <th>Type Id</th>
                 <td>
-                    <select  id="${customer.idCustomerType}" class="form-select" aria-label="Default select example"  name="typeId">
-                        <option value="1">Diamond</option>
-                        <option value="2">Platinium</option>
-                        <option value="3">Gold</option>
-                        <option value="4">Silver</option>
-                        <option value="5">Member</option>
-                        <option value="${customer.idCustomerType}" hidden selected>
-                            <c:if test="${customer.idCustomerType==1}">
-                                Diamond
-                            </c:if>
-                            <c:if test="${customer.idCustomerType==2}">
-                                Platinium
-                            </c:if>
-                            <c:if test="${customer.idCustomerType==3}">
-                                Gold
-                            </c:if>
-                            <c:if test="${customer.idCustomerType==4}">
-                                Silver
-                            </c:if>
-                            <c:if test="${customer.idCustomerType==5}">
-                                Member
-                            </c:if>
-                        </option>
+                    <select  class="form-select" aria-label="Default select example"  name="typeId">
+                        <option value="${customer.customerType.id}" hidden selected>${customer.customerType.name}</option>
+                        <c:forEach items="${customerTypeList}" var="customerType">
+                            <option value="${customerType.id}">${customerType.name}</option>
+
+                        </c:forEach>
                     </select>
                 </td>
             </tr>

@@ -12,18 +12,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-            crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../bootstrap413/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
         * {
             border: 0px;
@@ -69,14 +60,15 @@
 
 </div>
 <div class="container-fluid" style="margin-top: 20px">
-    <table class="table " style="background: #8fd19e">
-
+    <table id="tableEmployee" class="table table-striped table-bordered" >
+<thead>
         <tr style="background: #218838">
 
             <th colspan="11" scope="row"><h3 style="text-align: center">List Employee</h3></th>
 
 
         </tr>
+
         <tr>
             <th>Id</th>
             <th>Name</th>
@@ -87,6 +79,8 @@
             <th>Delete</th>
             <th>Information</th>
         </tr>
+</thead>
+        <tbody>
         <c:forEach items="${employeeLists}" var="employee" varStatus="status">
             <tr>
 
@@ -112,7 +106,7 @@
                 </td>
                 <td><!-- Button trigger modal -->
                     <div class="justify-content-center" style="text-align: center">
-                        <button type="button" class="btn btn-primary" onclick="showEmployee('${employee.id}','${employee.name}','${employee.idPosition}','${employee.idEducationDegree}','${employee.idDivision}','${employee.dateOfBirth}','${employee.gender}','${employee.idCard}','${employee.phone}','${employee.email}','${employee.salary}','${employee.address}')" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary" onclick="showEmployee('${employee.id}','${employee.name}','${employee.idPosition.name}','${employee.educationDegree.name}','${employee.division.name}','${employee.dateOfBirth}','${employee.gender}','${employee.idCard}','${employee.phone}','${employee.email}','${employee.salary}','${employee.address}')" data-toggle="modal" data-target="#exampleModal">
                             <i
                                     style="font-size: 1.3em ;text-shadow: 2px 2px  #ccc;color: blue; " class="fa fa-eye"
                                     aria-hidden="true"></i>
@@ -124,6 +118,7 @@
             </tr>
 
         </c:forEach>
+        </tbody>
     </table>
     <!-- Modal -->
     <form action="/employee?action=delete" method="post">
@@ -158,54 +153,9 @@
     function showEmployee(id,name,idPosition,idEducationDegree,idDivision,dateOfBirth,idCard,gender,salary,phone,email,address) {
         document.getElementById("id").value = id;
         document.getElementById("name").value = name;
-
-        if(idPosition==1){
-            idPosition="Le Tan";
-            document.getElementById("idPosition").value = idPosition;
-        }else if(idPosition==2){
-            idPosition="Phuc Vu";
-            document.getElementById("idPosition").value = idPosition;
-        }else if(idPosition==3){
-            idPosition="Chuyen Vien";
-            document.getElementById("idPosition").value = idPosition;
-        }else if(idPosition==4){
-            idPosition="Giam Sat";
-            document.getElementById("idPosition").value = idPosition;
-        }else if(idPosition==5){
-            idPosition="Giam Đoc";
-            document.getElementById("idPosition").value = idPosition;
-        }
-
-        if(idEducationDegree==1){
-            idEducationDegree="Le Tan";
-            document.getElementById("idEducationDegree").value = idEducationDegree;
-        }else if(idEducationDegree==2){
-            idEducationDegree="Phuc Vu";
-            document.getElementById("idEducationDegree").value = idEducationDegree;
-        }else if(idEducationDegree==3){
-            idEducationDegree="Chuyen Vien";
-            document.getElementById("idEducationDegree").value = idEducationDegree;
-        }else if(idEducationDegree==4){
-            idEducationDegree="Giam Sat";
-            document.getElementById("idEducationDegree").value = idEducationDegree;
-        }else if(idEducationDegree==5){
-            idEducationDegree="Giam Đoc";
-            document.getElementById("idEducationDegree").value = idEducationDegree;
-        }
-
-        if(idDivision==1){
-            idDivision="Sale – Marketing";
-            document.getElementById("idDivision").value = idDivision;
-        }else if(idDivision==2){
-            idDivision="Hanh Chinh";
-            document.getElementById("idDivision").value = idDivision;
-        }else if(idDivision==3){
-            idDivision="Phuc Vu";
-            document.getElementById("idDivision").value = idDivision;
-        }else if(idDivision==4){
-            idDivision="Quan Ly";
-            document.getElementById("idDivision").value = idDivision;
-        }
+        document.getElementById("idPosition").value = idPosition;
+        document.getElementById("idEducationDegree").value = idEducationDegree;
+        document.getElementById("idDivision").value = idDivision;
         document.getElementById("dateOfBirth").value = dateOfBirth;
         document.getElementById("idCard").value = idCard;
         document.getElementById("gender").value = gender;
@@ -331,7 +281,19 @@
         </div>
     </div>
 </div>
-
+<script src="../jquery/jquery-3.5.1.min.js"></script>
+<script src="../bootstrap413/js/bootstrap.min.js"></script>
+<script src="../datatables/js/jquery.dataTables.min.js"></script>
+<script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableEmployee').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5,
+        });
+    });
+</script>
 
 
 

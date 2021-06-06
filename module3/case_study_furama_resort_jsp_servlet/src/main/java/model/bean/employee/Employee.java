@@ -2,9 +2,9 @@ package model.bean.employee;
 
 public class Employee {
     private Integer id;
-    private int idPosition;
-    private int idEducationDegree;
-    private int idDivision;
+    private Position idPosition;
+    private EducationDegree educationDegree;
+    private Division division;
     private String name;
     private String dateOfBirth;
     private String idCard;
@@ -17,11 +17,11 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer id, int idPosition, int idEducationDegree, int idDivision, String name, String dateOfBirth, String idCard, String gender, double salary, String phone, String email, String address) {
+    public Employee(Integer id, Position idPosition, EducationDegree educationDegree, Division division, String name, String dateOfBirth, String idCard, String gender, double salary, String phone, String email, String address) {
         this.id = id;
         this.idPosition = idPosition;
-        this.idEducationDegree = idEducationDegree;
-        this.idDivision = idDivision;
+        this.educationDegree = educationDegree;
+        this.division = division;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.idCard = idCard;
@@ -32,10 +32,10 @@ public class Employee {
         this.address = address;
     }
 
-    public Employee(int idPosition, int idEducationDegree, int idDivision, String name, String dateOfBirth, String idCard, String gender, double salary, String phone, String email, String address) {
+    public Employee(Position idPosition, EducationDegree educationDegree, Division division, String name, String dateOfBirth, String idCard, String gender, double salary, String phone, String email, String address) {
         this.idPosition = idPosition;
-        this.idEducationDegree = idEducationDegree;
-        this.idDivision = idDivision;
+        this.educationDegree = educationDegree;
+        this.division = division;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.idCard = idCard;
@@ -54,28 +54,28 @@ public class Employee {
         this.id = id;
     }
 
-    public int getIdPosition() {
+    public Position getIdPosition() {
         return idPosition;
     }
 
-    public void setIdPosition(int idPosition) {
+    public void setIdPosition(Position idPosition) {
         this.idPosition = idPosition;
     }
 
-    public int getIdEducationDegree() {
-        return idEducationDegree;
+    public EducationDegree getEducationDegree() {
+        return educationDegree;
     }
 
-    public void setIdEducationDegree(int idEducationDegree) {
-        this.idEducationDegree = idEducationDegree;
+    public void setEducationDegree(EducationDegree educationDegree) {
+        this.educationDegree = educationDegree;
     }
 
-    public int getIdDivision() {
-        return idDivision;
+    public Division getDivision() {
+        return division;
     }
 
-    public void setIdDivision(int idDivision) {
-        this.idDivision = idDivision;
+    public void setDivision(Division division) {
+        this.division = division;
     }
 
     public String getName() {
