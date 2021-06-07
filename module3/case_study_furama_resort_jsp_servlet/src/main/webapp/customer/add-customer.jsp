@@ -64,6 +64,12 @@
                     <th colspan="2"><h3 style="text-align: center">Add Customer</h3></th>
                 </tr>
                 <tr>
+                    <th>Id</th>
+                    <td>
+                        <input type="text" name="id" id="id">
+                    </td>
+                </tr>
+                <tr>
                     <th>Name</th>
                     <td>
                         <input type="text" name="name" id="name">

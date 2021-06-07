@@ -31,9 +31,9 @@ final String UPDATE_CONTRACT="update hop_dong set hop_dong.id_dich_vu=? where id
         Connection connection = baseRepository.connectDataBase();
         try {
             PreparedStatement statement = connection.prepareStatement(INSERT_CONTRACT);
-            statement.setInt(1, contract.getCustomer().getId());
-            statement.setInt(2, contract.getEmployee().getId());
-            statement.setInt(3, contract.getServices().getId());
+            statement.setString(1, contract.getCustomer().getId());
+            statement.setString(2, contract.getEmployee().getId());
+            statement.setString(3, contract.getServices().getId());
             statement.setString(4, contract.getStartDate());
             statement.setString(5, contract.getEndDate());
             statement.setString(5, contract.getEndDate());
@@ -55,9 +55,9 @@ final String UPDATE_CONTRACT="update hop_dong set hop_dong.id_dich_vu=? where id
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id1 = resultSet.getInt("id_hop_dong");
-                int idCustomer = resultSet.getInt("id_khach_hang");
-                int idEmployee = resultSet.getInt("id_nhan_vien");
-                int idService = resultSet.getInt("id_dich_vu");
+                String idCustomer = resultSet.getString("id_khach_hang");
+                String idEmployee = resultSet.getString("id_nhan_vien");
+                String idService = resultSet.getString("id_dich_vu");
                 String startDate = resultSet.getString("ngay_lam_hop_dong");
                 String endDate = resultSet.getString("ngay_ket_thuc");
                 Double deposit = resultSet.getDouble("so_tien_coc_truoc");
@@ -83,9 +83,9 @@ final String UPDATE_CONTRACT="update hop_dong set hop_dong.id_dich_vu=? where id
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id1 = resultSet.getInt("id_hop_dong");
-                int idCustomer = resultSet.getInt("id_khach_hang");
-                int idEmployee = resultSet.getInt("id_nhan_vien");
-                int idService = resultSet.getInt("id_dich_vu");
+                String idCustomer = resultSet.getString("id_khach_hang");
+                String idEmployee = resultSet.getString("id_nhan_vien");
+                String idService = resultSet.getString("id_dich_vu");
                 String startDate = resultSet.getString("ngay_lam_hop_dong");
                 String endDate = resultSet.getString("ngay_ket_thuc");
                 Double deposit = resultSet.getDouble("so_tien_coc_truoc");
@@ -107,7 +107,7 @@ final String UPDATE_CONTRACT="update hop_dong set hop_dong.id_dich_vu=? where id
         try {
 
             PreparedStatement statement = connection.prepareStatement(UPDATE_CONTRACT);
-            statement.setInt(1, contract.getServices().getId());
+            statement.setString(1, contract.getServices().getId());
             statement.setInt(2, contract.getId());
 
 

@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IService {
     public void createVilla(Services services);
-    public Services findById(int id);
+    public Services findById(String id);
     public List<Services> findAll();
 }

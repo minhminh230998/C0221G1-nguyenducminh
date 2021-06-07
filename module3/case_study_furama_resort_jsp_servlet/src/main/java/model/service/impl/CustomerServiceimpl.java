@@ -15,6 +15,7 @@ public class CustomerServiceimpl implements ICustomerService {
 
     @Override
     public void createCustomer(Customer customer) {
+
         customerRepository.createCustomer(customer);
     }
 
@@ -24,12 +25,12 @@ public class CustomerServiceimpl implements ICustomerService {
     }
 
     @Override
-    public boolean deleteCustomer(int id) {
+    public boolean deleteCustomer(String id) {
         return customerRepository.deleteCustomer(id);
     }
 
     @Override
-    public Customer findById(int id) {
+    public Customer findById(String id) {
         return customerRepository.findById(id);
     }
 

@@ -25,12 +25,12 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public boolean deleteEmployee(int id) {
+    public boolean deleteEmployee(String id) {
         return employeeRepository.deleteEmployee(id);
     }
 
     @Override
-    public Employee findById(int id) {
+    public Employee findById(String id) {
         return employeeRepository.findById(id);
     }
 

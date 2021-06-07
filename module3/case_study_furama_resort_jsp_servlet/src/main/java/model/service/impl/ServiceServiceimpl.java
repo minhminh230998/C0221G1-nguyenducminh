@@ -14,7 +14,7 @@ public class ServiceServiceimpl implements IService {
     }
 
     @Override
-    public Services findById(int id) {
+    public Services findById(String id) {
         return serviceRepository.findById(id);
     }
 

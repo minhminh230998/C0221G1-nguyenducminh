@@ -70,7 +70,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         iEmployeeService.deleteEmployee(id);
         try {
             response.sendRedirect("/employee");
@@ -80,7 +80,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void editEmployee(HttpServletRequest request, HttpServletResponse response) {
-        int id=Integer.parseInt(request.getParameter("id"));
+        String id=request.getParameter("id");
         int idPosition = Integer.parseInt(request.getParameter("idPosition"));
         int idEducationDegree = Integer.parseInt(request.getParameter("idEducationDegree"));
         int idDivision = Integer.parseInt(request.getParameter("idDivision"));
@@ -98,10 +98,11 @@ public class EmployeeServlet extends HttpServlet {
         Employee employee = new Employee(id,position, educationDegree, division, name, birthday, idCard, gender, salary,phoneNumber,email,address);
         boolean check = iEmployeeService.editEmployee(employee);
         if (check) {
-            request.setAttribute("message", "Update thành công");
+            request.setAttribute("message", "update successful");
             request.setAttribute("employee", employee);
         } else {
-            request.setAttribute("message", "Update không thành công");
+            request.setAttribute("message", "\n" +
+                    "update failed");
         }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/employee/edit-employee.jsp");
         try {
@@ -114,7 +115,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void createEmployee(HttpServletRequest request, HttpServletResponse response) {
-
+        String id=request.getParameter("id");
         int idPosition = Integer.parseInt(request.getParameter("position"));
         int idEducationDegree = Integer.parseInt(request.getParameter("education"));
         int idDivision = Integer.parseInt(request.getParameter("division"));
@@ -129,9 +130,9 @@ public class EmployeeServlet extends HttpServlet {
         Position position=iPosition.findById(idPosition);
         EducationDegree educationDegree=iEducationDegree.findById(idEducationDegree);
         Division division=iDivision.findById(idDivision);
-        Employee employee = new Employee(position, educationDegree, division, name, birthday, idCard, gender, salary,phoneNumber,email,address);
+        Employee employee = new Employee(id,position, educationDegree, division, name, birthday, idCard, gender, salary,phoneNumber,email,address);
         iEmployeeService.createEmployee(employee);
-        request.setAttribute("message", "update thành công");
+        request.setAttribute("message", "update successful");
         request.setAttribute("employee", employee);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/employee/add-employee.jsp");
         try {
@@ -187,7 +188,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void showFormEdit(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id =request.getParameter("id");
         Employee employee = iEmployeeService.findById(id);
         List<Position> positions=iPosition.findAll();
         List<Division> divisions=iDivision.findAll();

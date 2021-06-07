@@ -44,9 +44,9 @@ public class ContractServlet extends HttpServlet {
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
         Double deposit = Double.parseDouble(request.getParameter("deposit"));
-        int employeeId = Integer.parseInt(request.getParameter("employeeId"));
-        int customerId = Integer.parseInt(request.getParameter("customerId"));
-        int serviceId = Integer.parseInt(request.getParameter("serviceId"));
+        String employeeId = request.getParameter("employeeId");
+        String customerId = request.getParameter("customerId");
+        String serviceId = request.getParameter("serviceId");
         Employee employee = iEmployeeService.findById(employeeId);
         Customer customer = iCustomerService.findById(customerId);
         Services villa = iService.findById(serviceId);
@@ -55,7 +55,8 @@ public class ContractServlet extends HttpServlet {
         Contract contract = new Contract(startDate, endDate, deposit, employee, customer, villa);
         iContract.createContract(contract);
         request.setAttribute("contract", contract);
-        request.setAttribute("message", "Add thanh cong");
+        request.setAttribute("message",
+                "update successful");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/contract/add-contract.jsp");
         try {
             requestDispatcher.forward(request, response);

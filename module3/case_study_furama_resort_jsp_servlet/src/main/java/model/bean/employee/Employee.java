@@ -1,7 +1,7 @@
 package model.bean.employee;
 
 public class Employee {
-    private Integer id;
+    private String id;
     private Position idPosition;
     private EducationDegree educationDegree;
     private Division division;
@@ -17,7 +17,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer id, Position idPosition, EducationDegree educationDegree, Division division, String name, String dateOfBirth, String idCard, String gender, double salary, String phone, String email, String address) {
+    public Employee(String id, Position idPosition, EducationDegree educationDegree, Division division, String name, String dateOfBirth, String idCard, String gender, double salary, String phone, String email, String address) {
         this.id = id;
         this.idPosition = idPosition;
         this.educationDegree = educationDegree;
@@ -46,11 +46,11 @@ public class Employee {
         this.address = address;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -260,9 +260,10 @@
         document.getElementById("email").value = email;
         document.getElementById("address").value = address;
 
-        function deleteCustomer(id) {
-            document.getElementById("idCustomer").value = id;
-        }
+
+    }
+    function deleteCustomer(id) {
+        document.getElementById("idCustomer").value = id;
     }
 
 </script>

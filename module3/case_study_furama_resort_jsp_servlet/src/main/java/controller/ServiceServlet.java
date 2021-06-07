@@ -35,6 +35,7 @@ public class ServiceServlet extends HttpServlet {
 
 
     private void addService(HttpServletRequest request, HttpServletResponse response) {
+        String id=request.getParameter("id");
         String name=request.getParameter("name");
         String area=request.getParameter("area");
         Double cost=Double.parseDouble(request.getParameter("cost"));
@@ -59,8 +60,8 @@ public class ServiceServlet extends HttpServlet {
         }
         ServiceType serviceType=iServiceType.findById(idServiceType);
         RentType rentType=iRentType.findById(idRentType);
-        iService.createVilla(new Services(rentType,serviceType,name,area,cost,maxPeople,standardRoom,description,poolArea,numberFloors));
-        request.setAttribute("message", "Thêm thành công");
+        iService.createVilla(new Services(id,rentType,serviceType,name,area,cost,maxPeople,standardRoom,description,poolArea,numberFloors));
+        request.setAttribute("message", "update successful");
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/service/add-service.jsp");
         try {

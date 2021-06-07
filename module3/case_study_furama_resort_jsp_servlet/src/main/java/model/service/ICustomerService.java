@@ -8,7 +8,7 @@ public interface ICustomerService {
     public List<Customer> findAll();
     public void createCustomer(Customer customer);
     public boolean editCustomer(Customer customer);
-    public boolean deleteCustomer(int id);
-    public Customer findById(int id);
+    public boolean deleteCustomer(String id);
+    public Customer findById(String id);
     public List<Customer>findByName(String name);
 }

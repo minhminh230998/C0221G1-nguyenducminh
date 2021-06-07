@@ -32,7 +32,7 @@
         }
 
         .navbar-nav li {
-            margin-left: 40px;
+            margin-left: 30px;
         }
     </style>
 </head>
@@ -56,7 +56,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li style="margin-left: 20px " class="nav-item active">
+                    <li style="margin-left: 0px " class="nav-item active">
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">

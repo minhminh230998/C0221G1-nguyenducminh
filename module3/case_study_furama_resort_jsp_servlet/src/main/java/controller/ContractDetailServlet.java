@@ -42,7 +42,8 @@ public class ContractDetailServlet extends HttpServlet {
         AttachService attachService=iAttachService.finById(attachServiceId);
         ContractDetail contractDetail=new ContractDetail(contract,attachService,quantity);
         iContractDetail.createContractDetail(contractDetail);
-        request.setAttribute("message","Create thanh cong");
+        request.setAttribute("message","\n" +
+                "Create successful");
         RequestDispatcher requestDispatcher=request.getRequestDispatcher("/contract_detail/add-contract-detail.jsp");
         try {
             requestDispatcher.forward(request,response);

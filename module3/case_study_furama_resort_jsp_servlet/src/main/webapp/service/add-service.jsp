@@ -61,7 +61,13 @@
             <div class=" col-lg-12"></div>
             <table class="table" style="background: #8fd19e ;">
                 <tr style="background: #218838">
-                    <th colspan="2"><h3 style="text-align: center">Add Villa</h3></th>
+                    <th colspan="2"><h3 style="text-align: center">Add Service</h3></th>
+                </tr>
+                <tr>
+                    <th>Id</th>
+                    <td>
+                        <input type="text" name="id" id="id">
+                    </td>
                 </tr>
                 <tr>
                     <th>Name</th>

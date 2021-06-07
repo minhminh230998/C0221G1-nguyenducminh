@@ -15,7 +15,7 @@ public class ServiceRepository {
     BaseRepository baseRepository = new BaseRepository();
     RentTypeRepository rentTypeRepository=new RentTypeRepository();
     ServiceTypeRepository serviceTypeRepository=new ServiceTypeRepository();
-    final String CREATE_SERVICE = "insert into dich_vu(id_loai_dich_vu,id_kieu_thue,ten_dich_vu,dien_tich_su_dung,chi_phi_thue,so_nguoi_toi_da,so_tang,tieu_chuan_phong,tien_nghi_khac,dien_tich_ho_boi) values(?,?,?,?,?,?,?,?,?,?);";
+    final String CREATE_SERVICE = "insert into dich_vu(id_dich_vu,id_loai_dich_vu,id_kieu_thue,ten_dich_vu,dien_tich_su_dung,chi_phi_thue,so_nguoi_toi_da,so_tang,tieu_chuan_phong,tien_nghi_khac,dien_tich_ho_boi) values(?,?,?,?,?,?,?,?,?,?,?);";
     final String SELECT_BY_ID = "select * from dich_vu where id_dich_vu=?;";
     final String SELECT_ALL = "select * from dich_vu;";
 
@@ -27,7 +27,7 @@ public class ServiceRepository {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt("id_dich_vu");
+                String id = resultSet.getString("id_dich_vu");
                 int idRentType = resultSet.getInt("id_kieu_thue");
                 int idServiceType = resultSet.getInt("id_loai_dich_vu");
                 String name = resultSet.getString("ten_dich_vu");
@@ -49,19 +49,19 @@ public class ServiceRepository {
         return service;
     }
 
-    public Services findById(int id) {
+    public Services findById(String id) {
 
         Services service = null;
         Connection connection = baseRepository.connectDataBase();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID);
 
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
 //id_loai_dich_vu,id_kieu_thue,ten_dich_vu,dien_tich_su_dung,chi_phi_thue,so_nguoi_toi_da,so_tang,tieu_chuan_phong,tien_nghi_khac,dien_tich_ho_boi
 //int id, int idRentType, int idServiceType, String name, String area, double cost, int maxPeople, String standardRoom, String convenience, float poolArea, int numberFloors
-                int id1 = resultSet.getInt("id_dich_vu");
+                String id1 = resultSet.getString("id_dich_vu");
                 int idRentType = resultSet.getInt("id_kieu_thue");
                 int idServiceType = resultSet.getInt("id_loai_dich_vu");
                 String name = resultSet.getString("ten_dich_vu");
@@ -84,21 +84,22 @@ public class ServiceRepository {
     }
 
 
-    public void createService(Services villa) {
+    public void createService(Services services) {
 
         Connection connection = baseRepository.connectDataBase();
         try {
             PreparedStatement statement = connection.prepareStatement(CREATE_SERVICE);
-            statement.setInt(1, villa.getServiceType().getId());
-            statement.setInt(2, villa.getRentType().getId());
-            statement.setString(3, villa.getName());
-            statement.setString(4, villa.getArea());
-            statement.setDouble(5, villa.getCost());
-            statement.setInt(6, villa.getMaxPeople());
-            statement.setInt(7, villa.getNumberFloors());
-            statement.setString(8, villa.getStandardRoom());
-            statement.setString(9, villa.getConvenience());
-            statement.setFloat(10, villa.getPoolArea());
+            statement.setString(1, services.getId());
+            statement.setInt(2, services.getServiceType().getId());
+            statement.setInt(3, services.getRentType().getId());
+            statement.setString(4, services.getName());
+            statement.setString(5, services.getArea());
+            statement.setDouble(6, services.getCost());
+            statement.setInt(7, services.getMaxPeople());
+            statement.setInt(8, services.getNumberFloors());
+            statement.setString(9, services.getStandardRoom());
+            statement.setString(10, services.getConvenience());
+            statement.setFloat(11, services.getPoolArea());
             statement.executeUpdate();
             statement.close();
         } catch (SQLException e) {

@@ -6,6 +6,7 @@ import model.service.ICustomerService;
 import model.service.ICustomerType;
 import model.service.impl.CustomerServiceimpl;
 import model.service.impl.CustomerTypeImpl;
+import model.service.validate.Validate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import java.util.List;
 public class CustomerServlet extends HttpServlet {
     ICustomerType iCustomerType=new CustomerTypeImpl();
     ICustomerService iCustomerService = new CustomerServiceimpl();
+    Validate validate=new Validate();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -66,7 +68,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         int idType = Integer.parseInt(request.getParameter("typeId"));
         int idCard = Integer.parseInt(request.getParameter("idCard"));
         String name = request.getParameter("name");
@@ -80,10 +82,12 @@ public class CustomerServlet extends HttpServlet {
         Customer customer = new Customer(id, customerType, name, birthday, gender, idCard, phoneNumber, email, address);
         boolean check = iCustomerService.editCustomer(customer);
         if (check) {
-            request.setAttribute("message", "Update thành công");
+            request.setAttribute("message", "\n" +
+                    "update successful");
             request.setAttribute("customer", customer);
         } else {
-            request.setAttribute("message", "Update không thành công");
+            request.setAttribute("message", "U\n" +
+                    "update failed");
         }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/customer/edit-customer.jsp");
         try {
@@ -98,7 +102,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         iCustomerService.deleteCustomer(id);
         try {
             response.sendRedirect("/customer");
@@ -108,6 +112,14 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void createCustomer(HttpServletRequest request, HttpServletResponse response) {
+
+        String id=request.getParameter("id");
+        boolean check=false;
+        if(!validate.checkCustomerId(id)){
+            request.setAttribute("ms1","Sai dinh dang");
+            check=true;
+        }
+
         int idType = Integer.parseInt(request.getParameter("typeId"));
         int idCard = Integer.parseInt(request.getParameter("idCard"));
         String name = request.getParameter("name");
@@ -117,9 +129,12 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         String phoneNumber = request.getParameter("phoneNumber");
         CustomerType customerType=iCustomerType.findById(idType);
-        Customer customer = new Customer(customerType, name, birthday, gender, idCard, phoneNumber, email, address);
+        if(check){
+
+        }
+        Customer customer = new Customer(id,customerType, name, birthday, gender, idCard, phoneNumber, email, address);
         iCustomerService.createCustomer(customer);
-        request.setAttribute("message", "update thành công");
+        request.setAttribute("message", "update successful");
         request.setAttribute("customer", customer);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/customer/add-customer.jsp");
         try {
@@ -156,7 +171,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showCustomer(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Customer customer = iCustomerService.findById(id);
         RequestDispatcher requestDispatcher = null;
         if (customer == null) {
@@ -179,7 +194,7 @@ public class CustomerServlet extends HttpServlet {
 
 
     private void showFormEdit(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Customer customer = iCustomerService.findById(id);
         List<CustomerType> customerTypeList=iCustomerType.findAll();
         request.setAttribute("customerTypeList",customerTypeList);
