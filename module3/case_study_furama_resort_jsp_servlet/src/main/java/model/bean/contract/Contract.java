@@ -14,6 +14,11 @@ public class Contract {
     private Customer customer;
     private Services services;
 
+    public Contract(int id, Services services) {
+        this.id = id;
+        this.services = services;
+    }
+
     public Contract(int id, String startDate, String endDate, double deposit, double totalMoney, Employee employee,
                     Customer customer, Services services) {
         this.id = id;

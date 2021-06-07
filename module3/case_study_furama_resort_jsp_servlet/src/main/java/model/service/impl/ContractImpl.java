@@ -22,4 +22,9 @@ public class ContractImpl implements IContract {
     public Contract findById(int id) {
         return contractRepository.findById(id);
     }
+
+    @Override
+    public boolean edit(Contract contract) {
+        return contractRepository.editContract(contract);
+    }
 }

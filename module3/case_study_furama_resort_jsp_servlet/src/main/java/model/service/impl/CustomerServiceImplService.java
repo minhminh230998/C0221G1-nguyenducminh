@@ -13,4 +13,9 @@ public class CustomerServiceImplService implements ICustomerServiceService {
     public List<CustomerService> findAll() {
         return customerServiceRepository.findAll();
     }
+
+    @Override
+    public List<CustomerService> findByName(String name) {
+        return customerServiceRepository.findByName(name);
+    }
 }

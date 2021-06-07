@@ -46,12 +46,11 @@
 <div class="container-fluid d-flex" style="margin-top: 20px">
     <div class="col-lg-9">
         <div style="background: #34ce57 ;width: 150px;height: 40px;border-radius:50px ">
-            <a style="text-decoration: none;color: white" href="/employee?action=create">
-                <p style="width: 100%;height: 100%;line-height: 40px;text-align: center">Add Employee</p></a>
+
         </div>
     </div>
     <div class="col-lg-3">
-        <form class="d-flex " method="post" action="/employee?action=search">
+        <form class="d-flex " method="post" action="/cusseratt?action=search">
             <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">
             <span><button class="btn btn-outline-success" type="submit">Search</button></span>
         </form>
@@ -60,11 +59,11 @@
 
 </div>
 <div class="container-fluid" style="margin-top: 20px">
-    <table id="tableEmployee" class="table table-striped table-bordered" >
+    <table id="tableEmployee" class="table table-striped table-bordered">
         <thead>
         <tr style="background: #218838">
 
-            <th colspan="11" scope="row"><h3 style="text-align: center">List Employee</h3></th>
+            <th colspan="11" scope="row"><h3 style="text-align: center">List Customer Using Service</h3></th>
 
 
         </tr>
@@ -75,6 +74,8 @@
             <th>End Date</th>
             <th>Name Service</th>
             <th>Id Contract</th>
+            <th>Name Attach Service</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -85,8 +86,22 @@
                 <td>${customerService.endDate}</td>
                 <td>${customerService.nameService}</td>
                 <td>${customerService.idContract}</td>
+                <td>
+                    <c:forEach items="${attachServiceContractList}" var="attachServiceContract">
+                        <c:if test="${attachServiceContract.idContract == customerService.idContract}">
+                            <p class="dropdown-item">${attachServiceContract.nameAttachService}</p>
+                        </c:if>
+                    </c:forEach>
+                </td>
+                <td>
+                    <button
+                            class="btn bg-warning center-block"><a
+                            href="cusseratt?action=edit&id=${customerService.idContract}"><i
+                            class="fa fa-pencil "
+                            style="font-size: 1.3em ;text-shadow: 2px 2px  #ccc;color: yellow"
+                            aria-hidden="true"></i></a></button>
+                </td>
             </tr>
-
         </c:forEach>
         </tbody>
     </table>
@@ -101,6 +116,19 @@
 
     </div>
 </div>
+<script src="../jquery/jquery-3.5.1.min.js"></script>
+<script src="../bootstrap413/js/bootstrap.min.js"></script>
+<script src="../datatables/js/jquery.dataTables.min.js"></script>
+<script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableCustomer').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5,
+        });
+    });
+</script>
 </body>
 </html>
 

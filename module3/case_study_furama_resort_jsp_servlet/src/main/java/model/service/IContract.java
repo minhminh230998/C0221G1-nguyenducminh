@@ -9,4 +9,5 @@ public interface IContract {
     public void createContract(Contract contract);
     public List<Contract> findAll();
     public Contract findById(int id);
+    public boolean edit(Contract contract);
 }

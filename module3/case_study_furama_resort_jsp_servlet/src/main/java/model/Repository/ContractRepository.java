@@ -26,7 +26,7 @@ public class ContractRepository {
     final String INSERT_CONTRACT = "insert into hop_dong(id_khach_hang,id_nhan_vien,id_dich_vu,ngay_lam_hop_dong,ngay_ket_thuc,so_tien_coc_truoc) values(?,?,?,?,?,?);";
     final String SELECT_BY_ID = "select * from hop_dong where id_hop_dong=?;";
     final String SELECT_ALL = "select * from hop_dong;";
-
+final String UPDATE_CONTRACT="update hop_dong set hop_dong.id_dich_vu=? where id_hop_dong=?;";
     public void createContract(Contract contract) {
         Connection connection = baseRepository.connectDataBase();
         try {
@@ -100,5 +100,21 @@ public class ContractRepository {
             e.printStackTrace();
         }
         return contract;
+    }
+    public boolean editContract(Contract contract) {
+        boolean check = false;
+        Connection connection = baseRepository.connectDataBase();
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(UPDATE_CONTRACT);
+            statement.setInt(1, contract.getServices().getId());
+            statement.setInt(2, contract.getId());
+
+
+            check = statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return check;
     }
 }

@@ -111,25 +111,25 @@
                 <tr>
                         <th>Standard room</th>
                         <td>
-                            <input type="text" name="standardRoom" id="divStandardRoom">
+                            <input type="text" name="standardRoom" id="standardRoom">
                         </td>
                 </tr>
                 <tr>
                         <th>Description</th>
                         <td>
-                            <input type="text" name="description" id="divDescription">
+                            <input type="text" name="description" id="description">
                         </td>
                 </tr>
                 <tr>
                         <th>Pool area</th>
                         <td>
-                            <input value="0" type="text" name="poolArea" id="divNumberFloor">
+                            <input value="0" type="text" name="poolArea" id="numberFloor">
                         </td>
                 </tr>
                     <tr>
                         <th>Number floors</th>
                         <td>
-                            <input value="0" type="text" name="numberFloors" id="divPoolArea">
+                            <input value="0" type="text" name="numberFloors" id="poolArea">
                         </td>
                     </tr>
             </table>
@@ -167,18 +167,18 @@
     <script src="../bootstrap413/js/bootstrap.bundle.min.js"></script>
     <script>
         function onchangeCreate(value) {
-            document.getElementById("divStandardRoom").style.display = "block";
-            document.getElementById("divDescription").style.display = "block";
-            document.getElementById("divNumberFloor").style.display = "block";
-            document.getElementById("divPoolArea").style.display = "block";
+            document.getElementById("standardRoom").style.display = "block";
+            document.getElementById("description").style.display = "block";
+            document.getElementById("numberFloor").style.display = "block";
+            document.getElementById("poolArea").style.display = "block";
             if (value == 2) {
-                document.getElementById("divPoolArea").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
             }
             if (value == 3) {
-                document.getElementById("divStandardRoom").style.display = "none";
-                document.getElementById("divDescription").style.display = "none";
-                document.getElementById("divNumberFloor").style.display = "none";
-                document.getElementById("divPoolArea").style.display = "none";
+                document.getElementById("standardRoom").style.display = "none";
+                document.getElementById("description").style.display = "none";
+                document.getElementById("numberFloor").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
             }
         }
     </script>
