@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ICustomerService {
     public List<Customer> findAll();
-    public void createCustomer(Customer customer);
+    public String[] createCustomer(Customer customer);
     public boolean editCustomer(Customer customer);
     public boolean deleteCustomer(String id);
     public Customer findById(String id);

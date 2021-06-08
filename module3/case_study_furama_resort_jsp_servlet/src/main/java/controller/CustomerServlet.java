@@ -6,7 +6,7 @@ import model.service.ICustomerService;
 import model.service.ICustomerType;
 import model.service.impl.CustomerServiceimpl;
 import model.service.impl.CustomerTypeImpl;
-import model.service.validate.Validate;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,7 +21,6 @@ import java.util.List;
 public class CustomerServlet extends HttpServlet {
     ICustomerType iCustomerType=new CustomerTypeImpl();
     ICustomerService iCustomerService = new CustomerServiceimpl();
-    Validate validate=new Validate();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -114,12 +113,6 @@ public class CustomerServlet extends HttpServlet {
     private void createCustomer(HttpServletRequest request, HttpServletResponse response) {
 
         String id=request.getParameter("id");
-        boolean check=false;
-        if(!validate.checkCustomerId(id)){
-            request.setAttribute("ms1","Sai dinh dang");
-            check=true;
-        }
-
         int idType = Integer.parseInt(request.getParameter("typeId"));
         int idCard = Integer.parseInt(request.getParameter("idCard"));
         String name = request.getParameter("name");
@@ -129,14 +122,25 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         String phoneNumber = request.getParameter("phoneNumber");
         CustomerType customerType=iCustomerType.findById(idType);
-        if(check){
-
-        }
         Customer customer = new Customer(id,customerType, name, birthday, gender, idCard, phoneNumber, email, address);
-        iCustomerService.createCustomer(customer);
-        request.setAttribute("message", "update successful");
-        request.setAttribute("customer", customer);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/customer/add-customer.jsp");
+        String[] msgArr=iCustomerService.createCustomer(customer);
+        RequestDispatcher requestDispatcher=null;
+        if(msgArr.length==0){
+            request.setAttribute("message", "update successful");
+            request.setAttribute("customer", customer);
+             requestDispatcher = request.getRequestDispatcher("/customer/add-customer.jsp");
+        }else {
+            request.setAttribute("msgId", msgArr[0]);
+            request.setAttribute("msgIdCard", msgArr[2]);
+            request.setAttribute("msgPhone", msgArr[1]);
+            request.setAttribute("msgEmail", msgArr[3]);
+            request.setAttribute("customer", customer);
+            requestDispatcher = request.getRequestDispatcher("/customer/add-customer.jsp");
+            List<CustomerType> customerTypeList=iCustomerType.findAll();
+            request.setAttribute("customerTypeList", customerTypeList);
+        }
+
+
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {

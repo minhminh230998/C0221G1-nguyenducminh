@@ -66,19 +66,23 @@
                 <tr>
                     <th>Id</th>
                     <td>
-                        <input type="text" name="id" id="id">
+                        <input value="${customer.id}" type="text" name="id" id="id">
                     </td>
+                    <td>
+                        <small style="color: red">${msgId}</small>
+                    </td>
+
                 </tr>
                 <tr>
                     <th>Name</th>
                     <td>
-                        <input type="text" name="name" id="name">
+                        <input value="${customer.name}" type="text" name="name" id="name">
                     </td>
                 </tr>
                 <tr>
                     <th>Birthday</th>
                     <td>
-                        <input type="date" name="birthday" id="birthday">
+                        <input value="${customer.birthday}" type="date" name="birthday" id="birthday">
                     </td>
                 </tr>
                 <th>Gender</th>
@@ -92,26 +96,36 @@
                 <tr>
                     <th>Id Card</th>
                     <td>
-                        <input type="text" name="idCard" id="idCard">
+                        <input value="${customer.idCard}" type="text" name="idCard" id="idCard">
+                    </td>
+                    <td>
+                        <small style="color: red">${msgIdCard}</small>
                     </td>
                 </tr>
 
                 <tr>
                     <th>Phone Number</th>
                     <td>
-                        <input type="text" name="phoneNumber" id="phoneNumber">
+                        <input value="${customer.phone}" type="text" name="phoneNumber" id="phoneNumber">
+                    </td>
+                    <td>
+                        <small style="color: red">${msgPhone}</small>
                     </td>
                 </tr>
                 <tr>
                     <th>Email</th>
                     <td>
-                        <input type="text" name="email" id="email">
+                        <input value="${customer.email}" type="text" name="email" id="email">
+                    </td>
+                    <td>
+                        <small style="color: red">${msgEmail}</small>
                     </td>
                 </tr>
                 <tr>
                     <th>Type Id</th>
                     <td>
                         <select class="form-select" aria-label="Default select example" name="typeId">
+                            <option value="${customer.customerType.id}" hidden selected>${customer.customerType.name}</option>
                             <c:forEach items="${customerTypeList}" var="customerType">
                                 <option value="${customerType.id}">${customerType.name}</option>
                             </c:forEach>
@@ -121,7 +135,7 @@
                 <tr>
                     <th>Address</th>
                     <td>
-                        <input type="text" name="address" id="address">
+                        <input value="${customer.address}" type="text" name="address" id="address">
                     </td>
                 </tr>
 
