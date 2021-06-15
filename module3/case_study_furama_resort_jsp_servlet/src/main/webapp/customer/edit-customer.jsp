@@ -63,7 +63,7 @@
             <tr>
                 <th>Id</th>
                 <td>
-                    <input disabled  type="text" name="id" id="id" value="${customer.id}">
+                    <input disabled type="number" name="idabc" id="id" value="${customer.id}">
                 </td>
             </tr>
             <tr>
