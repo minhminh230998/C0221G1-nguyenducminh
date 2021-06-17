@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.model.bean.WebApp;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +33,7 @@ public class WebAppController {
         model.addAttribute("languages",languages);
         model.addAttribute("pageSizes",pageSizes);
         model.addAttribute("webApp",webApp);
-        return "webApp";
+        return "web-app";
     }
     @PostMapping(value = "/update")
     @GetMapping("/update")
