@@ -23,7 +23,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/product/create")
-    public String FormCreateProduct(Model model) {
+    public String ShowFormCreateProduct(Model model) {
         model.addAttribute("product", new Product());
         return "/product/create";
     }
@@ -35,7 +35,7 @@ public class ProductController {
         return "redirect:/product";
     }
     @GetMapping(value = "/product/update")
-    public String formUpdateProduct(@RequestParam int id, Model model){
+    public String showFormUpdateProduct(@RequestParam int id, Model model){
         Product product=iproductService.findById(id);
         model.addAttribute("product",product);
         return "/product/update";
@@ -46,7 +46,7 @@ public class ProductController {
         return "redirect:/product";
     }
     @GetMapping("product/delete")
-    public String formDelete(@RequestParam int id, Model model) {
+    public String showFormDelete(@RequestParam int id, Model model) {
         model.addAttribute("product", iproductService.findById(id));
         return "/product/delete";
     }
