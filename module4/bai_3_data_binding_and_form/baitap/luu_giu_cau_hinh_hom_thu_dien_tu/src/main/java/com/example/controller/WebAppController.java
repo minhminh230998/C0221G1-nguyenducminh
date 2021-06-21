@@ -33,13 +33,13 @@ public class WebAppController {
         model.addAttribute("languages",languages);
         model.addAttribute("pageSizes",pageSizes);
         model.addAttribute("webApp",webApp);
-        return "web-app";
+        return "update";
     }
     @PostMapping(value = "/update")
     @GetMapping("/update")
     public String update(@ModelAttribute WebApp webApp, Model model){
         model.addAttribute("webApp",webApp);
 
-        return "update";
+        return "info";
     }
 }
