@@ -6,16 +6,12 @@
 </head>
 <body>
 <h1>Edit Blog</h1>
-<form th:action="@{/edit}" th:object="${blog}" method="post">
+<form th:action="@{/edit-category}" th:object="${category}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
             <td>Name</td>
             <td><input type="text" th:field="*{name}"/></td>
-        </tr>
-        <tr>
-            <td>Content</td>
-            <td><input type="text" th:field="*{content}"/></td>
         </tr>
         <tr>
             <td></td>

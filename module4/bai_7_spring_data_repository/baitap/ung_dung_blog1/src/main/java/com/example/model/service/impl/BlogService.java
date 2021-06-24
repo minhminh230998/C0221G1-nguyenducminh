@@ -1,15 +1,12 @@
-package com.example.tao_ung_dung_blog.model.service.impl;
+package com.example.model.service.impl;
 
-import com.example.tao_ung_dung_blog.model.entity.Blog;
-import com.example.tao_ung_dung_blog.model.repository.IBlogRepository;
-import com.example.tao_ung_dung_blog.model.service.IBlogService;
+import com.example.model.entity.Blog;
+import com.example.model.repository.IBlogRepository;
+import com.example.model.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class BlogService implements IBlogService {
@@ -37,5 +34,13 @@ public class BlogService implements IBlogService {
         iBlogRepository.deleteById(id);
     }
 
+    @Override
+    public Page<Blog> findByIdCategory(Pageable pageable,int id) {
+        return iBlogRepository.findByIdCategory(pageable,id);
+    }
 
+    @Override
+    public Page<Blog> findByName(Pageable pageable, String name) {
+        return iBlogRepository.findAllByName(pageable,"%"+name+"%");
+    }
 }

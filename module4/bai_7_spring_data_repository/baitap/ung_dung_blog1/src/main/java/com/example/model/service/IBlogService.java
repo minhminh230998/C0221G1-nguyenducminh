@@ -1,6 +1,6 @@
-package com.example.tao_ung_dung_blog.model.service;
+package com.example.model.service;
 
-import com.example.tao_ung_dung_blog.model.entity.Blog;
+import com.example.model.entity.Blog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,4 +12,6 @@ public interface IBlogService {
     void save(Blog blog);
 
     void remove(int id);
+    Page<Blog>findByIdCategory(Pageable pageable,int id);
+    Page<Blog>findByName(Pageable pageable,String name);
 }

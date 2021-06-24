@@ -1,9 +1,10 @@
-package com.example.tao_ung_dung_blog.model.entity;
+package com.example.model.entity;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.Columns;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity(name = "blog")
 public class Blog {
@@ -11,6 +12,8 @@ public class Blog {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String name;
+    @Column(name = "`date`",columnDefinition = "DATETIME")
+    private Date date;
 
 //    @Column(columnDefinition = "LONGTEXT",length = 3000)
     private String content;
@@ -21,6 +24,14 @@ public class Blog {
     public Blog(int id, String name, String content, Category category) {
         this.id = id;
         this.name = name;
+        this.content = content;
+        this.category = category;
+    }
+
+    public Blog(int id, String name, Date date, String content, Category category) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
         this.content = content;
         this.category = category;
     }
@@ -58,5 +69,13 @@ public class Blog {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

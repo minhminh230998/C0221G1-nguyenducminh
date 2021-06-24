@@ -3,18 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fac463d2-4e85-49c6-9349-3eca3a14e663" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../../bai_1_tong_quan_spring_MVC/thuc_hanh/ung_dung_quan_li_danh_sach_khách_hang/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bai_1_tong_quan_spring_MVC/thuc_hanh/ung_dung_quan_li_danh_sach_khách_hang/customer-management" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bai_5_thao_tac_voi_csdl_va_orm/bai_tap/buc_anh_cua_ngay/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bai_5_thao_tac_voi_csdl_va_orm/bai_tap/buc_anh_cua_ngay/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../bai_5_thao_tac_voi_csdl_va_orm/thuc_hanh/ung_dung-quan_li_danh_sach_khach_hang/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bai_5_thao_tac_voi_csdl_va_orm/thuc_hanh/ung_dung-quan_li_danh_sach_khach_hang/customer-management" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/model/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/model/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/model/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/model/repository/ICustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/model/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/model/service/ICustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/model/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/java/com/example/model/service/impl/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/resources/templates/create.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/resources/templates/delete.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/resources/templates/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/resources/templates/error.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ung_dung_quan_li_khach_hang/src/main/resources/templates/list.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
