@@ -16,6 +16,6 @@ public interface IBlogRepository extends PagingAndSortingRepository<Blog,Integer
     Page<Blog>findByIdCategory(Pageable pageable, int id);
     @Query(value="select * from blog order by  `date`",nativeQuery=true)
     Page<Blog>findAll(Pageable pageable);
-    @Query(value="select * from blog join category on blog.category_id=category.id where category.name like :name",nativeQuery=true)
+    @Query(value="select * from blog where `name` like :name",nativeQuery=true)
     Page<Blog>findAllByName(Pageable pageable, @Param("name") String name);
 }
