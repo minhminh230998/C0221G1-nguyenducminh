@@ -3,17 +3,24 @@ package com.example.controller;
 import java.security.Principal;
 
 
+import com.example.model.entity.AppUser;
+import com.example.model.entity.UserRole;
+import com.example.model.service.UserDetailsServiceImpl;
+import com.example.util.EncrytedPasswordUtils;
 import com.example.util.WebUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
-
+    @Autowired
+    UserDetailsServiceImpl userDetailsService;
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");
@@ -31,17 +38,32 @@ public class MainController {
 
         return "adminPage";
     }
+    @GetMapping("/createUser")
+    public String formCreateUser(Model model){
+        model.addAttribute("appUser",new AppUser());
+        model.addAttribute("listAppRole",userDetailsService.findAllAppRole());
 
+        return "/create";
+    }
+    @PostMapping("/create_appUser")
+    public ModelAndView saveAppAdmin(@ModelAttribute AppUser appUser,@RequestParam Long roleID) {
+
+        appUser.setEncrytedPassword(EncrytedPasswordUtils.encrytePassword(appUser.getEncrytedPassword()));
+        userDetailsService.addAppUser(appUser);
+        UserRole userRole=new UserRole(appUser,userDetailsService.findByIdAppRole(roleID));
+        userDetailsService.addUserRole(userRole);
+        ModelAndView modelAndView = new ModelAndView("/login");
+        return modelAndView;
+    }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
-
         return "login";
     }
 
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
-        return "logoutSuccessfulPage";
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)

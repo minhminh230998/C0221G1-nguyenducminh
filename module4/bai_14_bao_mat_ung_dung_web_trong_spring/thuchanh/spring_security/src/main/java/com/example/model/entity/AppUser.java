@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class AppUser {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "User_Id", nullable = false)
     private Long userId;
 
@@ -24,6 +24,12 @@ public class AppUser {
 
     public AppUser(Long userId, String userName, String encrytedPassword, boolean enabled) {
         this.userId = userId;
+        this.userName = userName;
+        this.encrytedPassword = encrytedPassword;
+        this.enabled = enabled;
+    }
+
+    public AppUser(String userName, String encrytedPassword, boolean enabled) {
         this.userName = userName;
         this.encrytedPassword = encrytedPassword;
         this.enabled = enabled;

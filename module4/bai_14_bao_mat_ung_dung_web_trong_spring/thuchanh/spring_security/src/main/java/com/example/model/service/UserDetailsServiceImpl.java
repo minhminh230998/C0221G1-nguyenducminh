@@ -1,7 +1,9 @@
 package com.example.model.service;
 
+import com.example.model.entity.AppRole;
 import com.example.model.entity.AppUser;
 import com.example.model.entity.UserRole;
+import com.example.model.repository.AppRoleRepository;
 import com.example.model.repository.AppUserRepository;
 import com.example.model.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRoleRepository userRoleRepository;
+    @Autowired
+    private AppRoleRepository appRoleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -54,4 +59,30 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userDetails;
     }
 
+    public void addAppUser(AppUser appUser){
+        appUserRepository.save(appUser);
+//        UserRole userRole=new UserRole();
+//        userRole.setAppUser(appUser);
+//        AppRole appRole=appRoleRepository.findByRoleName("ROLE_USER");
+//        userRole.setAppRole(appRole);
+//        userRoleRepository.save(userRole);
+    }
+    public void addUserRole(UserRole userRole) {
+        userRoleRepository.save(userRole);
+    }
+    public List<AppRole> findAllAppRole(){
+        return (List<AppRole>) appRoleRepository.findAll();
+    }
+    public AppRole findByIdAppRole(Long id){
+        return appRoleRepository.findById(id).orElse(null);
+    }
+
+    public void addAppAdmin(AppUser appUser){
+        appUserRepository.save(appUser);
+        UserRole userRole=new UserRole();
+        userRole.setAppUser(appUser);
+        AppRole appRole=appRoleRepository.findByRoleName("ROLE_ADMIN");
+        userRole.setAppRole(appRole);
+        userRoleRepository.save(userRole);
+    }
 }
