@@ -95,7 +95,7 @@
 <table id="product">
     <tr>
         <th>STT</th>
-        <th>Id</th>
+        <th>Name</th>
         <th>Name</th>
         <th>Price</th>
         <th>Describe</th>
@@ -108,15 +108,14 @@
 
     <tr th:each="product,rowStat : ${products}">
         <td th:text="${rowStat.index+1}"></td>
-        <td th:text="${product.getId()}"></td>
         <td th:text="${product.getName()}"></td>
         <td th:text="${product.getPrice()}"></td>
         <td th:text="${product.getDescribe()}"></td>
        <td th:text="${product.getManufacturer().getName()}"></td>
 
-        <td><a th:href="@{/product/update(id=${product.getId()})}">edit</a></td>
-        <td><a th:href="@{/product/delete(id=${product.getId()})}">delete</a></td>
-        <td><a th:href="@{/product/view(id=${product.getId()})}">view</a></td>
+        <td><a th:href="@{/product/update(id=${product.getId()})}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+        <td><a th:href="@{/product/delete(id=${product.getId()})}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+        <td><a th:href="@{/product/view(id=${product.getId()})}"><button type="button" class="btn btn-info">view</button></a></td>
 
     </tr>
 
