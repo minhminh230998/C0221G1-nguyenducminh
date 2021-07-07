@@ -8,8 +8,11 @@ import com.example.model.service.ICustomerTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +30,8 @@ public class CustomerController {
     @Autowired
     ICustomerTypeService iCustomerTypeService;
     @GetMapping(value = "/list")
-    public String showListCustomer(Model model, @PageableDefault(size = 3) Pageable pageable, @RequestParam Optional<String> name) {
+    public String showListCustomer(Model model, @PageableDefault(size = 3) Pageable pageable,
+                                   @RequestParam Optional<String> name) {
 
         String names="";
         if(name.isPresent()){
@@ -38,15 +42,30 @@ public class CustomerController {
         model.addAttribute("names", names);
         return "/customer/list-customer";
     }
+    @GetMapping(value = {"/page"})
+    public ResponseEntity<Page<Customer>> goListBlog( @RequestParam int page,
+                                                  @RequestParam Optional<String> name) {
+
+
+        String names="";
+        if(name.isPresent()){
+            names=name.get();
+        }
+        Page<Customer> customers = iCustomerService.findByNameCustomer(names, PageRequest.of(page,3));
+        if (customers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
     @GetMapping(value = "/create")
-    public String ShowFormCreateProduct(Model model) {
+    public String ShowFormCreateCustomer(Model model) {
         model.addAttribute("customerDto", new CustomerDto());
         model.addAttribute("customerTypeList",iCustomerTypeService.findAll());
         return "/customer/create-customer";
     }
 
     @PostMapping(value = "/create")
-    public String createProduct(@ModelAttribute @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+    public String createCustomer(@ModelAttribute @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         if(bindingResult.hasErrors()){
             model.addAttribute("customerTypeList",iCustomerTypeService.findAll());
             return "/customer/create-customer";
@@ -58,7 +77,7 @@ public class CustomerController {
         return "redirect:/customer/list";
     }
     @GetMapping(value = "/update")
-    public String showFormUpdateProduct(@RequestParam String id, Model model){
+    public String showFormUpdateCustomer(@RequestParam String id, Model model){
         Customer customer=iCustomerService.findByIdCustomer(id);
         CustomerDto customerDto=new CustomerDto();
         BeanUtils.copyProperties(customer,customerDto);
@@ -78,4 +97,16 @@ public class CustomerController {
         redirectAttributes.addFlashAttribute("message", "Update customer successfully!");
         return "redirect:/customer/list";
     }
+
+    @GetMapping("/delete")
+    public String deleteCustomer(@RequestParam String id){
+        iCustomerService.deleteCustomer(id);
+        return "redirect:/customer/list";
+    }
+//    @GetMapping("/view")
+//    public String viewCustomer(@RequestParam String id,Model model){
+//        iCustomerService.findByIdCustomer(id);
+//        model.addAttribute("customer",iCustomerService.findByIdCustomer(id));
+//        return "/customer/list-customer";
+//    }
 }

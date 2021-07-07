@@ -1,22 +1,19 @@
 package com.example.model.entity.service;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class RentType {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private Double cost;
     @OneToMany(mappedBy = "rentType")
-    private List<Service> serviceList;
+    private List<Services> serviceList;
 
-    public RentType(Integer id, String name, Double cost, List<Service> serviceList) {
+    public RentType(Integer id, String name, Double cost, List<Services> serviceList) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -50,11 +47,11 @@ public class RentType {
         this.cost = cost;
     }
 
-    public List<Service> getServiceList() {
+    public List<Services> getServiceList() {
         return serviceList;
     }
 
-    public void setServiceList(List<Service> serviceList) {
+    public void setServiceList(List<Services> serviceList) {
         this.serviceList = serviceList;
     }
 }

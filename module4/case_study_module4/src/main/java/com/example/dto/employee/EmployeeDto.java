@@ -4,17 +4,30 @@ import com.example.model.entity.employee.Division;
 import com.example.model.entity.employee.EducationDegree;
 import com.example.model.entity.employee.Position;
 
+import javax.validation.constraints.*;
+
 
 public class EmployeeDto {
 
     private Integer id;
+    @NotBlank(message = " Not Null")
     private String name;
-
+    @NotBlank(message = " Not Null")
+    @Pattern(regexp = "^[0-2][0-9][0-9][0-9][/-][0-3][0-9][/-][0-3][0-9]$",message = " Enter the correct format")
     private String birthday;
+    @NotBlank(message = " Not Null")
+    @Pattern(regexp = "^[0-9]{9,10}$",message = " Enter the correct format")
     private String idCard;
+    @NotNull(message = " Not Null")
+    @Min(value = 1,message = "Enter the correct format")
     private Double salary;
+    @NotBlank(message = " Not Null")
+    @Pattern(regexp = "^090[0-9]{7}||091[0-9]{7}$",message = " Enter the correct format")
     private String phone;
+    @NotBlank(message = " Not Null")
+    @Email
     private String email;
+    @NotBlank(message = " Not Null")
     private String address;
 
     private Position position;

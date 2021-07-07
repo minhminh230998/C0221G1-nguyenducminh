@@ -3,13 +3,24 @@ package com.example.dto.service;
 import com.example.model.entity.service.RentType;
 import com.example.model.entity.service.ServiceType;
 
+import javax.validation.constraints.*;
+
 
 public class ServiceDto {
-
+    @NotBlank(message = " Not Null")
+    @Pattern(regexp = "^DV-[0-9]{4}$",message = " Enter the correct format")
     private String id;
+    @NotBlank(message = " Not Null")
     private String name;
+    @NotNull(message = " Not Null")
+    @Min(value = 1,message = "Enter the correct format")
     private Double area;
+    @NotNull(message = " Not Null")
+    @Min(value = 1,message = "Enter the correct format")
     private Double cost;
+    @NotNull(message = " Not Null")
+    @Min(value = 1,message = "Enter the correct format")
+    @Max(value = 20,message = "Enter the correct format")
     private Integer maxPeople;
     private String standardRoom;
     private Double foolArea;

@@ -1,21 +1,18 @@
 package com.example.model.entity.service;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class ServiceType {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     @OneToMany(mappedBy = "serviceType")
-    private List<Service> serviceList;
+    private List<Services> serviceList;
 
-    public ServiceType(Integer id, String name, List<Service> serviceList) {
+    public ServiceType(Integer id, String name, List<Services> serviceList) {
         this.id = id;
         this.name = name;
         this.serviceList = serviceList;
@@ -40,11 +37,11 @@ public class ServiceType {
         this.name = name;
     }
 
-    public List<Service> getServiceList() {
+    public List<Services> getServiceList() {
         return serviceList;
     }
 
-    public void setServiceList(List<Service> serviceList) {
+    public void setServiceList(List<Services> serviceList) {
         this.serviceList = serviceList;
     }
 }

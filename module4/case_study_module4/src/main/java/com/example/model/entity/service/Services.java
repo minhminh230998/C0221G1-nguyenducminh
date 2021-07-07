@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Service {
+public class Services {
     @Id
     private String id;
     private String name;
@@ -25,7 +25,7 @@ public class Service {
     @OneToMany(mappedBy = "service")
     private List<Contract> contractList;
 
-    public Service(String id, String name, Double area, Double cost, Integer maxPeople, String standardRoom, Double foolArea, Integer numberFloors, RentType rentType, ServiceType serviceType, List<Contract> contractList) {
+    public Services(String id, String name, Double area, Double cost, Integer maxPeople, String standardRoom, Double foolArea, Integer numberFloors, RentType rentType, ServiceType serviceType, List<Contract> contractList) {
         this.id = id;
         this.name = name;
         this.area = area;
@@ -47,7 +47,7 @@ public class Service {
         this.contractList = contractList;
     }
 
-    public Service() {
+    public Services() {
     }
 
     public String getId() {

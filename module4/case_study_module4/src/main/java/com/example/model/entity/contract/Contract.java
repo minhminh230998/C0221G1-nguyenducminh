@@ -2,7 +2,7 @@ package com.example.model.entity.contract;
 
 import com.example.model.entity.customer.Customer;
 import com.example.model.entity.employee.Employee;
-import com.example.model.entity.service.Service;
+import com.example.model.entity.service.Services;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,11 +26,11 @@ public class Contract {
     private Customer customer;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "services_id", referencedColumnName = "id")
-    private Service service;
+    private Services service;
     @OneToMany(mappedBy = "contract")
     List<ContractDetail> contractDetailList;
 
-    public Contract(Integer id, String startDate, String endDate, double deposit, double totalMoney, Employee employee, Customer customer, Service service) {
+    public Contract(Integer id, String startDate, String endDate, double deposit, double totalMoney, Employee employee, Customer customer, Services service) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -100,11 +100,11 @@ public class Contract {
         this.customer = customer;
     }
 
-    public Service getService() {
+    public Services getService() {
         return service;
     }
 
-    public void setService(Service service) {
+    public void setService(Services service) {
         this.service = service;
     }
 }

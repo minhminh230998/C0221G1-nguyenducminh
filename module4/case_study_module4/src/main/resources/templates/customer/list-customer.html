@@ -158,8 +158,13 @@
             background-color: fuchsia;
         }
 
-        .button3 {
-            border-radius: 8px;
+
+        .form-footer input[type="text"] {
+            border: none;
+            border-radius: 16px 0 0 16px;
+            outline: none;
+            padding-left: 10px;
+
         }
 
 
@@ -172,19 +177,19 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9">
-            <a th:href="@{/customer/create}"><button  type="submit" class="btn btn-primary">Add +
-            </button></a>
+        <div class="col-lg-3">
+            <a th:href="@{/customer/create}">
+                <button type="submit" class="btn btn-primary">Add +
+                </button>
+            </a>
+        </div>
+        <div class="col-lg-6">
+
         </div>
         <div class="col-lg-3">
-            <form method="get" th:action="@{/customer/list}">
-            <div >
-
-                <input type="search" name="name" class="form-control rounded" placeholder="Search"
-                        />
-                <button type="submit" class="btn btn-outline-primary">search</button>
-
-            </div>
+            <form class="form-inline" method="get" th:action="@{/customer/list}">
+                <input name="name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </div>
@@ -215,12 +220,107 @@
         <td><a th:href="@{/customer/update(id=${customer.getId()})}">
             <button type="button" class="btn btn-warning">Edit</button>
         </a></td>
-        <td><a th:href="@{/customer/delete(id=${customer.getId()})}">
-            <button type="button" class="btn btn-danger">Delete</button>
-        </a></td>
-        <td><a th:href="@{/customer/view(id=${customer.getId()})}">
-            <button type="button" class="btn btn-info">View</button>
-        </a></td>
+        <td>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                Delete
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            You want to remove this Customer(<span th:text="${customer.getName()}"></span>)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a onclick="deleteCustomer()" th:href="@{/customer/delete(id=${customer.getId()})}">
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </td>
+        <td>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter1">
+                View
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLong">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <p>Id:<span style="color: darkorchid" th:text="${customer.getId()}"></span></p>
+
+                            </div>
+                            <div class="form-group row">
+
+                                <p>Customer name:<span style="color: darkorchid"  th:text="${customer.getName()}" ></span></p>
+                            </div>
+                            <div class="form-group row">
+
+                                <p>Customer type:<span style="color: darkorchid"  th:text="${customer.getCustomerType().getName()}" ></span></p>
+                            </div>
+
+                            <div class="form-group row">
+
+
+                                <p>Customer birthday:<span style="color: darkorchid" th:text="${customer.getBirthday()}" ></span></p>
+                            </div>
+                            <div class="form-group row">
+
+
+                                <p>Customer gender:<span style="color: darkorchid"  th:text="${customer.getGender()}" ></span></p>
+                            </div>
+                            <div class="form-group row">
+
+
+                                <p>Customer ID card:<span style="color: darkorchid"  th:text="${customer.getIdCard()}" ></span></p>
+                            </div>
+                            <div class="form-group row">
+
+
+                                <p>Customer phone:<span style="color: darkorchid"  th:text="${customer.getPhone()}" ></span></p>
+                            </div>
+                            <div class="form-group row">
+
+
+                                <p>Customer email:<span style="color: darkorchid"  th:text="${customer.getEmail()}" ></span></p>
+                            </div>
+                            <div class="form-group row">
+
+                                <p>Customer address:<span style="color: darkorchid"  th:text="${customer.getAddress()}" ></span></p>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </td>
 
     </tr>
 
@@ -230,5 +330,10 @@
 <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
 <a th:href="@{/customer/list(page=${customers.number + 1},name=${names})}" th:if="${customers.hasNext()}">Next</a>
 <head th:replace="footer"></head>
+<script>
+    function deleteCustomer() {
+        alert("You have successfully deleted ")
+    }
+</script>
 </body>
 </html>

@@ -36,7 +36,7 @@
             <div class="form-group row">
                 <label for="select" class="col-3 col-form-label">Customer type:</label>
                 <div class="col-9">
-                    <select id="select" name="select" class="custom-select">
+                    <select th:field="*{customerType}" id="select" name="select" class="custom-select">
                         <option th:each="typeCustomer,index : ${customerTypeList}"
                                 th:text="${typeCustomer.name}"
                                 th:value="${typeCustomer.id}"></option>
