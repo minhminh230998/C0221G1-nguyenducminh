@@ -1,5 +1,6 @@
 package com.example.dto.employee;
 
+import com.example.model.entity.employee.AppUser;
 import com.example.model.entity.employee.Division;
 import com.example.model.entity.employee.EducationDegree;
 import com.example.model.entity.employee.Position;
@@ -35,7 +36,7 @@ public class EmployeeDto {
     private EducationDegree educationDegree;
 
     private Division division;
-
+    private AppUser appUser;
 
 
     public EmployeeDto() {
@@ -53,6 +54,14 @@ public class EmployeeDto {
         this.position = position;
         this.educationDegree = educationDegree;
         this.division = division;
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public Integer getId() {

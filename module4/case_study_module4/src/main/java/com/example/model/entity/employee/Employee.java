@@ -1,6 +1,7 @@
 package com.example.model.entity.employee;
 
 import com.example.model.entity.contract.Contract;
+import org.apache.catalina.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,6 +28,9 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name="division_id",referencedColumnName = "id")
     private Division division;
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id") //để tường minh hơn thì nên khai báo thêm referencedColumnName
+    private AppUser appUser;
 
     @OneToMany(mappedBy = "employee")
     private List<Contract> contractList;
@@ -34,7 +38,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer id, String name, String birthday, String idCard, Double salary, String phone, String email, String address, Position position, EducationDegree educationDegree, Division division, List<Contract> contractList) {
+    public Employee(Integer id, String name, String birthday, String idCard, Double salary, String phone, String email, String address, Position position, EducationDegree educationDegree, Division division, AppUser appUser, List<Contract> contractList) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -46,7 +50,17 @@ public class Employee {
         this.position = position;
         this.educationDegree = educationDegree;
         this.division = division;
+        this.appUser = appUser;
         this.contractList = contractList;
+    }
+
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public List<Contract> getContractList() {

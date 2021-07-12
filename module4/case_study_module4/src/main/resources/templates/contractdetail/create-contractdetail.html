@@ -33,9 +33,8 @@
             <div class="form-group row">
                 <label for="select" class="col-3 col-form-label"> Contract:</label>
                 <div class="col-9">
-                    <select th:field="*{contract}"
-
-                            id="select" name="select" class="custom-select">
+                    <select th:field="*{contract}" id="select" name="select" class="custom-select">
+                        <option th:if="${contracts}" th:value="${contracts.id}" th:text="${contracts.id}"></option>
                         <option th:each="contract,index : ${contractList}"
                                 th:text="${contract.id}"
                                 th:value="${contract.id}"

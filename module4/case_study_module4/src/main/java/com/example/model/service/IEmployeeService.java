@@ -21,4 +21,5 @@ public interface IEmployeeService {
     List<Position> findAllPosition();
     Iterable<Division> findAllDivision();
     List<EducationDegree> findAllEducationDegree();
+    Employee findByUser(String name);
 }

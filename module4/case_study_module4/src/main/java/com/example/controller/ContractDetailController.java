@@ -8,6 +8,8 @@ import com.example.model.service.IContractDetailService;
 import com.example.model.service.IContractService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,7 +47,9 @@ public class ContractDetailController {
         ContractDetail contractDetail=new ContractDetail();
         BeanUtils.copyProperties(contractDetailDto,contractDetail);
         iContractDetailService.saveContractDetail(contractDetail);
+
         redirectAttributes.addFlashAttribute("message", "Update contract successfully!");
-        return "redirect:/customer/list";
+        return "redirect:/home";
     }
+
 }

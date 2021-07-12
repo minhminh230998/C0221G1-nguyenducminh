@@ -177,25 +177,26 @@
 
 <div class="container-fluid">
     <div class="row">
+
         <div class="col-lg-3">
-            <a th:href="@{/customer/create}">
-                <button type="submit" class="btn btn-primary">Add +
+            <a style="margin-left: 50px"  th:href="@{/customer/create}">
+                <button type="submit" class="btn btn-primary">Add New Customer +
                 </button>
             </a>
         </div>
         <div class="col-lg-6">
-
+            <h1 style="text-align: center;color: forestgreen;font-weight:bold">Customer</h1>
         </div>
         <div class="col-lg-3">
-            <form class="form-inline" method="get" th:action="@{/customer/list}">
-                <input name="name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form style="margin-left: 100px" method="get" th:action="@{/customer/list}">
+                <input style="float: left;width: 200px" name="name" class="form-control " type="search" placeholder="Search" aria-label="Search">
+                <button style="float: left" class="btn btn-outline-success " type="submit">Search</button>
             </form>
         </div>
     </div>
 
 </div>
-<table id="product" style="margin-top: 70px">
+<table id="product" >
 
     <tr>
         <th>STT</th>
@@ -206,6 +207,7 @@
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
+        <th>Add Contract</th>
     </tr>
 
 
@@ -321,8 +323,11 @@
             </div>
 
         </td>
-
+        <td><a th:href="@{/contract/create1(id=${customer.getId()})}">
+            <button type="button" class="btn btn-light">Add Contract</button>
+        </a></td>
     </tr>
+
 
 </table>
 <a th:href="@{/customer/list(page=${customers.number - 1},name=${names})}"

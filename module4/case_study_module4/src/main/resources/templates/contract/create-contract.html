@@ -57,11 +57,13 @@
             <div class="form-group row">
                 <label for="select" class="col-3 col-form-label">Customer :</label>
                 <div class="col-9">
-                    <select th:field="*{customer}" name="select" class="custom-select">
+                    <select  th:field="*{customer}" name="select" class="custom-select">
+                        <option th:if="${customers}" th:text="${customers.getName()} " th:value="${customers.getId()}"></option>
                         <option th:each="customer,index : ${customerList}"
                                 th:text="${customer.name}"
                                 th:value="${customer.id}"></option>
                     </select>
+
                 </div>
             </div>
             <div class="form-group row">

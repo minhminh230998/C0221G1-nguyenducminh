@@ -66,4 +66,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public List<EducationDegree> findAllEducationDegree() {
         return (List<EducationDegree>) iEducationDegreeRepository.findAll();
     }
+
+    @Override
+    public Employee findByUser(String name) {
+        return iEmployeeRepository.findByAppUser(name);
+    }
 }

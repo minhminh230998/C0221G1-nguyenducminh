@@ -39,13 +39,19 @@
             text-align: center;
         }
 
-        a {
+        a  {
+            text-decoration: none;
+            line-height: 50px;
+
+        }
+        a button {
             text-decoration: none;
 
 
         }
 
-        a:hover {
+
+        .nav-link:hover {
             background: black;
         }
         li{
@@ -58,37 +64,58 @@
 
 <header th:fragment="footer">
 
-    <div class="container-fluid " style="background: #D59B00;height: 80px">
+    <div class="container-fluid " style="background: #00B2BF;height: 80px">
         <div class="row">
             <div class="col-lg-3">
                 <a class="navbar-brand" href="#"><img style="width: 250px;height: 70px"
-                                                      src="../img/logo.jpg"/></a>
+                                                      src="https://www.furama.com/images/LOGOFurama_4C_Normal.png"/></a>
             </div>
 
-            <div class="col-lg-6" id="navbarResponsive">
+            <div class="col-lg-7" id="navbarResponsive">
                 <div class="container-fluid">
                     <ul class="row">
                         <li class="nav-item col-lg-2 " >
-                            <a style="width: 150px;height: 80px"  class="nav-link" href="#"><p>Home</p>
+                            <a style="width: 150px;height: 80px"  class="nav-link" href="/home"><p >Home</p>
                             </a>
                         </li>
                         <li class="nav-item col-lg-2" >
-                            <a style="width: 150px;height: 80px" class="nav-link" href="#"><p>Customer</p></a>
+                            <a style="width: 150px;height: 80px" class="nav-link" href="/customer/list"><p>Customer</p></a>
                         </li>
                         <li class="nav-item col-lg-2" >
-                            <a style="width: 150px;height: 80px" class="nav-link" href="#"><p>Employee</p></a>
+                            <a style="width: 150px;height: 80px" class="nav-link" href="/employee/list"><p>Employee</p></a>
                         </li>
                         <li class="nav-item col-lg-2" >
-                            <a style="width: 150px;height: 80px" class="nav-link" href="#"><p>Services</p></a>
+                            <a style="width: 150px;height: 80px" class="nav-link" href="/service/create"><p>Services</p></a>
                         </li>
                         <li class="nav-item col-lg-2" >
-                            <a style="width: 150px;height: 80px" class="nav-link" href="#"><p>ContactDT</p></a>
+                            <a style="width: 150px;height: 80px" class="nav-link" href="/contractDetail/create"><p>ContactDT</p></a>
                         </li>
                         <li class="nav-item col-lg-2" >
-                            <a style="width: 150px;height: 80px" class="nav-link" href="#"><p>Contact</p></a>
+                            <a style="width: 150px;height: 80px" class="nav-link" href="/contract/create"><p>Contact</p></a>
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div class="col-lg-1">
+                <a href="/login" th:if="${#request.userPrincipal == null}">
+                    <button style="background: lavender;width: 150px;height: 80px" type="button" class="btn btn-link px-3 me-2">
+                        Login
+                    </button>
+                </a>
+                <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">
+                    <button style="background: lavender;width: 150px;height: 80px" th:text="${#request.userPrincipal.name}" type="button" class="btn btn-link px-3 me-2">
+
+                    </button>
+                </a>
+
+            </div>
+            <div class="col-lg-1" th:if="${#request.userPrincipal != null}">
+                <a  th:href="@{/logout}">
+                    <button style="background: lavender;width: 150px;height: 80px" type="button" class="btn btn-link px-3 me-2">
+                        Logout
+                    </button>
+                </a>
+
             </div>
         </div>
     </div>
@@ -101,26 +128,25 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active"><img src="../img/furama1.jpg"
+            <div class="carousel-item active"><img src="https://anhdepfree.com/wp-content/uploads/2018/12/hinh-nen-4k-cho-laptop-41.jpg"
                                                    height="550px" width="100%"/>
-                <div class="carousel-caption d-none d-md-block">
-                    <h3 class="display-4">Furama resort</h3>
+                <div style="margin-top: 50px" class="carousel-caption  d-md-block">
+
 
                 </div>
             </div>
             <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item"><img src="../img/furama2.jpg"
+            <div class="carousel-item"><img src="https://i.pinimg.com/originals/ce/12/25/ce1225f92e766b3a87113dc69560e88f.jpg"
                                             height="550px" width="100%"/>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="display-4">Bể bơi</h3>
+
 
                 </div>
             </div>
             <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item"><img src="../img/furama3.jpg"
+            <div class="carousel-item"><img src="https://wallpapercave.com/wp/wp4676582.jpg"
                                             height="550px" width="100%"/>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="display-4">Welcome</h3>
 
                 </div>
             </div>

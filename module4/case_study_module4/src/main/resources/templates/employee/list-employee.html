@@ -177,23 +177,27 @@
 
 <div class="container-fluid">
     <div class="row">
+
         <div class="col-lg-3">
-            <a th:href="@{/employee/create}"><button  type="submit" class="btn btn-primary">Add +
-            </button></a>
+            <a style="margin-left: 50px" th:href="@{/employee/create}">
+                <button type="submit" class="btn btn-primary">Add New Employee +
+                </button>
+            </a>
         </div>
         <div class="col-lg-6">
-
+            <h1 style="text-align: center;color: forestgreen;font-weight:bold">Employee</h1>
         </div>
         <div class="col-lg-3">
-            <form class="form-inline" method="get" th:action="@{/employee/list}">
-                <input name="name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form style="margin-left: 100px" method="get" th:action="@{/employee/list}">
+                <input style="float: left;width: 200px" name="name" class="form-control " type="search"
+                       placeholder="Search" aria-label="Search">
+                <button style="float: left" class="btn btn-outline-success " type="submit">Search</button>
             </form>
         </div>
     </div>
 
 </div>
-<table id="product" style="margin-top: 70px">
+<table id="product">
 
     <tr>
         <th>STT</th>
@@ -215,15 +219,22 @@
         <td th:text="${employee.getPhone()}"></td>
 
 
-        <td><a th:href="@{/employee/update(id=${employee.getId()})}">
-            <button type="button" class="btn btn-warning">Edit</button>
-        </a></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-            Delete
-        </button>
+        <td>
+            <a th:href="@{/employee/update(id=${employee.getId()})}">
+                <button type="button" class="btn btn-warning">Edit</button>
+            </a>
+            <a th:href="@{/employee/updateUser(id=${employee.getId()})}">
+                <button type="button" class="btn btn-warning">Edit Password</button>
+            </a>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                Delete
+            </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -237,7 +248,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <a onclick="deleteCustomer()" th:href="@{/employee/delete(id=${employee.getId()})}" ><button type="button" class="btn btn-danger">Delete</button></a>
+                            <a onclick="deleteCustomer()" th:href="@{/employee/delete(id=${employee.getId()})}">
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -267,49 +280,60 @@
                             </div>
                             <div class="form-group row">
 
-                                <p>Employee name:<span style="color: darkorchid"  th:text="${employee.getName()}" ></span></p>
+                                <p>Employee name:<span style="color: darkorchid" th:text="${employee.getName()}"></span>
+                                </p>
                             </div>
                             <div class="form-group row">
 
-                                <p>Employee Education Degree:<span style="color: darkorchid"  th:text="${employee.getEducationDegree().getName()}" ></span></p>
+                                <p>Employee Education Degree:<span style="color: darkorchid"
+                                                                   th:text="${employee.getEducationDegree().getName()}"></span>
+                                </p>
                             </div>
                             <div class="form-group row">
 
-                                <p>Employee Division:<span style="color: darkorchid"  th:text="${employee.getDivision().getName()}" ></span></p>
+                                <p>Employee Division:<span style="color: darkorchid"
+                                                           th:text="${employee.getDivision().getName()}"></span></p>
                             </div>
                             <div class="form-group row">
 
-                                <p>Employee Position:<span style="color: darkorchid"  th:text="${employee.getPosition().getName()}" ></span></p>
+                                <p>Employee Position:<span style="color: darkorchid"
+                                                           th:text="${employee.getPosition().getName()}"></span></p>
                             </div>
 
                             <div class="form-group row">
 
 
-                                <p>Employee birthday:<span style="color: darkorchid" th:text="${employee.getBirthday()}" ></span></p>
-                            </div>
-                            <div class="form-group row">
-
-
-                                <p>Employee gender:<span style="color: darkorchid"  th:text="${employee.getSalary()}" ></span></p>
-                            </div>
-                            <div class="form-group row">
-
-
-                                <p>Employee ID card:<span style="color: darkorchid"  th:text="${employee.getIdCard()}" ></span></p>
+                                <p>Employee birthday:<span style="color: darkorchid"
+                                                           th:text="${employee.getBirthday()}"></span></p>
                             </div>
                             <div class="form-group row">
 
 
-                                <p>Employee phone:<span style="color: darkorchid"  th:text="${employee.getPhone()}" ></span></p>
+                                <p>Employee gender:<span style="color: darkorchid"
+                                                         th:text="${employee.getSalary()}"></span></p>
                             </div>
                             <div class="form-group row">
 
 
-                                <p>Employee email:<span style="color: darkorchid"  th:text="${employee.getEmail()}" ></span></p>
+                                <p>Employee ID card:<span style="color: darkorchid"
+                                                          th:text="${employee.getIdCard()}"></span></p>
                             </div>
                             <div class="form-group row">
 
-                                <p>Employee address:<span style="color: darkorchid"  th:text="${employee.getAddress()}" ></span></p>
+
+                                <p>Employee phone:<span style="color: darkorchid"
+                                                        th:text="${employee.getPhone()}"></span></p>
+                            </div>
+                            <div class="form-group row">
+
+
+                                <p>Employee email:<span style="color: darkorchid"
+                                                        th:text="${employee.getEmail()}"></span></p>
+                            </div>
+                            <div class="form-group row">
+
+                                <p>Employee address:<span style="color: darkorchid"
+                                                          th:text="${employee.getAddress()}"></span></p>
                             </div>
 
 
@@ -330,12 +354,12 @@
 <a th:href="@{/employee/list(page=${employees.number - 1},name=${names})}"
    th:if="${employees.hasPrevious()}">Previous</a>
 <span th:text="${employees.number + 1}"></span>/<span th:text="${employees.totalPages}"></span>
-<a th:href="@{/customer/list(page=${employees.number + 1},name=${names})}" th:if="${employees.hasNext()}">Next</a>
+<a th:href="@{/employee/list(page=${employees.number + 1},name=${names})}" th:if="${employees.hasNext()}">Next</a>
 <head th:replace="footer"></head>
 <script>
-function deleteCustomer() {
-alert("You have successfully deleted ")
-}
+    function deleteCustomer() {
+        alert("You have successfully deleted ")
+    }
 </script>
 </body>
 </html>
