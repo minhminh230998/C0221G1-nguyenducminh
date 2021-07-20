@@ -228,35 +228,43 @@
             </a>
         </td>
         <td>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+            <button th:data2="${employee.getName()}" th:data1="${employee.getId()}"
+                    onclick="deleteCustomer(this.getAttribute('data1'),this.getAttribute('data2'))"
+                    type="button"
+                    class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
                 Delete
             </button>
-
+        </td>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            You want to remove this Customer(<span th:text="${employee.getName()}"></span>)
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <a onclick="deleteCustomer()" th:href="@{/employee/delete(id=${employee.getId()})}">
-                                <button type="button" class="btn btn-danger">Delete</button>
-                            </a>
+            <form th:action="@{/employee/delete}" method="get">
+
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <span id="nameCustomer"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+                                <button type="submit" id="idCustomer" name="idCustomer" class="btn btn-danger">Delete
+                                </button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
-        </td>
+
         <td>
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter1">
                 View
@@ -357,8 +365,9 @@
 <a th:href="@{/employee/list(page=${employees.number + 1},name=${names})}" th:if="${employees.hasNext()}">Next</a>
 <head th:replace="footer"></head>
 <script>
-    function deleteCustomer() {
-        alert("You have successfully deleted ")
+    function deleteCustomer(id, name) {
+        document.getElementById("idCustomer").value = id;
+        document.getElementById("nameCustomer").innerText = name;
     }
 </script>
 </body>

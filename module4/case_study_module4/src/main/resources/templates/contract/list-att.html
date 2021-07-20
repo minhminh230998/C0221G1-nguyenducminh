@@ -7,6 +7,7 @@
 <body>
 <td th:each="attach:${listAttach}" >
     <p th:text="${attach.getAttachService().getName()}"></p>
+    <p th:text="${attach.getQuantity()}"></p>
 </td>
 </body>
 </html>

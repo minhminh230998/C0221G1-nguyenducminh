@@ -1,9 +1,6 @@
 package com.example.model.service;
 
-import com.example.model.entity.employee.Division;
-import com.example.model.entity.employee.EducationDegree;
-import com.example.model.entity.employee.Employee;
-import com.example.model.entity.employee.Position;
+import com.example.model.entity.employee.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,5 +18,5 @@ public interface IEmployeeService {
     List<Position> findAllPosition();
     Iterable<Division> findAllDivision();
     List<EducationDegree> findAllEducationDegree();
-    Employee findByUser(String name);
+    Employee findByUser(Long id);
 }

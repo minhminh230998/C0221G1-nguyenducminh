@@ -78,7 +78,6 @@ public class ContractController {
     @GetMapping(value = "/pageCustomerService")
     public String findAllCustomerService(Model model, @PageableDefault(size = 3) Pageable pageable){
         model.addAttribute("pageCustomerService",iContractService.findAllCustomerService(pageable));
-
         return "/contract/list-customer-service";
     }
     @GetMapping(value = "/attachDetail")

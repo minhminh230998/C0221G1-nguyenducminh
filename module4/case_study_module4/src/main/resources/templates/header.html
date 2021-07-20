@@ -103,7 +103,7 @@
                     </button>
                 </a>
                 <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">
-                    <button style="background: lavender;width: 150px;height: 80px" th:text="${#request.userPrincipal.name}" type="button" class="btn btn-link px-3 me-2">
+                    <button style="background: lavender;width: 150px;height: 80px" th:text="${employee.getName()}" type="button" class="btn btn-link px-3 me-2">
 
                     </button>
                 </a>

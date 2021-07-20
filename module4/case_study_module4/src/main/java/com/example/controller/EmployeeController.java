@@ -126,8 +126,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/delete")
-    public String deleteEmployee(@RequestParam Integer id){
-        iEmployeeService.deleteEmployee(id);
+    public String deleteEmployee(@RequestParam Integer idCustomer){
+        iEmployeeService.deleteEmployee(idCustomer);
         return "redirect:/employee/list";
     }
 

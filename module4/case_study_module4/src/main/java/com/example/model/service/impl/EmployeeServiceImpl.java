@@ -1,9 +1,6 @@
 package com.example.model.service.impl;
 
-import com.example.model.entity.employee.Division;
-import com.example.model.entity.employee.EducationDegree;
-import com.example.model.entity.employee.Employee;
-import com.example.model.entity.employee.Position;
+import com.example.model.entity.employee.*;
 import com.example.model.repository.employee.IDivisionRepository;
 import com.example.model.repository.employee.IEducationDegreeRepository;
 import com.example.model.repository.employee.IEmployeeRepository;
@@ -68,7 +65,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public Employee findByUser(String name) {
-        return iEmployeeRepository.findByAppUser(name);
+    public Employee findByUser(Long id) {
+        return iEmployeeRepository.findEmployeeByAppUserUserId(id);
     }
 }

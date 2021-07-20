@@ -63,10 +63,11 @@ public class MainController {
 //
 //
 //        User loginedUser = (User) ((Authentication) principal).getPrincipal();
+//        loginedUser.getUsername();
+//        String userInfo = loginedUser.getUsername();
+//        AppUser appUser=userDetailsService.findByName(userInfo);
+//        Employee employee=iEmployeeService.findByUser(appUser.getUserId());
 //
-//        String userInfo = WebUtils.toString(loginedUser);
-////       AppUser appUser=userDetailsService.findByName(userInfo);
-//        Employee employee=iEmployeeService.findByUser(userInfo);
 //        model.addAttribute("employee", employee);
 //
 //        return "/home";
