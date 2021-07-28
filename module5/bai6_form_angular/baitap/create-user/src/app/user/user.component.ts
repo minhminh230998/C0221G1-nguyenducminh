@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../user';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {comparePassword} from './validate';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-user',
@@ -10,11 +11,17 @@ import {comparePassword} from './validate';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  user: User;
+  public  user: User;
+  public  users: User[]=[
+    {email: "a",password:"a",confirm_password:"a",country:"a",age:1,gender:"a",phone:"a"}
+
+  ];
+
+
   userForm: FormGroup;
 
 
-  constructor() {
+  constructor(private userService: UserService) {
     this.userForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       country: new FormControl(''),
@@ -33,7 +40,10 @@ export class UserComponent implements OnInit {
   }
 
   createUser() {
-    console.log(this.userForm);
+   // this.userService.save(this.userForm.value);
+   // console.log(this.userService.users)
+this.users.push(this.userForm.value);
+console.log(this.users)
 
   }
 

@@ -28,10 +28,10 @@
                   *ngIf="userForm.get('pw').get('confirm_password')?.hasError('required') && userForm.get('pw').get('confirm_password')?.touched">Not null</small>
       </div>
 
-      <small style="color: red"
-           *ngIf="userForm.hasError('passwordnotmatch', ['pw']) && userForm.get('pw').touched">
-        Password does not match!
-      </small>
+<!--      <small style="color: red"-->
+<!--           *ngIf="userForm.hasError('passwordnotmatch', ['pw']) && userForm.get('pw').touched">-->
+<!--        Password does not match!-->
+<!--      </small>-->
 
     </li>
     </div>

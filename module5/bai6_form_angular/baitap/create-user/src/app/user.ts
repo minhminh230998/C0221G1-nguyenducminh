@@ -4,6 +4,6 @@ export interface User {
   confirm_password?: string;
   country?: string;
   age?: number;
-  gender?: boolean;
+  gender?: string;
   phone?: string;
 }
